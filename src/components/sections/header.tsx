@@ -71,6 +71,7 @@ const Header = () => {
             <Button
               variant="ghost"
               size="icon"
+              aria-label="بحث"
               className="hidden md:flex text-[#2C2420] hover:bg-[#E8EAED]"
             >
               <Search className="w-5 h-5" />
@@ -80,6 +81,7 @@ const Header = () => {
             <Button
               variant="ghost"
               size="icon"
+              aria-label="حسابي"
               className="hidden md:flex text-[#2C2420] hover:bg-[#E8EAED]"
             >
               <User className="w-5 h-5" />
@@ -89,6 +91,7 @@ const Header = () => {
             <Button
               variant="ghost"
               size="icon"
+              aria-label="سلة التسوق"
               className="relative text-[#2C2420] hover:bg-[#E8EAED]"
             >
               <ShoppingCart className="w-6 h-6" />
@@ -109,6 +112,7 @@ const Header = () => {
             <Button
               variant="ghost"
               size="icon"
+              aria-label={isMenuOpen ? "إغلاق القائمة" : "فتح القائمة"}
               className="lg:hidden text-[#2C2420]"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
