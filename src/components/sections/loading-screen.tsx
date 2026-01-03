@@ -13,9 +13,9 @@ const LoadingScreen = () => {
       <div
         className="mt-[112px] h-10 w-10 animate-spin rounded-full border-4 border-solid border-[#CBD5E0] border-t-[#4A5568]"
         role="status"
-        aria-label="Loading"
+        aria-label="جاري التحميل"
       >
-        <span className="sr-only">Loading...</span>
+        <span className="sr-only">جاري التحميل...</span>
       </div>
     </div>
   );
