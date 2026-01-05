@@ -2,8 +2,14 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ShoppingCart, Menu, X, Search, User, Phone, MapPin } from 'lucide-react';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -37,7 +43,7 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3">
             <Image
               src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/test-clones/13457591-dfc4-41dc-91fd-9d07a9f98199-aromaamorperfumes-com/assets/icons/logo_2082_1711618876-2.png"
               alt="Aroma Amor Logo"
@@ -49,7 +55,7 @@ const Header = () => {
               <h1 className="text-2xl font-bold text-[#2C2420]">Aroma Amor</h1>
               <p className="text-xs text-[#9B8F85] font-semibold">عطور فاخرة من الكويت 🇰🇼</p>
             </div>
-          </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8">
@@ -68,34 +74,58 @@ const Header = () => {
           {/* Actions */}
           <div className="flex items-center gap-3">
             {/* Search Button - Desktop */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="hidden md:flex text-[#2C2420] hover:bg-[#E8EAED]"
-            >
-              <Search className="w-5 h-5" />
-            </Button>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="hidden md:flex text-[#2C2420] hover:bg-[#E8EAED]"
+                  aria-label="بحث"
+                >
+                  <Search className="w-5 h-5" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>بحث</p>
+              </TooltipContent>
+            </Tooltip>
 
             {/* User Account - Desktop */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="hidden md:flex text-[#2C2420] hover:bg-[#E8EAED]"
-            >
-              <User className="w-5 h-5" />
-            </Button>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="hidden md:flex text-[#2C2420] hover:bg-[#E8EAED]"
+                  aria-label="حسابي"
+                >
+                  <User className="w-5 h-5" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>حسابي</p>
+              </TooltipContent>
+            </Tooltip>
 
             {/* Shopping Cart */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="relative text-[#2C2420] hover:bg-[#E8EAED]"
-            >
-              <ShoppingCart className="w-6 h-6" />
-              <span className="absolute -top-1 -right-1 bg-gradient-to-r from-red-500 to-orange-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold shadow-lg">
-                0
-              </span>
-            </Button>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="relative text-[#2C2420] hover:bg-[#E8EAED]"
+                  aria-label="سلة المشتريات"
+                >
+                  <ShoppingCart className="w-6 h-6" />
+                  <span className="absolute -top-1 -right-1 bg-gradient-to-r from-red-500 to-orange-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold shadow-lg">
+                    0
+                  </span>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>سلة المشتريات</p>
+              </TooltipContent>
+            </Tooltip>
 
             {/* Contact Phone - Desktop */}
             <Button
@@ -106,18 +136,26 @@ const Header = () => {
             </Button>
 
             {/* Mobile Menu Button */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="lg:hidden text-[#2C2420]"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </Button>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="lg:hidden text-[#2C2420]"
+                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  aria-label={isMenuOpen ? "إغلاق القائمة" : "فتح القائمة"}
+                >
+                  {isMenuOpen ? (
+                    <X className="w-6 h-6" />
+                  ) : (
+                    <Menu className="w-6 h-6" />
+                  )}
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{isMenuOpen ? "إغلاق القائمة" : "فتح القائمة"}</p>
+              </TooltipContent>
+            </Tooltip>
           </div>
         </div>
       </div>
