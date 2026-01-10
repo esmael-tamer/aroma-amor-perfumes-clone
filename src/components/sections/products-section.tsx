@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { ShoppingCart, Star, Tag } from 'lucide-react';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 interface Product {
   id: number;
@@ -575,13 +576,19 @@ const ProductsSection = () => {
                     )}
                   </div>
                   
-                  <Button
-                    size="icon"
-                    disabled={product.stock === 0}
-                    className="bg-gradient-to-br from-[#2C2420] to-[#4A5568] hover:from-[#4A5568] hover:to-[#2C2420] text-white rounded-full w-14 h-14 shadow-lg hover:shadow-xl transition-all hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    <ShoppingCart className="w-6 h-6" />
-                  </Button>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button
+                        size="icon"
+                        disabled={product.stock === 0}
+                        className="bg-gradient-to-br from-[#2C2420] to-[#4A5568] hover:from-[#4A5568] hover:to-[#2C2420] text-white rounded-full w-14 h-14 shadow-lg hover:shadow-xl transition-all hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed"
+                        aria-label="إضافة إلى السلة"
+                      >
+                        <ShoppingCart className="w-6 h-6" />
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>إضافة إلى السلة</TooltipContent>
+                  </Tooltip>
                 </div>
               </div>
             </div>
