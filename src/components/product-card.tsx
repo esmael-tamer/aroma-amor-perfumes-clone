@@ -3,6 +3,7 @@
 import { memo, useCallback } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { ShoppingCart, Star, Tag } from 'lucide-react';
 import type { Product } from '@/lib/constants';
 import { CURRENCY } from '@/lib/constants';
@@ -128,15 +129,27 @@ const ProductCard = memo(function ProductCard({ product }: ProductCardProps) {
             )}
           </div>
           
-          <Button
-            size="icon"
-            disabled={isOutOfStock}
-            onClick={handleAddToCart}
-            className="bg-gradient-to-br from-[#2C2420] to-[#4A5568] hover:from-[#9B8F85] hover:to-[#2C2420] text-white rounded-full w-14 h-14 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-125 hover:rotate-12 disabled:opacity-50 disabled:cursor-not-allowed"
-            aria-label={isOutOfStock ? 'نفذت الكمية' : `أضف ${product.nameAr} إلى السلة`}
-          >
-            <ShoppingCart className="w-6 h-6" aria-hidden="true" />
-          </Button>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <span
+                tabIndex={isOutOfStock ? 0 : -1}
+                className="inline-block rounded-full focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 outline-none"
+              >
+                <Button
+                  size="icon"
+                  disabled={isOutOfStock}
+                  onClick={handleAddToCart}
+                  className="bg-gradient-to-br from-[#2C2420] to-[#4A5568] hover:from-[#9B8F85] hover:to-[#2C2420] text-white rounded-full w-14 h-14 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-125 hover:rotate-12 disabled:opacity-50 disabled:cursor-not-allowed"
+                  aria-label={isOutOfStock ? 'نفذت الكمية' : `أضف ${product.nameAr} إلى السلة`}
+                >
+                  <ShoppingCart className="w-6 h-6" aria-hidden="true" />
+                </Button>
+              </span>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>{isOutOfStock ? 'نفذت الكمية' : 'أضف للسلة'}</p>
+            </TooltipContent>
+          </Tooltip>
         </div>
       </div>
     </article>
