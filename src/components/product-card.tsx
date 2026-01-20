@@ -66,7 +66,7 @@ const ProductCard = memo(function ProductCard({ product }: ProductCardProps) {
 
         {/* Quick Actions */}
         {!isOutOfStock && (
-          <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+          <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity flex items-center justify-center">
             <Button 
               size="lg"
               onClick={handleAddToCart}
