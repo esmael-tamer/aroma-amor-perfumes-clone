@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { ShoppingCart, Star, Tag } from 'lucide-react';
+import { useCart } from '@/contexts/cart-context';
 
 interface Product {
   id: number;
@@ -428,9 +429,10 @@ const categories = [
 
 const ProductsSection = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const { addToCart } = useCart();
 
-  const filteredProducts = selectedCategory === 'all' 
-    ? products 
+  const filteredProducts = selectedCategory === 'all'
+    ? products
     : products.filter(p => p.category.toLowerCase() === selectedCategory);
 
   return (
@@ -516,8 +518,9 @@ const ProductsSection = () => {
                 {/* Quick Actions */}
                 {product.stock > 0 && (
                   <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <Button 
+                    <Button
                       size="lg"
+                      onClick={() => addToCart(product)}
                       className="bg-white text-[#2C2420] hover:bg-[#E8EAED] rounded-full px-8 font-bold shadow-xl"
                     >
                       اشتري الآن 🛍️
@@ -577,6 +580,7 @@ const ProductsSection = () => {
                   
                   <Button
                     size="icon"
+                    onClick={() => addToCart(product)}
                     disabled={product.stock === 0}
                     className="bg-gradient-to-br from-[#2C2420] to-[#4A5568] hover:from-[#4A5568] hover:to-[#2C2420] text-white rounded-full w-14 h-14 shadow-lg hover:shadow-xl transition-all hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed"
                   >

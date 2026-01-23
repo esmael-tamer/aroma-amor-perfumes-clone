@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { ShoppingCart, Menu, X, Search, User, Phone, MapPin } from 'lucide-react';
+import { Menu, X, Search, User, Phone, MapPin } from 'lucide-react';
+import { CartDrawer } from '@/components/cart/cart-drawer';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -88,17 +89,7 @@ const Header = () => {
             </Button>
 
             {/* Shopping Cart */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="relative text-[#2C2420] hover:bg-[#E8EAED]"
-              aria-label="سلة التسوق"
-            >
-              <ShoppingCart className="w-6 h-6" />
-              <span className="absolute -top-1 -right-1 bg-gradient-to-r from-red-500 to-orange-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold shadow-lg">
-                0
-              </span>
-            </Button>
+            <CartDrawer />
 
             {/* Contact Phone - Desktop */}
             <Button
