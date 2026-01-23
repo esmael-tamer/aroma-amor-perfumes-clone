@@ -86,8 +86,10 @@ export default function CheckoutPage() {
       const data = await response.json();
 
       if (data.success && data.paymentUrl) {
-        // Redirect to payment gateway
-        window.location.href = data.paymentUrl;
+        // For demo purposes, redirect to success page directly
+        // In production, this would redirect to actual payment gateway
+        alert('🎉 تم إنشاء الطلب بنجاح!\n\nرقم الطلب: ' + data.transactionId + '\n\nفي الوضع الحقيقي، سيتم توجيهك لبوابة الدفع Bookeey.');
+        router.push(`/payment/success?orderId=${data.transactionId}`);
       } else {
         alert(data.error || 'حدث خطأ أثناء معالجة الطلب');
         setIsProcessing(false);
