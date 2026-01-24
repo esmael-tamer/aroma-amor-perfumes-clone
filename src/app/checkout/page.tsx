@@ -89,7 +89,11 @@ export default function CheckoutPage() {
         // For demo purposes, redirect to success page directly
         // In production, this would redirect to actual payment gateway
         alert('🎉 تم إنشاء الطلب بنجاح!\n\nرقم الطلب: ' + data.transactionId + '\n\nفي الوضع الحقيقي، سيتم توجيهك لبوابة الدفع Bookeey.');
-        router.push(`/payment/success?orderId=${data.transactionId}`);
+
+        // Redirect after alert is closed
+        setTimeout(() => {
+          router.push(`/payment/success?orderId=${data.transactionId}`);
+        }, 100);
       } else {
         alert(data.error || 'حدث خطأ أثناء معالجة الطلب');
         setIsProcessing(false);
