@@ -23,6 +23,18 @@ const CartDrawer = memo(function CartDrawer() {
     };
   }, [isCartOpen]);
 
+  // إغلاق السلة عند ضغط زر Escape
+  useEffect(() => {
+    if (!isCartOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsCartOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isCartOpen, setIsCartOpen]);
+
   if (!isCartOpen) return null;
 
   const itemSubtotal = (price: number, quantity: number) => (price * quantity).toFixed(3);
@@ -133,7 +145,7 @@ const CartDrawer = memo(function CartDrawer() {
                     <button
                       onClick={() => removeFromCart(item.product.id)}
                       className="text-red-400 hover:text-red-600 hover:bg-red-50 p-1.5 rounded-lg transition-all hover:scale-110"
-                      aria-label="حذف المنتج"
+                      aria-label={`حذف ${item.product.nameAr} من السلة`}
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
@@ -142,7 +154,7 @@ const CartDrawer = memo(function CartDrawer() {
                       <button
                         onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
                         className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-red-50 hover:text-red-500 transition-colors"
-                        aria-label="تقليل الكمية"
+                        aria-label={`تقليل كمية ${item.product.nameAr}`}
                       >
                         <Minus className="w-3 h-3" />
                       </button>
@@ -151,7 +163,7 @@ const CartDrawer = memo(function CartDrawer() {
                         onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
                         disabled={item.quantity >= item.product.stock}
                         className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-emerald-50 hover:text-emerald-500 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
-                        aria-label="زيادة الكمية"
+                        aria-label={`زيادة كمية ${item.product.nameAr}`}
                       >
                         <Plus className="w-3 h-3" />
                       </button>
