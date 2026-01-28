@@ -18,10 +18,20 @@ const CartDrawer = memo(function CartDrawer() {
     } else {
       document.body.style.overflow = 'unset';
     }
+
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsCartOpen(false);
+    };
+
+    if (isCartOpen) {
+      window.addEventListener('keydown', handleEscape);
+    }
+
     return () => {
       document.body.style.overflow = 'unset';
+      window.removeEventListener('keydown', handleEscape);
     };
-  }, [isCartOpen]);
+  }, [isCartOpen, setIsCartOpen]);
 
   if (!isCartOpen) return null;
 
@@ -37,7 +47,12 @@ const CartDrawer = memo(function CartDrawer() {
       />
       
       {/* Drawer */}
-      <div className="fixed top-0 left-0 h-full w-full max-w-md bg-white z-50 shadow-2xl flex flex-col animate-in slide-in-from-left duration-300">
+      <div
+        className="fixed top-0 left-0 h-full w-full max-w-md bg-white z-50 shadow-2xl flex flex-col animate-in slide-in-from-left duration-300"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="cart-title"
+      >
         {/* Header */}
         <div className="flex items-center justify-between p-5 border-b-2 border-[#E8EAED] bg-gradient-to-r from-[#2C2420] via-[#3d3530] to-[#2C2420]">
           <div className="flex items-center gap-3 text-white">
@@ -46,7 +61,7 @@ const CartDrawer = memo(function CartDrawer() {
               <Sparkles className="w-4 h-4 absolute -top-1 -right-1 text-amber-400 animate-pulse" />
             </div>
             <div>
-              <h2 className="text-xl font-bold">سلة التسوق</h2>
+              <h2 id="cart-title" className="text-xl font-bold">سلة التسوق</h2>
               <p className="text-xs text-white/70">{totalItems} منتج</p>
             </div>
           </div>
@@ -133,7 +148,7 @@ const CartDrawer = memo(function CartDrawer() {
                     <button
                       onClick={() => removeFromCart(item.product.id)}
                       className="text-red-400 hover:text-red-600 hover:bg-red-50 p-1.5 rounded-lg transition-all hover:scale-110"
-                      aria-label="حذف المنتج"
+                      aria-label={`حذف ${item.product.nameAr} من السلة`}
                     >
                       <Trash2 className="w-4 h-4" />
                     </button>
@@ -142,7 +157,7 @@ const CartDrawer = memo(function CartDrawer() {
                       <button
                         onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
                         className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-red-50 hover:text-red-500 transition-colors"
-                        aria-label="تقليل الكمية"
+                        aria-label={`تقليل كمية ${item.product.nameAr}`}
                       >
                         <Minus className="w-3 h-3" />
                       </button>
@@ -151,7 +166,7 @@ const CartDrawer = memo(function CartDrawer() {
                         onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
                         disabled={item.quantity >= item.product.stock}
                         className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-emerald-50 hover:text-emerald-500 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
-                        aria-label="زيادة الكمية"
+                        aria-label={`زيادة كمية ${item.product.nameAr}`}
                       >
                         <Plus className="w-3 h-3" />
                       </button>
