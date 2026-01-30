@@ -4,6 +4,7 @@ import { memo, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { X, Plus, Minus, ShoppingBag, Trash2, Sparkles, Gift, Truck } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 import { CURRENCY } from '@/lib/constants';
@@ -22,6 +23,18 @@ const CartDrawer = memo(function CartDrawer() {
       document.body.style.overflow = 'unset';
     };
   }, [isCartOpen]);
+
+  // إغلاق السلة عند ضغط زر Escape
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsCartOpen(false);
+    };
+
+    if (isCartOpen) {
+      window.addEventListener('keydown', handleEscape);
+    }
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, [isCartOpen, setIsCartOpen]);
 
   if (!isCartOpen) return null;
 
@@ -130,19 +143,26 @@ const CartDrawer = memo(function CartDrawer() {
 
                   {/* Quantity Controls */}
                   <div className="flex flex-col items-end justify-between">
-                    <button
-                      onClick={() => removeFromCart(item.product.id)}
-                      className="text-red-400 hover:text-red-600 hover:bg-red-50 p-1.5 rounded-lg transition-all hover:scale-110"
-                      aria-label="حذف المنتج"
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </button>
-                    
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <button
+                          onClick={() => removeFromCart(item.product.id)}
+                          className="text-red-400 hover:text-red-600 hover:bg-red-50 p-1.5 rounded-lg transition-all hover:scale-110"
+                          aria-label={`حذف ${item.product.nameAr} من السلة`}
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </TooltipTrigger>
+                      <TooltipContent className="z-[60]">
+                        <p>حذف من السلة</p>
+                      </TooltipContent>
+                    </Tooltip>
+
                     <div className="flex items-center gap-1 bg-white rounded-full border-2 border-[#E8EAED] p-0.5 shadow-sm">
                       <button
                         onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
                         className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-red-50 hover:text-red-500 transition-colors"
-                        aria-label="تقليل الكمية"
+                        aria-label={`تقليل كمية ${item.product.nameAr}`}
                       >
                         <Minus className="w-3 h-3" />
                       </button>
@@ -151,7 +171,7 @@ const CartDrawer = memo(function CartDrawer() {
                         onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
                         disabled={item.quantity >= item.product.stock}
                         className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-emerald-50 hover:text-emerald-500 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
-                        aria-label="زيادة الكمية"
+                        aria-label={`زيادة كمية ${item.product.nameAr}`}
                       >
                         <Plus className="w-3 h-3" />
                       </button>
