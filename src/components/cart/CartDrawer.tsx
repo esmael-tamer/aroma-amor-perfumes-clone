@@ -73,7 +73,7 @@ const CartDrawer = memo(function CartDrawer() {
                 <X className="w-6 h-6" />
               </button>
             </TooltipTrigger>
-            <TooltipContent className="z-[60]" side="bottom">
+            <TooltipContent side="bottom">
               <p>إغلاق السلة</p>
             </TooltipContent>
           </Tooltip>
@@ -160,7 +160,7 @@ const CartDrawer = memo(function CartDrawer() {
                           <Trash2 className="w-4 h-4" />
                         </button>
                       </TooltipTrigger>
-                      <TooltipContent className="z-[60]">
+                      <TooltipContent>
                         <p>حذف من السلة</p>
                       </TooltipContent>
                     </Tooltip>
@@ -176,7 +176,7 @@ const CartDrawer = memo(function CartDrawer() {
                             <Minus className="w-3 h-3" />
                           </button>
                         </TooltipTrigger>
-                        <TooltipContent className="z-[60]">
+                        <TooltipContent>
                           <p>تقليل الكمية</p>
                         </TooltipContent>
                       </Tooltip>
@@ -194,7 +194,7 @@ const CartDrawer = memo(function CartDrawer() {
                             <Plus className="w-3 h-3" />
                           </button>
                         </TooltipTrigger>
-                        <TooltipContent className="z-[60]">
+                        <TooltipContent>
                           <p>زيادة الكمية</p>
                         </TooltipContent>
                       </Tooltip>
