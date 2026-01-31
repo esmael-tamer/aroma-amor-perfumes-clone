@@ -5,3 +5,7 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+
+## 2024-05-26 - Tooltip Z-Index in Drawers
+**Learning:** Tooltips inside `z-50` containers (like CartDrawer) may be occluded.
+**Action:** Add `className="z-[60]"` to `TooltipContent` when used inside high z-index overlays.
