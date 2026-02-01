@@ -4,7 +4,6 @@ import { memo, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { X, Plus, Minus, ShoppingBag, Trash2, Sparkles, Gift, Truck } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 import { CURRENCY } from '@/lib/constants';
@@ -63,20 +62,14 @@ const CartDrawer = memo(function CartDrawer() {
               <p className="text-xs text-white/70">{totalItems} منتج</p>
             </div>
           </div>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <button
-                onClick={() => setIsCartOpen(false)}
-                className="text-white hover:bg-white/20 p-2.5 rounded-xl transition-all hover:rotate-90 duration-300"
-                aria-label="إغلاق السلة"
-              >
-                <X className="w-6 h-6" />
-              </button>
-            </TooltipTrigger>
-            <TooltipContent side="bottom">
-              <p>إغلاق</p>
-            </TooltipContent>
-          </Tooltip>
+          <button
+            onClick={() => setIsCartOpen(false)}
+            className="text-white hover:bg-white/20 p-2.5 rounded-xl transition-all hover:rotate-90 duration-300"
+            aria-label="إغلاق السلة"
+            title="إغلاق"
+          >
+            <X className="w-6 h-6" />
+          </button>
         </div>
 
         {/* Free Shipping Banner */}
@@ -150,20 +143,14 @@ const CartDrawer = memo(function CartDrawer() {
 
                   {/* Quantity Controls */}
                   <div className="flex flex-col items-end justify-between">
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <button
-                          onClick={() => removeFromCart(item.product.id)}
-                          className="text-red-400 hover:text-red-600 hover:bg-red-50 p-1.5 rounded-lg transition-all hover:scale-110"
-                          aria-label={`حذف ${item.product.nameAr} من السلة`}
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
-                      </TooltipTrigger>
-                      <TooltipContent side="left">
-                        <p>حذف من السلة</p>
-                      </TooltipContent>
-                    </Tooltip>
+                    <button
+                      onClick={() => removeFromCart(item.product.id)}
+                      className="text-red-400 hover:text-red-600 hover:bg-red-50 p-1.5 rounded-lg transition-all hover:scale-110"
+                      aria-label={`حذف ${item.product.nameAr} من السلة`}
+                      title="حذف من السلة"
+                    >
+                      <Trash2 className="w-4 h-4" />
+                    </button>
 
                     <div className="flex items-center gap-1 bg-white rounded-full border-2 border-[#E8EAED] p-0.5 shadow-sm">
                       <button
