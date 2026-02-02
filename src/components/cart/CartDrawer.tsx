@@ -64,10 +64,13 @@ const CartDrawer = memo(function CartDrawer() {
           </div>
           <button
             onClick={() => setIsCartOpen(false)}
-            className="text-white hover:bg-white/20 p-2.5 rounded-xl transition-all hover:rotate-90 duration-300"
+            className="group relative text-white hover:bg-white/20 p-2.5 rounded-xl transition-all hover:rotate-90 duration-300 focus-visible:ring-2 focus-visible:ring-white/50 outline-none"
             aria-label="إغلاق السلة"
           >
             <X className="w-6 h-6" />
+            <span className="absolute top-full right-0 mt-2 w-max bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-200 pointer-events-none z-50" aria-hidden="true">
+              إغلاق
+            </span>
           </button>
         </div>
 
@@ -144,11 +147,13 @@ const CartDrawer = memo(function CartDrawer() {
                   <div className="flex flex-col items-end justify-between">
                     <button
                       onClick={() => removeFromCart(item.product.id)}
-                      className="text-red-400 hover:text-red-600 hover:bg-red-50 p-1.5 rounded-lg transition-all hover:scale-110"
+                      className="group relative text-red-400 hover:text-red-600 hover:bg-red-50 p-1.5 rounded-lg transition-all hover:scale-110 focus-visible:ring-2 focus-visible:ring-red-200 outline-none"
                       aria-label={`حذف ${item.product.nameAr} من السلة`}
-                      title="حذف من السلة"
                     >
                       <Trash2 className="w-4 h-4" />
+                      <span className="absolute top-1/2 right-full mr-2 -translate-y-1/2 w-max bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity duration-200 pointer-events-none z-50" aria-hidden="true">
+                        حذف من السلة
+                      </span>
                     </button>
 
                     <div className="flex items-center gap-1 bg-white rounded-full border-2 border-[#E8EAED] p-0.5 shadow-sm">
