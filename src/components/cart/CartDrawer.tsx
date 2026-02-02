@@ -66,6 +66,7 @@ const CartDrawer = memo(function CartDrawer() {
             onClick={() => setIsCartOpen(false)}
             className="text-white hover:bg-white/20 p-2.5 rounded-xl transition-all hover:rotate-90 duration-300"
             aria-label="إغلاق السلة"
+            title="إغلاق السلة"
           >
             <X className="w-6 h-6" />
           </button>
@@ -156,15 +157,19 @@ const CartDrawer = memo(function CartDrawer() {
                         onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
                         className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-red-50 hover:text-red-500 transition-colors"
                         aria-label={`تقليل كمية ${item.product.nameAr}`}
+                        title="تقليل الكمية"
                       >
                         <Minus className="w-3 h-3" />
                       </button>
+
                       <span className="w-6 text-center font-bold text-sm">{item.quantity}</span>
+
                       <button
                         onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
                         disabled={item.quantity >= item.product.stock}
                         className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-emerald-50 hover:text-emerald-500 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
                         aria-label={`زيادة كمية ${item.product.nameAr}`}
+                        title="زيادة الكمية"
                       >
                         <Plus className="w-3 h-3" />
                       </button>

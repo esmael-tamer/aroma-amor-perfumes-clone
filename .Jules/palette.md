@@ -5,3 +5,7 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+
+## 2024-05-26 - Tooltip Z-Index in Drawers
+**Learning:** Tooltips inside `z-50` containers (like CartDrawer) work correctly without extra z-index if they use Portals (default behavior), as they append to body.
+**Action:** Rely on default `TooltipContent` behavior; avoid manual z-index unless the container creates a new stacking context that traps the portal (rare).
