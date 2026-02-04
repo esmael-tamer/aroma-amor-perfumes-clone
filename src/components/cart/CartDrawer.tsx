@@ -161,15 +161,16 @@ const CartDrawer = memo(function CartDrawer() {
                       </button>
                       <span className="w-6 text-center font-bold text-sm">{item.quantity}</span>
                       <button
+                        type="button"
                         onClick={() => {
                           if (item.quantity < item.product.stock) {
                             updateQuantity(item.product.id, item.quantity + 1);
                           }
                         }}
-                        aria-disabled={item.quantity >= item.product.stock}
+                        aria-disabled={item.quantity >= item.product.stock ? "true" : "false"}
                         className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-emerald-50 hover:text-emerald-500 transition-colors aria-disabled:opacity-40 aria-disabled:cursor-not-allowed"
                         aria-label={`زيادة كمية ${item.product.nameAr}`}
-                        title={item.quantity >= item.product.stock ? 'وصلت للحد الأقصى' : undefined}
+                        title={item.quantity >= item.product.stock ? 'وصلت للحد الأقصى' : ""}
                       >
                         <Plus className="w-3 h-3" />
                       </button>
