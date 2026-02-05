@@ -161,22 +161,22 @@ const CartDrawer = memo(function CartDrawer() {
                         <Minus className="w-3 h-3" />
                       </button>
                       <span className="w-6 text-center font-bold text-sm">{item.quantity}</span>
-                      <button
-                        onClick={() => {
-                          if (item.quantity >= item.product.stock) return;
-                          updateQuantity(item.product.id, item.quantity + 1);
-                        }}
-                        aria-disabled={item.quantity >= item.product.stock ? "true" : "false"}
-                        className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-emerald-50 hover:text-emerald-500 transition-colors aria-disabled:opacity-40 aria-disabled:cursor-not-allowed aria-disabled:hover:bg-transparent aria-disabled:hover:text-inherit"
-                        aria-label={`زيادة كمية ${item.product.nameAr}`}
+                      <div
                         title={
                           item.quantity >= item.product.stock
                             ? 'عفواً، لقد وصلت للحد الأقصى المتاح'
                             : 'زيادة الكمية'
                         }
                       >
-                        <Plus className="w-3 h-3" />
-                      </button>
+                        <button
+                          onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
+                          disabled={item.quantity >= item.product.stock}
+                          className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-emerald-50 hover:text-emerald-500 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                          aria-label={`زيادة كمية ${item.product.nameAr}`}
+                        >
+                          <Plus className="w-3 h-3" />
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
