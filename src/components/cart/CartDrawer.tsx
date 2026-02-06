@@ -156,18 +156,27 @@ const CartDrawer = memo(function CartDrawer() {
                         onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
                         className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-red-50 hover:text-red-500 transition-colors"
                         aria-label={`تقليل كمية ${item.product.nameAr}`}
+                        title="تقليل الكمية"
                       >
                         <Minus className="w-3 h-3" />
                       </button>
                       <span className="w-6 text-center font-bold text-sm">{item.quantity}</span>
-                      <button
-                        onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
-                        disabled={item.quantity >= item.product.stock}
-                        className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-emerald-50 hover:text-emerald-500 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
-                        aria-label={`زيادة كمية ${item.product.nameAr}`}
+                      <div
+                        title={
+                          item.quantity >= item.product.stock
+                            ? 'عفواً، لقد وصلت للحد الأقصى المتاح'
+                            : 'زيادة الكمية'
+                        }
                       >
-                        <Plus className="w-3 h-3" />
-                      </button>
+                        <button
+                          onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
+                          disabled={item.quantity >= item.product.stock}
+                          className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-emerald-50 hover:text-emerald-500 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                          aria-label={`زيادة كمية ${item.product.nameAr}`}
+                        >
+                          <Plus className="w-3 h-3" />
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>

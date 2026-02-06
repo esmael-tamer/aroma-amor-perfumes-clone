@@ -5,3 +5,7 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+
+## 2024-05-27 - Accessible Disabled States
+**Learning:** Native `disabled` attributes suppress pointer events (like hover), preventing tooltips from explaining *why* an action is disabled.
+**Action:** Use `aria-disabled="true"` with conditional styling (e.g., `opacity-40`) and guard clauses in event handlers to keep elements interactive enough to show tooltips.
