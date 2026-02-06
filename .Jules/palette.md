@@ -8,4 +8,4 @@
 
 ## 2024-05-26 - Tooltips on Disabled Buttons
 **Learning:** Native `disabled` attribute suppresses pointer events, preventing `title` tooltips from appearing.
-**Action:** Use `aria-disabled="true"` combined with conditional `onClick` logic and styling (e.g., `opacity-40`) to maintain interactivity for tooltips while preventing actions.
+**Action:** To show tooltips on disabled buttons without reimplementing disabled behavior, wrap the button in a relative container and place an absolute overlay with the title that renders only when disabled.
