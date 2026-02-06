@@ -164,28 +164,17 @@ const CartDrawer = memo(function CartDrawer() {
                         <Minus className="w-3 h-3" />
                       </button>
                       <span className="w-6 text-center font-bold text-sm">{item.quantity}</span>
-                      <button
-                        type="button"
-                        onClick={() => {
-                          if (item.quantity < item.product.stock) {
-                            updateQuantity(item.product.id, item.quantity + 1);
-                          }
-                        }}
-                        aria-disabled={item.quantity >= item.product.stock}
-                        className={`w-7 h-7 flex items-center justify-center rounded-full transition-colors ${
-                          item.quantity >= item.product.stock
-                            ? 'opacity-40 cursor-not-allowed'
-                            : 'hover:bg-emerald-50 hover:text-emerald-500'
-                        }`}
-                        aria-label={`زيادة كمية ${item.product.nameAr}`}
-                        title={
-                          item.quantity >= item.product.stock
-                            ? 'الحد الأقصى للكمية المتاحة'
-                            : 'زيادة الكمية'
-                        }
-                      >
-                        <Plus className="w-3 h-3" />
-                      </button>
+                      <div className="w-7 h-7 flex items-center justify-center" title={item.quantity >= item.product.stock ? 'الحد الأقصى للكمية المتاحة' : 'زيادة الكمية'}>
+                        <button
+                          type="button"
+                          onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
+                          disabled={item.quantity >= item.product.stock}
+                          className="w-full h-full flex items-center justify-center rounded-full hover:bg-emerald-50 hover:text-emerald-500 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                          aria-label={`زيادة كمية ${item.product.nameAr}`}
+                        >
+                          <Plus className="w-3 h-3" />
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
