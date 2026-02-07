@@ -1,6 +1,6 @@
 'use client';
 
-import { memo, useEffect } from 'react';
+import { memo, useEffect, useId } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -10,6 +10,7 @@ import { CURRENCY } from '@/lib/constants';
 
 const CartDrawer = memo(function CartDrawer() {
   const { items, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity, totalPrice, totalItems, clearCart } = useCart();
+  const titleId = useId();
 
   // منع التمرير عند فتح السلة
   useEffect(() => {
@@ -53,7 +54,7 @@ const CartDrawer = memo(function CartDrawer() {
         className="fixed top-0 left-0 h-full w-full max-w-md bg-white z-50 shadow-2xl flex flex-col animate-in slide-in-from-left duration-300"
         role="dialog"
         aria-modal="true"
-        aria-labelledby="cart-title"
+        aria-labelledby={titleId}
       >
         {/* Header */}
         <div className="flex items-center justify-between p-5 border-b-2 border-[#E8EAED] bg-gradient-to-r from-[#2C2420] via-[#3d3530] to-[#2C2420]">
@@ -63,7 +64,7 @@ const CartDrawer = memo(function CartDrawer() {
               <Sparkles className="w-4 h-4 absolute -top-1 -right-1 text-amber-400 animate-pulse" />
             </div>
             <div>
-              <h2 id="cart-title" className="text-xl font-bold">سلة التسوق</h2>
+              <h2 id={titleId} className="text-xl font-bold">سلة التسوق</h2>
               <p className="text-xs text-white/70">{totalItems} منتج</p>
             </div>
           </div>
