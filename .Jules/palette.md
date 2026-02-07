@@ -5,3 +5,7 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+
+## 2024-05-26 - Tooltips on Disabled Buttons
+**Learning:** Native `disabled` attribute suppresses pointer events, preventing `title` tooltips from appearing.
+**Action:** To show tooltips on disabled buttons without reimplementing disabled behavior, wrap the button in a relative container and place an absolute overlay with the title that renders only when disabled.
