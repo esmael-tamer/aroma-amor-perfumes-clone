@@ -168,7 +168,7 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
   // صفحة الطلب المكتمل
   if (orderComplete) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-[#E8EAED] to-white flex items-center justify-center p-4">
+      <main id="main-content" tabIndex={-1} className="min-h-screen bg-gradient-to-b from-[#E8EAED] to-white flex items-center justify-center p-4 outline-none">
         <div className="bg-white rounded-3xl p-12 shadow-2xl text-center max-w-lg w-full space-y-6">
           <div className="w-24 h-24 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-xl">
             <Check className="w-12 h-12 text-white" />
@@ -193,14 +193,14 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
             </Button>
           </Link>
         </div>
-      </div>
+      </main>
     );
   }
 
   // سلة فارغة
   if (items.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-[#E8EAED] to-white flex items-center justify-center p-4">
+      <main id="main-content" tabIndex={-1} className="min-h-screen bg-gradient-to-b from-[#E8EAED] to-white flex items-center justify-center p-4 outline-none">
         <div className="bg-white rounded-3xl p-12 shadow-2xl text-center max-w-lg w-full space-y-6">
           <div className="text-8xl">🛒</div>
           <h1 className="text-3xl font-bold text-[#2C2420]">السلة فارغة</h1>
@@ -211,7 +211,7 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
             </Button>
           </Link>
         </div>
-      </div>
+      </main>
     );
   }
 
@@ -239,6 +239,7 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
         </div>
       </header>
 
+      <main id="main-content" tabIndex={-1} className="outline-none">
       {/* Progress Steps */}
       <div className="container mx-auto px-4 py-8">
         <div className="flex items-center justify-center gap-4 mb-12">
@@ -637,6 +638,7 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
           </div>
         </div>
       </div>
+      </main>
     </div>
   );
 });
