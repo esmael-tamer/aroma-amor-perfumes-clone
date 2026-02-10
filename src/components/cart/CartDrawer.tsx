@@ -49,7 +49,9 @@ const CartDrawer = memo(function CartDrawer() {
       />
       
       {/* Drawer */}
-      <div className="fixed top-0 left-0 h-full w-full max-w-md bg-white z-50 shadow-2xl flex flex-col animate-in slide-in-from-left duration-300">
+      <div
+        className="fixed top-0 left-0 h-full w-full max-w-md bg-white z-50 shadow-2xl flex flex-col animate-in slide-in-from-left duration-300"
+      >
         {/* Header */}
         <div className="flex items-center justify-between p-5 border-b-2 border-[#E8EAED] bg-gradient-to-r from-[#2C2420] via-[#3d3530] to-[#2C2420]">
           <div className="flex items-center gap-3 text-white">
@@ -63,9 +65,11 @@ const CartDrawer = memo(function CartDrawer() {
             </div>
           </div>
           <button
+            type="button"
             onClick={() => setIsCartOpen(false)}
             className="text-white hover:bg-white/20 p-2.5 rounded-xl transition-all hover:rotate-90 duration-300"
             aria-label="إغلاق السلة"
+            title="إغلاق السلة"
           >
             <X className="w-6 h-6" />
           </button>
@@ -90,6 +94,7 @@ const CartDrawer = memo(function CartDrawer() {
                 <p className="text-[#4A5568]">اكتشف مجموعتنا الفاخرة من العطور!</p>
               </div>
               <Button
+                type="button"
                 onClick={() => setIsCartOpen(false)}
                 className="bg-gradient-to-r from-[#2C2420] to-[#4A5568] hover:from-[#4A5568] hover:to-[#2C2420] text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105"
               >
@@ -143,6 +148,7 @@ const CartDrawer = memo(function CartDrawer() {
                   {/* Quantity Controls */}
                   <div className="flex flex-col items-end justify-between">
                     <button
+                      type="button"
                       onClick={() => removeFromCart(item.product.id)}
                       className="text-red-400 hover:text-red-600 hover:bg-red-50 p-1.5 rounded-lg transition-all hover:scale-110"
                       aria-label={`حذف ${item.product.nameAr} من السلة`}
@@ -153,18 +159,22 @@ const CartDrawer = memo(function CartDrawer() {
 
                     <div className="flex items-center gap-1 bg-white rounded-full border-2 border-[#E8EAED] p-0.5 shadow-sm">
                       <button
+                        type="button"
                         onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
                         className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-red-50 hover:text-red-500 transition-colors"
                         aria-label={`تقليل كمية ${item.product.nameAr}`}
+                        title="تقليل الكمية"
                       >
                         <Minus className="w-3 h-3" />
                       </button>
                       <span className="w-6 text-center font-bold text-sm">{item.quantity}</span>
                       <button
+                        type="button"
                         onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
                         disabled={item.quantity >= item.product.stock}
                         className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-emerald-50 hover:text-emerald-500 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
                         aria-label={`زيادة كمية ${item.product.nameAr}`}
+                        title="زيادة الكمية"
                       >
                         <Plus className="w-3 h-3" />
                       </button>
@@ -218,12 +228,14 @@ const CartDrawer = memo(function CartDrawer() {
             {/* Actions Row */}
             <div className="flex gap-2">
               <button
+                type="button"
                 onClick={() => setIsCartOpen(false)}
                 className="flex-1 text-[#2C2420] hover:bg-[#E8EAED] py-2.5 rounded-xl transition-colors font-medium text-sm border-2 border-[#E8EAED]"
               >
                 متابعة التسوق
               </button>
               <button
+                type="button"
                 onClick={clearCart}
                 className="text-red-500 hover:bg-red-50 px-4 py-2.5 rounded-xl transition-colors text-sm font-medium border-2 border-red-100"
               >
