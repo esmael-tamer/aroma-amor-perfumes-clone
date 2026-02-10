@@ -20,6 +20,7 @@ const Footer = memo(function Footer() {
 
   return (
     <footer 
+      id="contact"
       className="bg-gradient-to-b from-[#2C2420] via-[#1a1614] to-black text-white relative overflow-hidden"
       role="contentinfo"
       aria-label="تذييل الموقع"
