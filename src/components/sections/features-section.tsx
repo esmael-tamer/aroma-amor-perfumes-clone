@@ -43,7 +43,6 @@ const features: Feature[] = [
 const FeaturesSection = memo(function FeaturesSection() {
   return (
     <section 
-      id="about"
       className="py-20 bg-gradient-to-b from-white to-[#E8EAED]"
       aria-labelledby="features-title"
     >
