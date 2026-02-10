@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     template: `%s | ${COMPANY_INFO.name}`,
   },
   description: SEO_CONFIG.description,
-  keywords: SEO_CONFIG.keywords,
+  keywords: SEO_CONFIG.keywords as unknown as string[],
   authors: [{ name: COMPANY_INFO.name }],
   creator: COMPANY_INFO.name,
   publisher: COMPANY_INFO.name,
@@ -67,6 +67,12 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl">
       <body className="antialiased">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:right-4 focus:z-[100] focus:px-6 focus:py-3 focus:bg-white focus:text-[#2C2420] focus:font-bold focus:rounded-xl focus:shadow-2xl focus:outline-none focus:ring-4 focus:ring-[#2C2420]/20 focus:border-2 focus:border-[#2C2420]"
+        >
+          تخطى إلى المحتوى الرئيسي
+        </a>
         <SiteSettingsProvider>
           <OrdersProvider>
             <CartProvider>
