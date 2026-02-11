@@ -284,6 +284,7 @@ function SidebarRail({ className, ...props }: React.ComponentProps<"button">) {
 
   return (
     <button
+      type="button"
       data-sidebar="rail"
       data-slot="sidebar-rail"
       aria-label="Toggle Sidebar"
@@ -423,6 +424,7 @@ function SidebarGroupAction({
 
   return (
     <Comp
+      type={asChild ? undefined : "button"}
       data-slot="sidebar-group-action"
       data-sidebar="group-action"
       className={cn(
@@ -513,6 +515,7 @@ function SidebarMenuButton({
 
   const button = (
     <Comp
+      type={asChild ? undefined : "button"}
       data-slot="sidebar-menu-button"
       data-sidebar="menu-button"
       data-size={size}
@@ -558,6 +561,7 @@ function SidebarMenuAction({
 
   return (
     <Comp
+      type={asChild ? undefined : "button"}
       data-slot="sidebar-menu-action"
       data-sidebar="menu-action"
       className={cn(
