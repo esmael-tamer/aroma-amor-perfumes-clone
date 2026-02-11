@@ -1,4 +1,5 @@
 import { Suspense } from 'react';
+import Link from 'next/link';
 import Header from '@/components/sections/header';
 import HeroSection from '@/components/sections/hero-section';
 import ProductsSection from '@/components/sections/products-section';
@@ -33,9 +34,16 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       
+      <Link
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:right-4 focus:bg-white focus:text-[#2C2420] focus:px-6 focus:py-3 focus:rounded-xl focus:shadow-2xl focus:font-bold focus:border-2 focus:border-[#2C2420]"
+      >
+        تجاوز إلى المحتوى الرئيسي
+      </Link>
+
       <Header />
       
-      <main className="min-h-screen" role="main">
+      <main id="main-content" tabIndex={-1} className="min-h-screen outline-none">
         <Suspense fallback={<LoadingScreen />}>
           <HeroSection />
         </Suspense>
