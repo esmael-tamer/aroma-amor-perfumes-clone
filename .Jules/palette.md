@@ -9,3 +9,7 @@
 ## 2024-05-24 - Skip to Content Pattern
 **Learning:** The "Skip to Content" link requires a target with `id="main-content"` and `tabIndex={-1}` on every page layout to ensure focus moves correctly.
 **Action:** When creating new page layouts, always add `id="main-content"` and `tabIndex={-1}` to the main container.
+
+## 2024-05-24 - TypeScript Strictness in CI
+**Learning:** Cloudflare Workers CI runs strict TypeScript checks that may not run locally with `next build`. Always fix type errors in components like `ErrorReporter` (use `useRef<T | null>(null)`) and verify property names in contexts (e.g., `stats.pendingOrders` vs `stats.pending`).
+**Action:** Run `pnpm tsc --noEmit` locally before pushing to catch these issues.
