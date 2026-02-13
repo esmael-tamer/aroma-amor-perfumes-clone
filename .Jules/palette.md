@@ -5,3 +5,7 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+
+## 2024-05-24 - Skip to Content Pattern
+**Learning:** The "Skip to Content" link requires a target with `id="main-content"` and `tabIndex={-1}` on every page layout to ensure focus moves correctly.
+**Action:** When creating new page layouts, always add `id="main-content"` and `tabIndex={-1}` to the main container.
