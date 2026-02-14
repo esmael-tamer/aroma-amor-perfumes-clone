@@ -3,21 +3,19 @@
 import * as React from "react"
 import Link from "next/link"
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button"
 
 export function SkipToContent() {
   return (
-    <Button
-      asChild
-      variant="outline"
+    <Link
+      href="#main-content"
       className={cn(
-        "fixed start-4 top-4 z-[100] -translate-y-[200%] transition-transform focus:translate-y-0 shadow-md",
+        buttonVariants({ variant: "outline" }),
+        "fixed right-4 top-4 z-[100] -translate-y-[200%] transition-transform focus:translate-y-0 shadow-md",
         "bg-background text-foreground"
       )}
     >
-      <Link href="#main-content">
-        تخطى إلى المحتوى
-      </Link>
-    </Button>
+      تخطى إلى المحتوى
+    </Link>
   )
 }
