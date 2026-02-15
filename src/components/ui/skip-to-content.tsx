@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from "react"
+import Link from "next/link"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 
@@ -14,9 +15,9 @@ export function SkipToContent() {
         "bg-background text-foreground shadow-md"
       )}
     >
-      <a href="#main-content">
+      <Link href="#main-content">
         تخطى إلى المحتوى الرئيسي
-      </a>
+      </Link>
     </Button>
   )
 }
