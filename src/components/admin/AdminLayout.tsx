@@ -139,7 +139,11 @@ export default function AdminLayout({ children, activeTab }: AdminLayoutProps) {
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 p-6">
+        <main
+          id="main-content"
+          className="flex-1 p-6 outline-none"
+          tabIndex={-1}
+        >
           {children}
         </main>
       </div>
