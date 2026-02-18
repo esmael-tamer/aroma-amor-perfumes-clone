@@ -5,3 +5,7 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+
+## 2025-11-23 - Accessible Skip Link Pattern
+**Learning:** Skip links must be the first interactive element in the DOM and require specific focus management (`tabIndex={-1}`, `outline-none`) on the target container to work smoothly across browsers.
+**Action:** Use the established pattern: absolute positioning with `sr-only` / `focus:not-sr-only` for the link, and `id="main-content"` with `tabIndex={-1}` for the main container.

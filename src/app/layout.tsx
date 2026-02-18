@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Link from "next/link";
 import "./globals.css";
 import VisualEditsMessenger from "../visual-edits/VisualEditsMessenger";
 import ErrorReporter from "@/components/ErrorReporter";
@@ -67,6 +68,12 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl">
       <body className="antialiased">
+        <Link
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:right-4 focus:z-[100] focus:px-6 focus:py-3 focus:bg-white focus:text-[#2C2420] focus:font-bold focus:rounded-xl focus:shadow-2xl focus:border-2 focus:border-[#2C2420] transition-all"
+        >
+          تجاوز إلى المحتوى الرئيسي
+        </Link>
         <SiteSettingsProvider>
           <OrdersProvider>
             <CartProvider>
