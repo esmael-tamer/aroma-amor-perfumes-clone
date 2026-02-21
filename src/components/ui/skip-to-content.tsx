@@ -1,12 +1,42 @@
-import Link from 'next/link';
+'use client';
 
-export function SkipToContent() {
+import * as React from 'react';
+import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
+
+interface SkipToContentProps extends React.HTMLAttributes<HTMLAnchorElement> {
+  contentId?: string;
+}
+
+export function SkipToContent({
+  className,
+  contentId = 'main-content',
+  ...props
+}: SkipToContentProps) {
   return (
-    <Link
-      href="#main-content"
-      className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:right-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:font-bold focus:rounded-md focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
+    <Button
+      asChild
+      variant="secondary"
+      className={cn(
+        'fixed top-4 right-4 z-[100] -translate-y-[150%] transition-transform focus:translate-y-0',
+        'shadow-lg border-2 border-[#2C2420] font-bold',
+        className
+      )}
     >
-      تجاوز إلى المحتوى الرئيسي
-    </Link>
+      <a
+        href={`#${contentId}`}
+        onClick={(e) => {
+          e.preventDefault();
+          const element = document.getElementById(contentId);
+          if (element) {
+            element.focus();
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }}
+        {...props}
+      >
+        تجاوز إلى المحتوى الرئيسي
+      </a>
+    </Button>
   );
 }
