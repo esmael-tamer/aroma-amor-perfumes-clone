@@ -1,9 +1,9 @@
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
+import { Loader2 } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-import { Spinner } from "@/components/ui/spinner"
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
@@ -50,23 +50,40 @@ function Button({
     asChild?: boolean
     loading?: boolean
   }) {
-  const Comp = asChild ? Slot : "button"
+  const baseClassName = cn(buttonVariants({ variant, size, className }))
+  const isDisabled = loading || disabled
+
+  if (asChild) {
+    return (
+      <Slot
+        data-slot="button"
+        className={baseClassName}
+        // Slot forwards all props to the child
+        aria-disabled={isDisabled}
+        disabled={isDisabled}
+        {...props}
+      >
+        {children}
+      </Slot>
+    )
+  }
 
   return (
-    <Comp
+    <button
       data-slot="button"
-      {...(!asChild ? { type: "button" } : {})}
-      className={cn(buttonVariants({ variant, size, className }))}
-      disabled={loading || disabled}
+      // Explicitly set type="button" to avoid implicit "submit" in forms (Cloudflare Workers CI requirement)
+      type="button"
+      className={baseClassName}
+      disabled={isDisabled}
       {...props}
     >
-      {loading && !asChild ? (
+      {loading ? (
         <>
           {size === "icon" ? (
-            <Spinner />
+            <Loader2 className="size-4 animate-spin" aria-label="Loading" />
           ) : (
             <>
-              <Spinner />
+              <Loader2 className="size-4 animate-spin" aria-label="Loading" />
               {children}
             </>
           )}
@@ -74,7 +91,7 @@ function Button({
       ) : (
         children
       )}
-    </Comp>
+    </button>
   )
 }
 
