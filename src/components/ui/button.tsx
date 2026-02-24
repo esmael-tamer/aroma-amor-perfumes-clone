@@ -36,63 +36,75 @@ const buttonVariants = cva(
   }
 )
 
-function Button({
-  className,
-  variant,
-  size,
-  asChild = false,
-  loading = false,
-  children,
-  disabled,
-  ...props
-}: React.ComponentProps<"button"> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean
-    loading?: boolean
-  }) {
-  const baseClassName = cn(buttonVariants({ variant, size, className }))
-  const isDisabled = loading || disabled
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean
+  loading?: boolean
+}
 
-  if (asChild) {
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      className,
+      variant,
+      size,
+      asChild = false,
+      loading = false,
+      type = "button",
+      children,
+      disabled,
+      ...props
+    },
+    ref
+  ) => {
+    const baseClassName = cn(buttonVariants({ variant, size, className }))
+    const isDisabled = loading || disabled
+
+    if (asChild) {
+      return (
+        <Slot
+          data-slot="button"
+          className={baseClassName}
+          // Slot forwards all props to the child
+          aria-disabled={isDisabled}
+          disabled={isDisabled}
+          ref={ref}
+          {...props}
+        >
+          {children}
+        </Slot>
+      )
+    }
+
     return (
-      <Slot
+      <button
         data-slot="button"
+        // Explicitly set type="button" to avoid implicit "submit" in forms (Cloudflare Workers CI requirement)
+        type={type}
         className={baseClassName}
-        // Slot forwards all props to the child
-        aria-disabled={isDisabled}
         disabled={isDisabled}
+        ref={ref}
         {...props}
       >
-        {children}
-      </Slot>
+        {loading ? (
+          <>
+            {size === "icon" ? (
+              <Loader2 className="size-4 animate-spin" aria-label="Loading" />
+            ) : (
+              <>
+                <Loader2 className="size-4 animate-spin" aria-label="Loading" />
+                {children}
+              </>
+            )}
+          </>
+        ) : (
+          children
+        )}
+      </button>
     )
   }
-
-  return (
-    <button
-      data-slot="button"
-      // Explicitly set type="button" to avoid implicit "submit" in forms (Cloudflare Workers CI requirement)
-      type="button"
-      className={baseClassName}
-      disabled={isDisabled}
-      {...props}
-    >
-      {loading ? (
-        <>
-          {size === "icon" ? (
-            <Loader2 className="size-4 animate-spin" aria-label="Loading" />
-          ) : (
-            <>
-              <Loader2 className="size-4 animate-spin" aria-label="Loading" />
-              {children}
-            </>
-          )}
-        </>
-      ) : (
-        children
-      )}
-    </button>
-  )
-}
+)
+Button.displayName = "Button"
 
 export { Button, buttonVariants }
