@@ -1,6 +1,7 @@
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
+import { Loader2 } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
@@ -35,25 +36,75 @@ const buttonVariants = cva(
   }
 )
 
-function Button({
-  className,
-  variant,
-  size,
-  asChild = false,
-  ...props
-}: React.ComponentProps<"button"> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean
-  }) {
-  const Comp = asChild ? Slot : "button"
-
-  return (
-    <Comp
-      data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }))}
-      {...props}
-    />
-  )
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean
+  loading?: boolean
 }
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      className,
+      variant,
+      size,
+      asChild = false,
+      loading = false,
+      type = "button",
+      children,
+      disabled,
+      ...props
+    },
+    ref
+  ) => {
+    const baseClassName = cn(buttonVariants({ variant, size, className }))
+    const isDisabled = loading || disabled
+
+    if (asChild) {
+      return (
+        <Slot
+          data-slot="button"
+          className={baseClassName}
+          // Slot forwards all props to the child
+          aria-disabled={isDisabled}
+          disabled={isDisabled}
+          ref={ref}
+          {...props}
+        >
+          {children}
+        </Slot>
+      )
+    }
+
+    return (
+      <button
+        data-slot="button"
+        // Explicitly set type="button" to avoid implicit "submit" in forms (Cloudflare Workers CI requirement)
+        type={type}
+        className={baseClassName}
+        disabled={isDisabled}
+        ref={ref}
+        {...props}
+      >
+        {loading ? (
+          <>
+            {size === "icon" ? (
+              <Loader2 className="size-4 animate-spin" aria-label="Loading" />
+            ) : (
+              <>
+                <Loader2 className="size-4 animate-spin" aria-label="Loading" />
+                {children}
+              </>
+            )}
+          </>
+        ) : (
+          children
+        )}
+      </button>
+    )
+  }
+)
+Button.displayName = "Button"
 
 export { Button, buttonVariants }
