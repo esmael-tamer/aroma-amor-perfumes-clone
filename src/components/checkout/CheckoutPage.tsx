@@ -545,6 +545,7 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                 </Button>
               ) : (
                 <Button
+                  type="button"
                   onClick={handleSubmitOrder}
                   loading={isSubmitting}
                   className="flex-1 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white py-6 rounded-full text-lg font-bold hover:shadow-xl transition-all disabled:opacity-70"
