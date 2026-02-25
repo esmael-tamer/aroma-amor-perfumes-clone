@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     template: `%s | ${COMPANY_INFO.name}`,
   },
   description: SEO_CONFIG.description,
-  keywords: SEO_CONFIG.keywords,
+  keywords: [...SEO_CONFIG.keywords],
   authors: [{ name: COMPANY_INFO.name }],
   creator: COMPANY_INFO.name,
   publisher: COMPANY_INFO.name,
@@ -70,7 +70,7 @@ export default function RootLayout({
         <SiteSettingsProvider>
           <OrdersProvider>
             <CartProvider>
-              <ErrorReporter />
+              <ErrorReporter error={undefined} reset={undefined} />
               <Script
                 src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/scripts//route-messenger.js"
                 strategy="afterInteractive"

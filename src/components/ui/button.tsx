@@ -68,7 +68,6 @@ function Button({
 
   return (
     <button
-      type="button"
       data-slot="button"
       className={cn(buttonVariants({ variant, size, className }))}
       disabled={loading || disabled}
