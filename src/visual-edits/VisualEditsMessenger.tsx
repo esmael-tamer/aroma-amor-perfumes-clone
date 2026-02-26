@@ -442,7 +442,7 @@ export default function HoverReceiver() {
   );
   const hasStyleChangesRef = useRef<boolean>(false);
   const lastClickTimeRef = useRef<number>(0);
-  const pendingCleanupRef = useRef<NodeJS.Timeout | null>(null);
+  const pendingCleanupRef = useRef<any>(null);
 
   // Cache of loaded fonts
   const loadedFontFamilies = useRef<Set<string>>(new Set());
