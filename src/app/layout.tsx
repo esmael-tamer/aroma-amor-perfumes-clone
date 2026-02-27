@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import Link from "next/link";
 import VisualEditsMessenger from "../visual-edits/VisualEditsMessenger";
 import ErrorReporter from "@/components/ErrorReporter";
 import Script from "next/script";
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
     template: `%s | ${COMPANY_INFO.name}`,
   },
   description: SEO_CONFIG.description,
-  keywords: SEO_CONFIG.keywords,
+  keywords: [...SEO_CONFIG.keywords],
   authors: [{ name: COMPANY_INFO.name }],
   creator: COMPANY_INFO.name,
   publisher: COMPANY_INFO.name,
@@ -67,6 +68,12 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl">
       <body className="antialiased">
+        <Link
+          href="#main-content"
+          className="fixed top-0 right-0 z-[100] -translate-y-full bg-primary text-primary-foreground px-4 py-3 text-sm font-medium transition-transform focus:translate-y-0 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+        >
+          تجاوز إلى المحتوى الرئيسي
+        </Link>
         <SiteSettingsProvider>
           <OrdersProvider>
             <CartProvider>
