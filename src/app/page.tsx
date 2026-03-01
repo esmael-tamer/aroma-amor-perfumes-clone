@@ -35,7 +35,7 @@ export default function HomePage() {
       
       <Header />
       
-      <div className="min-h-screen outline-none" role="main">
+      <main className="min-h-screen" role="main">
         <Suspense fallback={<LoadingScreen />}>
           <HeroSection />
         </Suspense>
@@ -47,7 +47,7 @@ export default function HomePage() {
         <Suspense fallback={<div className="h-96 animate-pulse bg-gray-100" />}>
           <ProductsSection />
         </Suspense>
-      </div>
+      </main>
       
       <Footer />
     </>
