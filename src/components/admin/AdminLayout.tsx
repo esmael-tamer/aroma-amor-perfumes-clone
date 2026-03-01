@@ -139,9 +139,9 @@ export default function AdminLayout({ children, activeTab }: AdminLayoutProps) {
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 p-6">
+        <div className="flex-1 p-6">
           {children}
-        </main>
+        </div>
       </div>
     </div>
   );

@@ -89,7 +89,7 @@ const AdminDashboard = memo(function AdminDashboard() {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8">
         {/* Stats Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <div className="bg-white rounded-2xl p-6 shadow-lg border-r-4 border-blue-500">
@@ -250,7 +250,7 @@ const AdminDashboard = memo(function AdminDashboard() {
             </div>
           )}
         </div>
-      </main>
+      </div>
 
       {/* Order Details Modal */}
       {selectedOrder && (
