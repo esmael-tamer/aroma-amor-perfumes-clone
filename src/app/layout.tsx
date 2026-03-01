@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Link from 'next/link';
 import "./globals.css";
 import VisualEditsMessenger from "../visual-edits/VisualEditsMessenger";
 import ErrorReporter from "@/components/ErrorReporter";
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
     template: `%s | ${COMPANY_INFO.name}`,
   },
   description: SEO_CONFIG.description,
-  keywords: SEO_CONFIG.keywords,
+  keywords: [...SEO_CONFIG.keywords],
   authors: [{ name: COMPANY_INFO.name }],
   creator: COMPANY_INFO.name,
   publisher: COMPANY_INFO.name,
@@ -67,6 +68,12 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl">
       <body className="antialiased">
+        <Link
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:p-4 focus:bg-white focus:text-[#2C2420] focus:top-0 focus:right-0 focus:font-bold focus:shadow-md outline-none"
+        >
+          تجاوز إلى المحتوى الرئيسي
+        </Link>
         <SiteSettingsProvider>
           <OrdersProvider>
             <CartProvider>
@@ -81,7 +88,9 @@ export default function RootLayout({
                 data-debug="true"
                 data-custom-data='{"appName": "YourApp", "version": "1.0.0", "greeting": "hi"}'
               />
-              {children}
+              <main id="main-content" tabIndex={-1} className="outline-none flex-1 flex flex-col min-h-screen">
+                {children}
+              </main>
               <CartDrawer />
               <VisualEditsMessenger />
             </CartProvider>
