@@ -272,7 +272,7 @@ export default function SettingsManager() {
 
         {/* زر الحفظ */}
         <div className="flex justify-end">
-          <button
+          <button type="button"
             type="submit"
             disabled={isSaving}
             className="flex items-center gap-2 bg-[#2C2420] hover:bg-[#4A5568] text-white px-8 py-3 rounded-xl transition-colors disabled:opacity-50"
