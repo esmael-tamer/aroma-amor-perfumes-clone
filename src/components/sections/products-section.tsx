@@ -58,6 +58,7 @@ const ProductsSection = memo(function ProductsSection() {
                   ? 'bg-gradient-to-r from-[#2C2420] to-[#4A5568] text-white shadow-2xl scale-110'
                   : 'bg-white text-[#4A5568] hover:bg-[#D4CCC4] hover:scale-105 border-2 border-[#E8EAED]'
               }`}
+              aria-label={`تصفية حسب ${category.name}`}
             >
               {category.name}
             </button>

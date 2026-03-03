@@ -112,6 +112,7 @@ export default function PromotionsManager() {
         <button
           onClick={openAddModal}
           className="flex items-center gap-2 bg-[#2C2420] hover:bg-[#4A5568] text-white px-6 py-3 rounded-xl transition-colors"
+          aria-label="إضافة عرض"
         >
           <Plus className="w-5 h-5" />
           إضافة عرض
@@ -285,6 +286,7 @@ export default function PromotionsManager() {
                     type="button"
                     onClick={generateCode}
                     className="px-4 py-3 bg-gray-100 hover:bg-gray-200 rounded-xl transition-colors"
+                    aria-label="توليد كود خصم"
                   >
                     توليد
                   </button>
@@ -370,6 +372,7 @@ export default function PromotionsManager() {
                 <button
                   type="submit"
                   className="flex-1 flex items-center justify-center gap-2 bg-[#2C2420] hover:bg-[#4A5568] text-white py-3 rounded-xl transition-colors"
+                  aria-label={editingPromotion ? 'حفظ التعديلات' : 'إضافة العرض'}
                 >
                   <Save className="w-5 h-5" />
                   {editingPromotion ? 'حفظ التعديلات' : 'إضافة العرض'}
@@ -378,6 +381,7 @@ export default function PromotionsManager() {
                   type="button"
                   onClick={() => setIsModalOpen(false)}
                   className="px-6 py-3 border-2 border-gray-200 hover:bg-gray-50 rounded-xl transition-colors"
+                  aria-label="إلغاء التعديلات"
                 >
                   إلغاء
                 </button>
