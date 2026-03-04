@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  better-auth: 1.3.10
+
 importers:
 
   .:
@@ -2595,7 +2598,7 @@ packages:
   autumn-js@0.1.69:
     resolution: {integrity: sha512-rCauyN0HwksA3K1/6sW70TVcb/jV0AWEC7lukgkW8bs1Qly0DZGdN8mIo96Hrb1G0ZvHbzFb5kFf4uxHpmre5Q==}
     peerDependencies:
-      better-auth: ^1.3.17
+      better-auth: 1.3.10
       better-call: ^1.0.12
       convex: ^1.25.4
       react: '*'
