@@ -109,9 +109,10 @@ export default function PromotionsManager() {
           <h1 className="text-2xl font-bold text-gray-800">إدارة العروض والخصومات</h1>
           <p className="text-gray-500">{promotions.length} عرض</p>
         </div>
-        <button
+        <button type="button"
           onClick={openAddModal}
           className="flex items-center gap-2 bg-[#2C2420] hover:bg-[#4A5568] text-white px-6 py-3 rounded-xl transition-colors"
+          aria-label="إضافة عرض"
         >
           <Plus className="w-5 h-5" />
           إضافة عرض
@@ -154,7 +155,7 @@ export default function PromotionsManager() {
                 <div className="flex flex-wrap items-center gap-3 text-sm">
                   <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full font-mono font-bold flex items-center gap-2">
                     {promotion.code}
-                    <button 
+                    <button type="button"
                       onClick={() => copyCode(promotion.code)}
                       className="hover:text-[#2C2420]"
                       aria-label="نسخ الكود"
@@ -195,21 +196,21 @@ export default function PromotionsManager() {
 
               {/* Actions */}
               <div className="flex items-center gap-2">
-                <button
+                <button type="button"
                   onClick={() => toggleActive(promotion)}
                   className={`p-2 rounded-lg ${promotion.isActive ? 'text-emerald-500' : 'text-gray-400'}`}
                   aria-label={promotion.isActive ? 'إلغاء التفعيل' : 'تفعيل'}
                 >
                   {promotion.isActive ? <ToggleRight className="w-8 h-8" /> : <ToggleLeft className="w-8 h-8" />}
                 </button>
-                <button
+                <button type="button"
                   onClick={() => openEditModal(promotion)}
                   className="p-2 bg-blue-50 text-blue-600 hover:bg-blue-100 rounded-lg transition-colors"
                   aria-label="تعديل العرض"
                 >
                   <Edit2 className="w-5 h-5" />
                 </button>
-                <button
+                <button type="button"
                   onClick={() => handleDelete(promotion.id)}
                   className="p-2 bg-red-50 text-red-600 hover:bg-red-100 rounded-lg transition-colors"
                   aria-label="حذف العرض"
@@ -239,7 +240,7 @@ export default function PromotionsManager() {
               <h2 className="text-xl font-bold text-gray-800">
                 {editingPromotion ? 'تعديل العرض' : 'إضافة عرض جديد'}
               </h2>
-              <button onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-gray-100 rounded-lg" aria-label="إغلاق">
+              <button type="button" onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-gray-100 rounded-lg" aria-label="إغلاق">
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -285,6 +286,7 @@ export default function PromotionsManager() {
                     type="button"
                     onClick={generateCode}
                     className="px-4 py-3 bg-gray-100 hover:bg-gray-200 rounded-xl transition-colors"
+                    aria-label="توليد كود خصم"
                   >
                     توليد
                   </button>
@@ -370,6 +372,7 @@ export default function PromotionsManager() {
                 <button
                   type="submit"
                   className="flex-1 flex items-center justify-center gap-2 bg-[#2C2420] hover:bg-[#4A5568] text-white py-3 rounded-xl transition-colors"
+                  aria-label={editingPromotion ? 'حفظ التعديلات' : 'إضافة العرض'}
                 >
                   <Save className="w-5 h-5" />
                   {editingPromotion ? 'حفظ التعديلات' : 'إضافة العرض'}
@@ -378,6 +381,7 @@ export default function PromotionsManager() {
                   type="button"
                   onClick={() => setIsModalOpen(false)}
                   className="px-6 py-3 border-2 border-gray-200 hover:bg-gray-50 rounded-xl transition-colors"
+                  aria-label="إلغاء التعديلات"
                 >
                   إلغاء
                 </button>
