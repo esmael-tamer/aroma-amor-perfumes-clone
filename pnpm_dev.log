@@ -13,3 +13,4 @@
  GET / 200 in 8478ms
  ⨯ upstream image response failed for https://images.unsplash.com/photo-1595425964071-2c1ecb10b52d?w=500&q=80 404
  ⨯ upstream image response failed for https://images.unsplash.com/photo-1600857062241-98e5dba60f2e?w=500&q=80 404
+ ✓ Compiled in 1133ms
