@@ -240,7 +240,7 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
       </header>
 
       {/* Progress Steps */}
-      <div className="container mx-auto px-4 py-8">
+      <main id="main-content" tabIndex={-1} className="container mx-auto px-4 py-8 outline-none">
         <div className="flex items-center justify-center gap-4 mb-12">
           {[
             { num: 1, title: 'المعلومات', icon: User },
@@ -636,7 +636,7 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
             </div>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 });
