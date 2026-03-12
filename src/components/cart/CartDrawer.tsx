@@ -63,7 +63,6 @@ const CartDrawer = memo(function CartDrawer() {
             </div>
           </div>
           <button
-            type="button"
             onClick={() => setIsCartOpen(false)}
             className="text-white hover:bg-white/20 p-2.5 rounded-xl transition-all hover:rotate-90 duration-300"
             aria-label="إغلاق السلة"
@@ -144,7 +143,6 @@ const CartDrawer = memo(function CartDrawer() {
                   {/* Quantity Controls */}
                   <div className="flex flex-col items-end justify-between">
                     <button
-                      type="button"
                       onClick={() => removeFromCart(item.product.id)}
                       className="text-red-400 hover:text-red-600 hover:bg-red-50 p-1.5 rounded-lg transition-all hover:scale-110"
                       aria-label={`حذف ${item.product.nameAr} من السلة`}
@@ -223,14 +221,12 @@ const CartDrawer = memo(function CartDrawer() {
             {/* Actions Row */}
             <div className="flex gap-2">
               <button
-                type="button"
                 onClick={() => setIsCartOpen(false)}
                 className="flex-1 text-[#2C2420] hover:bg-[#E8EAED] py-2.5 rounded-xl transition-colors font-medium text-sm border-2 border-[#E8EAED]"
               >
                 متابعة التسوق
               </button>
               <button
-                type="button"
                 onClick={clearCart}
                 className="text-red-500 hover:bg-red-50 px-4 py-2.5 rounded-xl transition-colors text-sm font-medium border-2 border-red-100"
               >
