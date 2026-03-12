@@ -5,3 +5,7 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+
+## 2025-02-12 - Explicit Cart Deletion Path
+**Learning:** Users can accidentally reduce item quantities to zero or negative values when the decrement (minus) button stays active at quantity 1.
+**Action:** Always disable decrement buttons at `item.quantity <= 1` using both logic (`disabled` prop) and visual cues (`disabled:opacity-40 disabled:cursor-not-allowed`) to prevent negative values, guiding users to use the explicit trash/remove button.
