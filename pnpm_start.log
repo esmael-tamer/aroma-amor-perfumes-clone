@@ -7,6 +7,6 @@
    - Network:      http://192.168.0.2:3000
 
  ✓ Starting...
- ✓ Ready in 618ms
+ ✓ Ready in 679ms
  ⨯ upstream image response failed for https://images.unsplash.com/photo-1595425964071-2c1ecb10b52d?w=500&q=80 404
  ⨯ upstream image response failed for https://images.unsplash.com/photo-1600857062241-98e5dba60f2e?w=500&q=80 404
