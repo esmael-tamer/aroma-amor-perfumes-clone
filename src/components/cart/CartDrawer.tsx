@@ -153,17 +153,20 @@ const CartDrawer = memo(function CartDrawer() {
 
                     <div className="flex items-center gap-1 bg-white rounded-full border-2 border-[#E8EAED] p-0.5 shadow-sm">
                       <button
+                        type="button"
                         onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
-                        className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-red-50 hover:text-red-500 transition-colors"
+                        disabled={item.quantity <= 1}
+                        className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-red-50 hover:text-red-500 transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-inherit"
                         aria-label={`تقليل كمية ${item.product.nameAr}`}
                       >
                         <Minus className="w-3 h-3" />
                       </button>
                       <span className="w-6 text-center font-bold text-sm">{item.quantity}</span>
                       <button
+                        type="button"
                         onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
                         disabled={item.quantity >= item.product.stock}
-                        className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-emerald-50 hover:text-emerald-500 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                        className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-emerald-50 hover:text-emerald-500 transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-inherit"
                         aria-label={`زيادة كمية ${item.product.nameAr}`}
                       >
                         <Plus className="w-3 h-3" />
