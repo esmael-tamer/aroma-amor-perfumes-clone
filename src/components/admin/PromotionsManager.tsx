@@ -199,6 +199,7 @@ export default function PromotionsManager() {
                   onClick={() => toggleActive(promotion)}
                   className={`p-2 rounded-lg ${promotion.isActive ? 'text-emerald-500' : 'text-gray-400'}`}
                   aria-label={promotion.isActive ? 'إلغاء التفعيل' : 'تفعيل'}
+                  title={promotion.isActive ? 'إلغاء التفعيل' : 'تفعيل'}
                 >
                   {promotion.isActive ? <ToggleRight className="w-8 h-8" /> : <ToggleLeft className="w-8 h-8" />}
                 </button>
@@ -206,6 +207,7 @@ export default function PromotionsManager() {
                   onClick={() => openEditModal(promotion)}
                   className="p-2 bg-blue-50 text-blue-600 hover:bg-blue-100 rounded-lg transition-colors"
                   aria-label="تعديل العرض"
+                  title="تعديل العرض"
                 >
                   <Edit2 className="w-5 h-5" />
                 </button>
@@ -213,6 +215,7 @@ export default function PromotionsManager() {
                   onClick={() => handleDelete(promotion.id)}
                   className="p-2 bg-red-50 text-red-600 hover:bg-red-100 rounded-lg transition-colors"
                   aria-label="حذف العرض"
+                  title="حذف العرض"
                 >
                   <Trash2 className="w-5 h-5" />
                 </button>

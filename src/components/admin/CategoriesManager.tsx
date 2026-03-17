@@ -95,6 +95,7 @@ export default function CategoriesManager() {
                 onClick={() => toggleActive(category)}
                 className={`p-1 rounded-lg ${category.isActive ? 'text-emerald-500' : 'text-gray-400'}`}
                 aria-label={category.isActive ? 'إلغاء التفعيل' : 'تفعيل'}
+                title={category.isActive ? 'إلغاء التفعيل' : 'تفعيل'}
               >
                 {category.isActive ? <ToggleRight className="w-8 h-8" /> : <ToggleLeft className="w-8 h-8" />}
               </button>
@@ -113,6 +114,7 @@ export default function CategoriesManager() {
                 onClick={() => handleDelete(category.id)}
                 className="flex items-center justify-center bg-red-50 text-red-600 hover:bg-red-100 p-2 rounded-lg transition-colors"
                 aria-label="حذف القسم"
+                title="حذف القسم"
               >
                 <Trash2 className="w-4 h-4" />
               </button>

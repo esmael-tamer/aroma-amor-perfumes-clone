@@ -208,6 +208,7 @@ export default function ProductsManager() {
                   onClick={() => handleDelete(product.id)}
                   className="flex items-center justify-center bg-red-50 text-red-600 hover:bg-red-100 p-2 rounded-lg transition-colors"
                   aria-label="حذف المنتج"
+                  title="حذف المنتج"
                 >
                   <Trash2 className="w-4 h-4" />
                 </button>
