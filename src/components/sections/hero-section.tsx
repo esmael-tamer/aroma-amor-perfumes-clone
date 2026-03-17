@@ -155,7 +155,6 @@ const HeroSection = memo(function HeroSection() {
 
       {/* Scroll Indicator */}
       <button 
-        type="button"
         onClick={scrollToProducts}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer"
         aria-label="اذهب إلى المنتجات"
