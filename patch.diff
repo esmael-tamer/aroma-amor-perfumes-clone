@@ -1,0 +1,67 @@
+--- src/components/checkout/CheckoutPage.tsx
++++ src/components/checkout/CheckoutPage.tsx
+@@ -281,42 +281,51 @@
+
+                 <div className="grid gap-6">
+                   <div>
+-                    <label className="block text-sm font-bold text-[#2C2420] mb-2">
++                    <label htmlFor="fullName" className="block text-sm font-bold text-[#2C2420] mb-2">
+                       الاسم الكامل <span className="text-red-500">*</span>
+                     </label>
+                     <input
++                      id="fullName"
+                       type="text"
+                       name="fullName"
+                       value={formData.fullName}
+                       onChange={handleInputChange}
+                       className={`w-full px-4 py-4 rounded-xl border-2 ${errors.fullName ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
+                       placeholder="أدخل اسمك الكامل"
++                      aria-invalid={!!errors.fullName}
++                      aria-describedby={errors.fullName ? "fullName-error" : undefined}
+                     />
+-                    {errors.fullName && <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>}
++                    {errors.fullName && <p id="fullName-error" className="text-red-500 text-sm mt-1">{errors.fullName}</p>}
+                   </div>
+
+                   <div>
+-                    <label className="block text-sm font-bold text-[#2C2420] mb-2">
++                    <label htmlFor="phone" className="block text-sm font-bold text-[#2C2420] mb-2">
+                       رقم الهاتف <span className="text-red-500">*</span>
+                     </label>
+                     <input
++                      id="phone"
+                       type="tel"
+                       name="phone"
+                       value={formData.phone}
+                       onChange={handleInputChange}
+                       className={`w-full px-4 py-4 rounded-xl border-2 ${errors.phone ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
+                       placeholder="+965 XXXX XXXX"
+                       dir="ltr"
++                      aria-invalid={!!errors.phone}
++                      aria-describedby={errors.phone ? "phone-error" : undefined}
+                     />
+-                    {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
++                    {errors.phone && <p id="phone-error" className="text-red-500 text-sm mt-1">{errors.phone}</p>}
+                   </div>
+
+                   <div>
+-                    <label className="block text-sm font-bold text-[#2C2420] mb-2">
++                    <label htmlFor="email" className="block text-sm font-bold text-[#2C2420] mb-2">
+                       البريد الإلكتروني (اختياري)
+                     </label>
+                     <input
++                      id="email"
+                       type="email"
+                       name="email"
+                       value={formData.email}
+                       onChange={handleInputChange}
+                       className={`w-full px-4 py-4 rounded-xl border-2 ${errors.email ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
+                       placeholder="example@email.com"
+                       dir="ltr"
++                      aria-invalid={!!errors.email}
++                      aria-describedby={errors.email ? "email-error" : undefined}
+                     />
+-                    {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
++                    {errors.email && <p id="email-error" className="text-red-500 text-sm mt-1">{errors.email}</p>}
+                   </div>
+                 </div>
