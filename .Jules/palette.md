@@ -5,3 +5,7 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+
+## 2024-05-27 - Form Input Accessibility Bindings
+**Learning:** React elements without explicit ID/htmlFor bindings lose accessibility context, especially when dynamic validation error messages appear.
+**Action:** Always bind `<label>` with `htmlFor` matching the `<input>` `id`. Dynamically attach error text using `aria-describedby` and reflect the error state with `aria-invalid={!!error}`.
