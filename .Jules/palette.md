@@ -5,3 +5,6 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+## 2025-03-20 - Disabled states and Tailwind hover styles
+**Learning:** Tailwind CSS hover styles apply even on `disabled` HTML elements, potentially creating confusing UX where unclickable buttons still react to mouse pointers.
+**Action:** When applying disabled states, always explicitly negate hover states using variants like `disabled:hover:bg-transparent disabled:hover:text-inherit` alongside cursor changes (`disabled:cursor-not-allowed`) to fully nullify visual interactivity.
