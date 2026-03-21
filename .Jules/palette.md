@@ -5,7 +5,3 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
-
-## 2025-03-21 - Negating Disabled Hover States
-**Learning:** When disabling custom `<button>` elements that use Tailwind hover variants (e.g., `hover:bg-red-50`), the button still responds to hover events even when disabled, creating a confusing UX.
-**Action:** Always explicitly negate hover classes using disabled variants (e.g., `disabled:hover:bg-transparent disabled:hover:text-inherit`) to ensure unclickable buttons feel completely inactive.
