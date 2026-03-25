@@ -109,7 +109,7 @@ export default function AdminLayout({ children, activeTab }: AdminLayoutProps) {
       </aside>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col min-h-screen">
+      <div id="main-content" tabIndex={-1} className="flex-1 flex flex-col min-h-screen outline-none">
         {/* Top Bar */}
         <header className="bg-white shadow-sm sticky top-0 z-30">
           <div className="flex items-center justify-between px-6 py-4">

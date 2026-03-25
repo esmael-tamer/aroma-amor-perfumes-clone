@@ -8,6 +8,7 @@ import { CartProvider } from "@/context/CartContext";
 import { OrdersProvider } from "@/context/OrdersContext";
 import { SiteSettingsProvider } from "@/context/SiteSettingsContext";
 import CartDrawer from "@/components/cart/CartDrawer";
+import { SkipLink } from "@/components/ui/skip-link";
 
 // Metadata للـ SEO
 export const metadata: Metadata = {
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
     template: `%s | ${COMPANY_INFO.name}`,
   },
   description: SEO_CONFIG.description,
-  keywords: SEO_CONFIG.keywords,
+  keywords: [...SEO_CONFIG.keywords],
   authors: [{ name: COMPANY_INFO.name }],
   creator: COMPANY_INFO.name,
   publisher: COMPANY_INFO.name,
@@ -67,6 +68,7 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl">
       <body className="antialiased">
+        <SkipLink />
         <SiteSettingsProvider>
           <OrdersProvider>
             <CartProvider>
