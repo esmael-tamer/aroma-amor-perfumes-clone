@@ -5,3 +5,7 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+
+## 2024-05-26 - Skip Link Positioning in RTL
+**Learning:** In RTL layouts (`dir="rtl"`), navigation menus and sidebars are often situated on the right. Positioning the fixed "Skip to Content" link at `top-4 left-4` ensures it remains visually unobscured when focused, avoiding collisions with primary headers. Additionally, it requires a high z-index (e.g., `z-[100]`) to successfully overlap fixed or sticky application headers during focus.
+**Action:** Always position screen-reader "Skip to Content" links using `left-4 top-4 z-[100]` for RTL interfaces and ensure they are the immediate first child of `<body>` to guarantee top focus order.
