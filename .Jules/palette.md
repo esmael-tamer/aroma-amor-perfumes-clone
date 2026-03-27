@@ -6,10 +6,6 @@
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
 
-## 2024-05-26 - Native Button Accessibility
-**Learning:** Native `<button>` elements (not using Radix or our `Button` component) lose keyboard focus rings and implicit `type="button"` attributes when used with Tailwind.
-**Action:** Always add `focus-visible:ring-2 outline-none` and `type="button"` to native `<button>` elements.
-
-## 2024-05-26 - Disabled Button Hover States
-**Learning:** Adding Tailwind disabled states (`disabled:opacity-40`) doesn't prevent hover states (`hover:bg-emerald-50`) from applying when disabled.
-**Action:** Add `disabled:hover:bg-transparent disabled:hover:text-inherit` to cancel hover effects on disabled custom buttons.
+## 2026-01-31 - Admin Dashboard Recent Orders Accessibility Improvements
+**Learning:** List items that contain interactive elements or present actionable data should be structured as a `<ul>`/`<li>` semantic list rather than generic `<div>` stacks to improve screen reader context. Additionally, adding `focus-within:ring-2` to the parent container significantly improves visual tracking when users keyboard-navigate through its children links.
+**Action:** Always favor semantic lists (`<ul>`, `<ol>`) for repeating interactive widgets and use `focus-within` on the parent to highlight the entire active region during keyboard navigation.
