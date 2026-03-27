@@ -43,7 +43,7 @@ export default function AdminPage() {
     },
     { 
       label: 'طلبات قيد الانتظار', 
-      value: stats.pending, 
+      value: stats.pendingOrders,
       icon: TrendingUp, 
       color: 'bg-purple-500',
       href: '/admin/orders'
@@ -131,16 +131,18 @@ export default function AdminPage() {
             </div>
             
             {recentOrders.length > 0 ? (
-              <div className="space-y-3">
+              <ul className="space-y-3" role="list" aria-label="قائمة آخر الطلبات">
                 {recentOrders.map(order => (
-                  <div key={order.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
+                  <li key={order.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors focus-within:ring-2 focus-within:ring-[#2C2420] outline-none">
                     <div>
                       <p className="font-medium text-gray-800">{order.customer.fullName}</p>
-                      <p className="text-sm text-gray-500">{order.id}</p>
+                      <Link href={`/admin/orders?id=${order.id}`} className="text-sm text-gray-500 hover:text-[#2C2420] outline-none focus-visible:underline" aria-label={`عرض تفاصيل الطلب رقم ${order.id}`}>
+                        {order.id}
+                      </Link>
                     </div>
-                    <div className="text-left">
+                    <div className="text-left flex flex-col items-end">
                       <p className="font-bold text-[#2C2420]">{order.totalPrice.toFixed(3)} د.ك</p>
-                      <span className={`text-xs px-2 py-1 rounded-full ${
+                      <span className={`mt-1 text-xs px-2 py-1 rounded-full ${
                         order.status === 'delivered' ? 'bg-emerald-100 text-emerald-700' :
                         order.status === 'pending' ? 'bg-amber-100 text-amber-700' :
                         'bg-gray-100 text-gray-700'
@@ -152,9 +154,9 @@ export default function AdminPage() {
                          order.status === 'shipped' ? 'تم الشحن' : 'ملغي'}
                       </span>
                     </div>
-                  </div>
+                  </li>
                 ))}
-              </div>
+              </ul>
             ) : (
               <div className="text-center py-8 text-gray-500">
                 <ShoppingCart className="w-12 h-12 mx-auto mb-2 text-gray-300" />
@@ -178,8 +180,8 @@ export default function AdminPage() {
           </div>
           <div className="bg-white rounded-2xl p-6 shadow-sm">
             <h3 className="font-bold text-gray-800 mb-2">الطلبات المكتملة</h3>
-            <p className="text-3xl font-bold text-emerald-600">{stats.delivered}</p>
-            <p className="text-sm text-gray-500 mt-1">نسبة الإكمال: {orders.length > 0 ? Math.round((stats.delivered / orders.length) * 100) : 0}%</p>
+            <p className="text-3xl font-bold text-emerald-600">{stats.completedOrders}</p>
+            <p className="text-sm text-gray-500 mt-1">نسبة الإكمال: {orders.length > 0 ? Math.round((stats.completedOrders / orders.length) * 100) : 0}%</p>
           </div>
         </div>
       </div>
