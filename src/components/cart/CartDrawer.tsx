@@ -152,22 +152,27 @@ const CartDrawer = memo(function CartDrawer() {
                     </button>
 
                     <div className="flex items-center gap-1 bg-white rounded-full border-2 border-[#E8EAED] p-0.5 shadow-sm">
-                      <button
-                        onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
-                        className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-red-50 hover:text-red-500 transition-colors"
-                        aria-label={`تقليل كمية ${item.product.nameAr}`}
-                      >
-                        <Minus className="w-3 h-3" />
-                      </button>
+                      <div title={item.quantity <= 1 ? "الحد الأدنى للكمية هو 1" : ""}>
+                        <button
+                          onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
+                          disabled={item.quantity <= 1}
+                          className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-red-50 hover:text-red-500 transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-inherit"
+                          aria-label={`تقليل كمية ${item.product.nameAr}`}
+                        >
+                          <Minus className="w-3 h-3" />
+                        </button>
+                      </div>
                       <span className="w-6 text-center font-bold text-sm">{item.quantity}</span>
-                      <button
-                        onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
-                        disabled={item.quantity >= item.product.stock}
-                        className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-emerald-50 hover:text-emerald-500 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
-                        aria-label={`زيادة كمية ${item.product.nameAr}`}
-                      >
-                        <Plus className="w-3 h-3" />
-                      </button>
+                      <div title={item.quantity >= item.product.stock ? "تم الوصول للحد الأقصى للمخزون" : ""}>
+                        <button
+                          onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
+                          disabled={item.quantity >= item.product.stock}
+                          className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-emerald-50 hover:text-emerald-500 transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-inherit"
+                          aria-label={`زيادة كمية ${item.product.nameAr}`}
+                        >
+                          <Plus className="w-3 h-3" />
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
