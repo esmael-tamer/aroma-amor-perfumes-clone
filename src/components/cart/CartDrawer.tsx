@@ -63,6 +63,7 @@ const CartDrawer = memo(function CartDrawer() {
             </div>
           </div>
           <button
+            type="button"
             onClick={() => setIsCartOpen(false)}
             className="text-white hover:bg-white/20 p-2.5 rounded-xl transition-all hover:rotate-90 duration-300"
             aria-label="إغلاق السلة"
@@ -143,6 +144,7 @@ const CartDrawer = memo(function CartDrawer() {
                   {/* Quantity Controls */}
                   <div className="flex flex-col items-end justify-between">
                     <button
+                      type="button"
                       onClick={() => removeFromCart(item.product.id)}
                       className="text-red-400 hover:text-red-600 hover:bg-red-50 p-1.5 rounded-lg transition-all hover:scale-110"
                       aria-label={`حذف ${item.product.nameAr} من السلة`}
@@ -154,6 +156,7 @@ const CartDrawer = memo(function CartDrawer() {
                     <div className="flex items-center gap-1 bg-white rounded-full border-2 border-[#E8EAED] p-0.5 shadow-sm">
                       <div title={item.quantity <= 1 ? "الحد الأدنى للكمية هو 1" : ""}>
                         <button
+                          type="button"
                           onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
                           disabled={item.quantity <= 1}
                           className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-red-50 hover:text-red-500 transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-inherit"
@@ -165,6 +168,7 @@ const CartDrawer = memo(function CartDrawer() {
                       <span className="w-6 text-center font-bold text-sm">{item.quantity}</span>
                       <div title={item.quantity >= item.product.stock ? "تم الوصول للحد الأقصى للمخزون" : ""}>
                         <button
+                          type="button"
                           onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
                           disabled={item.quantity >= item.product.stock}
                           className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-emerald-50 hover:text-emerald-500 transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-inherit"
@@ -223,12 +227,14 @@ const CartDrawer = memo(function CartDrawer() {
             {/* Actions Row */}
             <div className="flex gap-2">
               <button
+                type="button"
                 onClick={() => setIsCartOpen(false)}
                 className="flex-1 text-[#2C2420] hover:bg-[#E8EAED] py-2.5 rounded-xl transition-colors font-medium text-sm border-2 border-[#E8EAED]"
               >
                 متابعة التسوق
               </button>
               <button
+                type="button"
                 onClick={clearCart}
                 className="text-red-500 hover:bg-red-50 px-4 py-2.5 rounded-xl transition-colors text-sm font-medium border-2 border-red-100"
               >
