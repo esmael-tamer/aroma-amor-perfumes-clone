@@ -8,7 +8,6 @@ import { CartProvider } from "@/context/CartContext";
 import { OrdersProvider } from "@/context/OrdersContext";
 import { SiteSettingsProvider } from "@/context/SiteSettingsContext";
 import CartDrawer from "@/components/cart/CartDrawer";
-import { SkipLink } from "@/components/ui/skip-link";
 
 // Metadata للـ SEO
 export const metadata: Metadata = {
@@ -68,7 +67,6 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl">
       <body className="antialiased">
-        <SkipLink />
         <SiteSettingsProvider>
           <OrdersProvider>
             <CartProvider>
