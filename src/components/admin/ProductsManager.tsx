@@ -199,14 +199,14 @@ export default function ProductsManager() {
               <div className="flex gap-2 pt-2">
                 <button
                   onClick={() => openEditModal(product)}
-                  className="flex-1 flex items-center justify-center gap-2 bg-blue-50 text-blue-600 hover:bg-blue-100 py-2 rounded-lg transition-colors"
+                  className="flex-1 flex items-center justify-center gap-2 bg-blue-50 text-blue-600 hover:bg-blue-100 py-2 rounded-lg transition-colors outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
                 >
                   <Edit2 className="w-4 h-4" />
                   تعديل
                 </button>
                 <button
                   onClick={() => handleDelete(product.id)}
-                  className="flex items-center justify-center bg-red-50 text-red-600 hover:bg-red-100 p-2 rounded-lg transition-colors"
+                  className="flex items-center justify-center bg-red-50 text-red-600 hover:bg-red-100 p-2 rounded-lg transition-colors outline-none focus-visible:ring-2 focus-visible:ring-red-500"
                   aria-label="حذف المنتج"
                 >
                   <Trash2 className="w-4 h-4" />

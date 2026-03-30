@@ -154,7 +154,7 @@ export default function PromotionsManager() {
                 <div className="flex flex-wrap items-center gap-3 text-sm">
                   <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full font-mono font-bold flex items-center gap-2">
                     {promotion.code}
-                    <button 
+                    <button
                       onClick={() => copyCode(promotion.code)}
                       className="hover:text-[#2C2420]"
                       aria-label="نسخ الكود"
@@ -197,21 +197,21 @@ export default function PromotionsManager() {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => toggleActive(promotion)}
-                  className={`p-2 rounded-lg ${promotion.isActive ? 'text-emerald-500' : 'text-gray-400'}`}
+                  className={`p-2 rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 ${promotion.isActive ? 'text-emerald-500' : 'text-gray-400'}`}
                   aria-label={promotion.isActive ? 'إلغاء التفعيل' : 'تفعيل'}
                 >
                   {promotion.isActive ? <ToggleRight className="w-8 h-8" /> : <ToggleLeft className="w-8 h-8" />}
                 </button>
                 <button
                   onClick={() => openEditModal(promotion)}
-                  className="p-2 bg-blue-50 text-blue-600 hover:bg-blue-100 rounded-lg transition-colors"
+                  className="p-2 bg-blue-50 text-blue-600 hover:bg-blue-100 rounded-lg transition-colors outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
                   aria-label="تعديل العرض"
                 >
                   <Edit2 className="w-5 h-5" />
                 </button>
                 <button
                   onClick={() => handleDelete(promotion.id)}
-                  className="p-2 bg-red-50 text-red-600 hover:bg-red-100 rounded-lg transition-colors"
+                  className="p-2 bg-red-50 text-red-600 hover:bg-red-100 rounded-lg transition-colors outline-none focus-visible:ring-2 focus-visible:ring-red-500"
                   aria-label="حذف العرض"
                 >
                   <Trash2 className="w-5 h-5" />
