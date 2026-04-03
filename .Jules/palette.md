@@ -5,3 +5,7 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+
+## 2024-06-05 - CI Silent Failure related to Next.js + ESLint Version Mismatch
+**Learning:** Cloudflare Workers Builds CI failed silently (no logs, generic failure) due to a peer dependency error between `next` (v15.3.5) and `eslint-config-next` (v16.0.1 in `package.json`).
+**Action:** Always ensure that `eslint-config-next` matches the `next` package version exactly in `package.json` to prevent silent build failures in strict CI environments.
