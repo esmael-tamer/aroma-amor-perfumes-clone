@@ -4,7 +4,6 @@ import { useState, useCallback, memo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { ShoppingCart, Menu, X, Search, User, Phone, MapPin, Settings } from 'lucide-react';
 import { NAVIGATION_LINKS, COMPANY_INFO } from '@/lib/constants';
 import { useCart } from '@/context/CartContext';
@@ -79,66 +78,48 @@ const Header = memo(function Header() {
           {/* Actions */}
           <div className="flex items-center gap-3">
             {/* Search Button - Desktop */}
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="hidden md:flex text-[#2C2420] hover:bg-[#E8EAED]"
-                  aria-label="بحث"
-                >
-                  <Search className="w-5 h-5" aria-hidden="true" />
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>بحث</p>
-              </TooltipContent>
-            </Tooltip>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="hidden md:flex text-[#2C2420] hover:bg-[#E8EAED]"
+              aria-label="بحث"
+              title="بحث"
+            >
+              <Search className="w-5 h-5" aria-hidden="true" />
+            </Button>
 
             {/* User Account - Desktop */}
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Link href="/admin">
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    className="hidden md:flex text-[#2C2420] hover:bg-[#E8EAED]"
-                    aria-label="لوحة التحكم"
-                  >
-                    <Settings className="w-5 h-5" aria-hidden="true" />
-                  </Button>
-                </Link>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>لوحة التحكم</p>
-              </TooltipContent>
-            </Tooltip>
+            <Link href="/admin">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hidden md:flex text-[#2C2420] hover:bg-[#E8EAED]"
+                aria-label="لوحة التحكم"
+                title="لوحة التحكم"
+              >
+                <Settings className="w-5 h-5" aria-hidden="true" />
+              </Button>
+            </Link>
 
             {/* Shopping Cart */}
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={openCart}
-                  className="relative text-[#2C2420] hover:bg-[#E8EAED]"
-                  aria-label={`سلة التسوق - ${totalItems} منتجات`}
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={openCart}
+              className="relative text-[#2C2420] hover:bg-[#E8EAED]"
+              aria-label={`سلة التسوق - ${totalItems} منتجات`}
+              title="سلة التسوق"
+            >
+              <ShoppingCart className="w-6 h-6" aria-hidden="true" />
+              {totalItems > 0 && (
+                <span
+                  className="absolute -top-1 -right-1 bg-amber-500 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-md animate-in zoom-in"
+                  aria-hidden="true"
                 >
-                  <ShoppingCart className="w-6 h-6" aria-hidden="true" />
-                  {totalItems > 0 && (
-                    <span
-                      className="absolute -top-1 -right-1 bg-gradient-to-r from-red-500 to-orange-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold shadow-lg animate-bounce-quick"
-                      aria-hidden="true"
-                    >
-                      {totalItems > 9 ? '9+' : totalItems}
-                    </span>
-                  )}
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>سلة التسوق</p>
-              </TooltipContent>
-            </Tooltip>
+                  {totalItems > 9 ? '9+' : totalItems}
+                </span>
+              )}
+            </Button>
 
             {/* Contact Phone - Desktop */}
             <Button
