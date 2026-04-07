@@ -154,7 +154,7 @@ export default function PromotionsManager() {
                 <div className="flex flex-wrap items-center gap-3 text-sm">
                   <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full font-mono font-bold flex items-center gap-2">
                     {promotion.code}
-                    <button 
+                    <button type="button"
                       onClick={() => copyCode(promotion.code)}
                       className="hover:text-[#2C2420]"
                       aria-label="نسخ الكود"
@@ -239,7 +239,7 @@ export default function PromotionsManager() {
               <h2 className="text-xl font-bold text-gray-800">
                 {editingPromotion ? 'تعديل العرض' : 'إضافة عرض جديد'}
               </h2>
-              <button onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-gray-100 rounded-lg" aria-label="إغلاق">
+              <button type="button" onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-gray-100 rounded-lg" aria-label="إغلاق">
                 <X className="w-5 h-5" />
               </button>
             </div>
