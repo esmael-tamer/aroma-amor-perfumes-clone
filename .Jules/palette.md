@@ -5,7 +5,3 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
-
-## 2024-06-15 - Unnecessary Memoization on Server Components
-**Learning:** Wrapping simple static components (like a SkipLink) in `React.memo()` when they are imported into Server Components (like `layout.tsx`) adds overhead without benefit and can cause compatibility issues.
-**Action:** Avoid wrapping purely functional, stateless UI components in `memo()` unless they are complex client-side components with proven re-render issues.
