@@ -291,6 +291,7 @@ const AdminDashboard = memo(function AdminDashboard() {
               <div className="flex flex-wrap gap-2">
                 {Object.entries(statusConfig).map(([key, value]) => (
                   <button
+                    type="button"
                     key={key}
                     onClick={() => {
                       updateOrderStatus(selectedOrder.id, key as Order['status']);
