@@ -5,3 +5,7 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+
+## 2026-04-13 - Form Accessibility: Explicit ARIA Linkage
+**Learning:** In complex React forms, simply having an adjacent error message is insufficient for screen readers. Validation states and dynamic error messages must be explicitly linked to their corresponding inputs.
+**Action:** Use `id` and `htmlFor` to link labels, and use `aria-invalid` and `aria-describedby` on the input to directly announce error messages to assistive technologies.
