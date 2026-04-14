@@ -281,34 +281,40 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
 
                 <div className="grid gap-6">
                   <div>
-                    <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                    <label htmlFor="fullName" className="block text-sm font-bold text-[#2C2420] mb-2">
                       الاسم الكامل <span className="text-red-500">*</span>
                     </label>
                     <input
+                      id="fullName"
                       type="text"
                       name="fullName"
                       value={formData.fullName}
                       onChange={handleInputChange}
+                      aria-invalid={errors.fullName ? 'true' : 'false'}
+                      aria-describedby={errors.fullName ? "fullName-error" : undefined}
                       className={`w-full px-4 py-4 rounded-xl border-2 ${errors.fullName ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
                       placeholder="أدخل اسمك الكامل"
                     />
-                    {errors.fullName && <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>}
+                    {errors.fullName && <p id="fullName-error" className="text-red-500 text-sm mt-1">{errors.fullName}</p>}
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                    <label htmlFor="phone" className="block text-sm font-bold text-[#2C2420] mb-2">
                       رقم الهاتف <span className="text-red-500">*</span>
                     </label>
                     <input
+                      id="phone"
                       type="tel"
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
+                      aria-invalid={errors.phone ? 'true' : 'false'}
+                      aria-describedby={errors.phone ? "phone-error" : undefined}
                       className={`w-full px-4 py-4 rounded-xl border-2 ${errors.phone ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
                       placeholder="+965 XXXX XXXX"
                       dir="ltr"
                     />
-                    {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
+                    {errors.phone && <p id="phone-error" className="text-red-500 text-sm mt-1">{errors.phone}</p>}
                   </div>
 
                   <div>
@@ -361,18 +367,21 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                      <label htmlFor="city" className="block text-sm font-bold text-[#2C2420] mb-2">
                         المدينة <span className="text-red-500">*</span>
                       </label>
                       <input
+                        id="city"
                         type="text"
                         name="city"
                         value={formData.city}
                         onChange={handleInputChange}
+                        aria-invalid={errors.city ? 'true' : 'false'}
+                        aria-describedby={errors.city ? "city-error" : undefined}
                         className={`w-full px-4 py-4 rounded-xl border-2 ${errors.city ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
                         placeholder="مثال: مدينة الكويت"
                       />
-                      {errors.city && <p className="text-red-500 text-sm mt-1">{errors.city}</p>}
+                      {errors.city && <p id="city-error" className="text-red-500 text-sm mt-1">{errors.city}</p>}
                     </div>
                   </div>
 
