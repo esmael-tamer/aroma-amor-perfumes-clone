@@ -8,7 +8,7 @@ type ReporterProps = {
   reset?: () => void;
 };
 
-export default function ErrorReporter({ error, reset }: ReporterProps) {
+export default function ErrorReporter({ error, reset }: ReporterProps = { error: new Error("Unknown error"), reset: () => {} }) {
   /* ─ instrumentation shared by every route ─ */
   const lastOverlayMsg = useRef("");
   const pollRef = useRef<NodeJS.Timeout>();
