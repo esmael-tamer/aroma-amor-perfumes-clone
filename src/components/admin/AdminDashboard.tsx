@@ -233,14 +233,12 @@ const AdminDashboard = memo(function AdminDashboard() {
                         </td>
                         <td className="px-6 py-4">
                           <div className="flex items-center gap-2">
-                            <button
-                              type="button"
+                            <button type="button"
                               onClick={() => setSelectedOrder(order)}
-                              className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors focus-visible:ring-2 focus-visible:ring-blue-500 outline-none"
-                              aria-label={`عرض تفاصيل الطلب رقم ${order.id}`}
+                              className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                               title="عرض التفاصيل"
                             >
-                              <Eye className="w-5 h-5" aria-hidden="true" />
+                              <Eye className="w-5 h-5" />
                             </button>
                           </div>
                         </td>
@@ -264,13 +262,12 @@ const AdminDashboard = memo(function AdminDashboard() {
           <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white rounded-3xl shadow-2xl z-50 p-8">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-2xl font-bold text-gray-800">تفاصيل الطلب</h3>
-              <button
-                type="button"
+              <button type="button"
                 onClick={() => setSelectedOrder(null)}
                 aria-label="إغلاق تفاصيل الطلب"
-                className="text-gray-400 hover:text-gray-600 rounded-lg p-1 focus-visible:ring-2 focus-visible:ring-blue-500 outline-none"
+                className="text-gray-400 hover:text-gray-600"
               >
-                <XCircle className="w-8 h-8" aria-hidden="true" />
+                <XCircle className="w-8 h-8" />
               </button>
             </div>
 
@@ -290,9 +287,8 @@ const AdminDashboard = memo(function AdminDashboard() {
               <label className="block text-sm font-bold text-gray-600 mb-2">تحديث حالة الطلب:</label>
               <div className="flex flex-wrap gap-2">
                 {Object.entries(statusConfig).map(([key, value]) => (
-                  <button
+                  <button type="button"
                     key={key}
-                    type="button"
                     onClick={() => {
                       updateOrderStatus(selectedOrder.id, key as Order['status']);
                       setSelectedOrder({ ...selectedOrder, status: key as Order['status'] });
@@ -401,8 +397,7 @@ const AdminDashboard = memo(function AdminDashboard() {
             </div>
 
             {/* Delete Order */}
-            <button
-              type="button"
+            <button type="button"
               onClick={() => {
                 if (confirm('هل أنت متأكد من حذف هذا الطلب؟')) {
                   deleteOrder(selectedOrder.id);

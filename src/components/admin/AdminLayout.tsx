@@ -61,8 +61,7 @@ export default function AdminLayout({ children, activeTab }: AdminLayoutProps) {
               <h1 className="text-2xl font-bold">Aroma & Amor</h1>
               <p className="text-sm text-white/60">لوحة التحكم</p>
             </div>
-            <button
-              type="button"
+            <button type="button"
               onClick={() => setIsSidebarOpen(false)}
               className="lg:hidden p-2 hover:bg-white/10 rounded-lg"
               aria-label="إغلاق القائمة"
@@ -115,8 +114,7 @@ export default function AdminLayout({ children, activeTab }: AdminLayoutProps) {
         <header className="bg-white shadow-sm sticky top-0 z-30">
           <div className="flex items-center justify-between px-6 py-4">
             <div className="flex items-center gap-4">
-              <button
-                type="button"
+              <button type="button"
                 onClick={() => setIsSidebarOpen(true)}
                 className="lg:hidden p-2 hover:bg-gray-100 rounded-lg"
                 aria-label="فتح القائمة"
