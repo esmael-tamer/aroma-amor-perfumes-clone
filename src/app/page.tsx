@@ -35,7 +35,7 @@ export default function HomePage() {
       
       <Header />
       
-      <main className="min-h-screen" role="main" id="main-content">
+      <main className="min-h-screen" role="main">
         <Suspense fallback={<LoadingScreen />}>
           <HeroSection />
         </Suspense>
