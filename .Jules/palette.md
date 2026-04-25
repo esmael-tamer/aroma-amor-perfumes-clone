@@ -5,3 +5,7 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+
+## 2026-04-25 - Form Accessibility Label/Input Association
+**Learning:** In complex, multi-step forms like Checkout, inputs must be explicitly linked to their labels using `id` and `htmlFor` attributes. Validation error messages should be connected via `aria-describedby` and `aria-invalid` attributes for screen readers.
+**Action:** Always ensure robust structural linkage of form inputs with labels and error messages for better accessibility, rather than relying solely on visual proximity.
