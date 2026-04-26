@@ -404,15 +404,15 @@ export default function ProductsManager() {
               </div>
 
               <div className="flex gap-3 pt-4">
-                <button
-                  type="submit"
+                <button type="submit"
+
                   className="flex-1 flex items-center justify-center gap-2 bg-[#2C2420] hover:bg-[#4A5568] text-white py-3 rounded-xl transition-colors"
                 >
                   <Save className="w-5 h-5" />
                   {editingProduct ? 'حفظ التعديلات' : 'إضافة المنتج'}
                 </button>
-                <button
-                  type="button"
+                <button type="button"
+
                   onClick={() => setIsModalOpen(false)}
                   className="px-6 py-3 border-2 border-gray-200 hover:bg-gray-50 rounded-xl transition-colors"
                 >
