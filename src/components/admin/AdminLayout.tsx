@@ -62,6 +62,7 @@ export default function AdminLayout({ children, activeTab }: AdminLayoutProps) {
               <p className="text-sm text-white/60">لوحة التحكم</p>
             </div>
             <button
+              type="button"
               onClick={() => setIsSidebarOpen(false)}
               className="lg:hidden p-2 hover:bg-white/10 rounded-lg"
               aria-label="إغلاق القائمة"
@@ -115,6 +116,7 @@ export default function AdminLayout({ children, activeTab }: AdminLayoutProps) {
           <div className="flex items-center justify-between px-6 py-4">
             <div className="flex items-center gap-4">
               <button
+                type="button"
                 onClick={() => setIsSidebarOpen(true)}
                 className="lg:hidden p-2 hover:bg-gray-100 rounded-lg"
                 aria-label="فتح القائمة"
@@ -139,7 +141,7 @@ export default function AdminLayout({ children, activeTab }: AdminLayoutProps) {
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 p-6">
+        <main id="main-content" className="flex-1 p-6">
           {children}
         </main>
       </div>
