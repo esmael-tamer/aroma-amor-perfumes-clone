@@ -292,6 +292,7 @@ const AdminDashboard = memo(function AdminDashboard() {
                 {Object.entries(statusConfig).map(([key, value]) => (
                   <button
                     key={key}
+                    type="button"
                     onClick={() => {
                       updateOrderStatus(selectedOrder.id, key as Order['status']);
                       setSelectedOrder({ ...selectedOrder, status: key as Order['status'] });
@@ -401,6 +402,7 @@ const AdminDashboard = memo(function AdminDashboard() {
 
             {/* Delete Order */}
             <button
+              type="button"
               onClick={() => {
                 if (confirm('هل أنت متأكد من حذف هذا الطلب؟')) {
                   deleteOrder(selectedOrder.id);
