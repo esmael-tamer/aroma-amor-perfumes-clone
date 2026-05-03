@@ -240,7 +240,7 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
       </header>
 
       {/* Progress Steps */}
-      <div className="container mx-auto px-4 py-8">
+      <div id="main-content" className="container mx-auto px-4 py-8">
         <div className="flex items-center justify-center gap-4 mb-12">
           {[
             { num: 1, title: 'المعلومات', icon: User },
