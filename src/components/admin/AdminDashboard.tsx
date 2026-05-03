@@ -402,6 +402,7 @@ const AdminDashboard = memo(function AdminDashboard() {
 
             {/* Delete Order */}
             <button
+              type="button"
               onClick={() => {
                 if (confirm('هل أنت متأكد من حذف هذا الطلب؟')) {
                   deleteOrder(selectedOrder.id);
