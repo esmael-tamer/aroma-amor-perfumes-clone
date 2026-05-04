@@ -5,3 +5,7 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+
+## 2026-05-04 - Dynamic ARIA Labels for Icon Buttons in Data Tables
+**Learning:** In data-driven UI tables (like Admin Orders), using a static `title` on an icon-only button isn't sufficient for screen reader users to distinguish which row's action they are triggering. Also, the inner SVG icons shouldn't be read out if the button itself is labeled.
+**Action:** Always provide a dynamic `aria-label` (e.g., `aria-label={`عرض تفاصيل الطلب رقم ${order.id}`}`) on icon-only action buttons in lists/tables, and apply `aria-hidden="true"` to the nested decorative SVG.
