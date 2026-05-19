@@ -5,3 +5,6 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+## 2024-05-18 - [Add aria-live to Dynamic Cart Updates]
+**Learning:** For dynamic text elements representing cart state (like quantities and totals) that update in real-time without page reloads, adding `aria-live="polite"` and `aria-atomic="true"` ensures screen readers announce the changes naturally.
+**Action:** Always add `aria-live="polite"` to spans or paragraphs displaying dynamic quantities or item totals.

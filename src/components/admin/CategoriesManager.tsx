@@ -72,6 +72,7 @@ export default function CategoriesManager() {
           <p className="text-gray-500">{categories.length} قسم</p>
         </div>
         <button
+          type="button"
           onClick={openAddModal}
           className="flex items-center gap-2 bg-[#2C2420] hover:bg-[#4A5568] text-white px-6 py-3 rounded-xl transition-colors"
         >
@@ -92,6 +93,7 @@ export default function CategoriesManager() {
             <div className="flex items-start justify-between mb-4">
               <div className="text-5xl">{category.icon}</div>
               <button
+                type="button"
                 onClick={() => toggleActive(category)}
                 className={`p-1 rounded-lg ${category.isActive ? 'text-emerald-500' : 'text-gray-400'}`}
                 aria-label={category.isActive ? 'إلغاء التفعيل' : 'تفعيل'}
@@ -103,6 +105,7 @@ export default function CategoriesManager() {
             <p className="text-gray-500 mb-4">{category.nameEn}</p>
             <div className="flex gap-2">
               <button
+                type="button"
                 onClick={() => openEditModal(category)}
                 className="flex-1 flex items-center justify-center gap-2 bg-blue-50 text-blue-600 hover:bg-blue-100 py-2 rounded-lg transition-colors"
               >
@@ -110,6 +113,7 @@ export default function CategoriesManager() {
                 تعديل
               </button>
               <button
+                type="button"
                 onClick={() => handleDelete(category.id)}
                 className="flex items-center justify-center bg-red-50 text-red-600 hover:bg-red-100 p-2 rounded-lg transition-colors"
                 aria-label="حذف القسم"
@@ -138,7 +142,7 @@ export default function CategoriesManager() {
               <h2 className="text-xl font-bold text-gray-800">
                 {editingCategory ? 'تعديل القسم' : 'إضافة قسم جديد'}
               </h2>
-              <button onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-gray-100 rounded-lg" aria-label="إغلاق">
+              <button type="button" onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-gray-100 rounded-lg" aria-label="إغلاق">
                 <X className="w-5 h-5" />
               </button>
             </div>
