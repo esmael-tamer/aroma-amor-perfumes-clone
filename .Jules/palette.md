@@ -5,3 +5,6 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+## 2024-05-20 - Skip To Content Links
+**Learning:** For "Skip to Content" links, use `fixed` positioning and `-translate-y-[150%] focus:translate-y-0` rather than `sr-only focus:not-sr-only` to provide smoother visual feedback. Ensure the target container (`<main>`) has `tabIndex={-1}` and `outline-none` to accept programmatic focus properly.
+**Action:** Always implement a skip link and ensure its target accepts focus seamlessly.
