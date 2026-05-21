@@ -14,3 +14,6 @@
 ## 2024-05-20 - Global Error Missing Props
 **Learning:** For components used as `export default` in Next.js error files, like `global-error.tsx`, ensure they are wrapped to accept props if they define specific signatures, or modify the signature directly to accept `props: any` or default empty `{}` to avoid TS2554.
 **Action:** Always verify `global-error.tsx` exports have the right signature.
+## 2024-05-20 - Multi-line Grep Warning
+**Learning:** When using `grep` to check for missing attributes like `type="button"` in HTML/JSX tags, remember that attributes may be formatted across multiple lines. `grep -v` line-by-line checks will yield false positives.
+**Action:** Always verify the full element context (e.g. using a script to parse tags) before making assumptions about missing attributes.
