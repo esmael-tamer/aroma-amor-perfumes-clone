@@ -234,11 +234,13 @@ const AdminDashboard = memo(function AdminDashboard() {
                         <td className="px-6 py-4">
                           <div className="flex items-center gap-2">
                             <button
+                              type="button"
                               onClick={() => setSelectedOrder(order)}
                               className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                               title="عرض التفاصيل"
+                              aria-label={`عرض تفاصيل الطلب ${order.id}`}
                             >
-                              <Eye className="w-5 h-5" />
+                              <Eye className="w-5 h-5" aria-hidden="true" />
                             </button>
                           </div>
                         </td>
