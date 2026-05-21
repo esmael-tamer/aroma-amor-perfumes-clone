@@ -11,3 +11,6 @@
 ## 2024-05-20 - Global Skip Links
 **Learning:** If you add a "Skip to Content" link to `layout.tsx` so it appears universally, you must ensure that the target container (`id="main-content"`) is also present universally, either by wrapping `{children}` in `layout.tsx` or by adding it to every route.
 **Action:** Always verify that universally accessible links have universal targets.
+## 2024-05-20 - Global Error Missing Props
+**Learning:** For components used as `export default` in Next.js error files, like `global-error.tsx`, ensure they are wrapped to accept props if they define specific signatures, or modify the signature directly to accept `props: any` or default empty `{}` to avoid TS2554.
+**Action:** Always verify `global-error.tsx` exports have the right signature.
