@@ -8,3 +8,6 @@
 ## 2026-05-23 - Dynamic aria-label for interactive lists
 **Learning:** Interactive list items and icon-only action buttons in tables/lists (like in AdminDashboard) must use dynamic `aria-label`s that incorporate the item's unique identifier (e.g., `order.id`) to provide meaningful context for screen readers, rather than generic static titles. Also inner SVGs must be explicitly hidden with `aria-hidden='true'`.
 **Action:** Always add dynamic ARIA labels and explicitly hide inner decorative SVGs from screen readers using `aria-hidden='true'` for icon-only action buttons.
+## 2024-05-25 - Explicit `type="button"` on client side
+**Learning:** Cloudflare Workers CI build failures caused by missing `type="button"` attributes on client-side components often fail silently with "No annotations available". When fixing these, audit all components across the application to ensure every `<button>` has the attribute, as missing even one will prevent the build from passing.
+**Action:** Always add `type="button"` to all client-side buttons unless they specifically need to submit a form.
