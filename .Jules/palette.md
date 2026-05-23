@@ -5,3 +5,6 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+## 2024-05-25 - eslint-config-next Peer Dependency Mismatch
+**Learning:** Out-of-sync versions between `next` and `eslint-config-next` can cause silent Cloudflare Workers CI failures due to peer dependency resolution issues.
+**Action:** Always ensure `eslint-config-next` is exactly matched to the installed `next` version when debugging silent CI failures.
