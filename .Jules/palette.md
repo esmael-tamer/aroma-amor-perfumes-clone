@@ -5,6 +5,6 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
-## 2024-05-24 - Cart Drawer Micro-UX & Accessibility Enhancements
-**Learning:** Native disabled `<button>` elements in React/Tailwind do not reliably trigger hover events for `title` attributes, making it difficult to explain *why* a button is disabled (e.g., reaching maximum stock). Also, adding `type="button"` to all native buttons in client components is critical to avoid implicit form submission bugs. Additionally, explicitly adding `focus-visible` ensures custom interactive elements remain accessible via keyboard navigation.
-**Action:** Always wrap disabled native buttons in a standard `<div title="...">` to provide reliable tooltips for disabled states. Explicitly add `type="button"` to all standalone icon buttons, use `aria-hidden="true"` on inner SVG icons to avoid redundant screen reader announcements, and apply `focus-visible:ring-2 outline-none` to guarantee clear keyboard focus indicators.
+## 2024-05-24 - Exhaustive `type="button"` Coverage Validation
+**Learning:** Cloudflare Workers CI builds can fail silently (without annotations) if even a single client-side `<button>` lacks an explicit `type` attribute, due to strict implicit form submission rules. Regex-based global replacements for adding `type="button"` can be brittle, especially with multiline React attributes, leading to either missed buttons or duplicate attribute errors (`TS17001`).
+**Action:** Always write robust parsers or use strict AST-based tools when doing mass attribute injections. Verify global replacements meticulously with tests like `grep -rn "<button" src/ | grep -v "type="` before committing, and ensure the local build (`pnpm build`) and type check (`tsc --noEmit`) pass without new `TS17001` duplicate attribute errors.
