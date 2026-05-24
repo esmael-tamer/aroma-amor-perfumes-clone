@@ -2,4 +2,6 @@
 
 import ErrorReporter from "@/components/ErrorReporter";
 
-export default ErrorReporter;
+export default function GlobalError(props: any) {
+  return <ErrorReporter {...props} />;
+}
