@@ -63,11 +63,12 @@ const CartDrawer = memo(function CartDrawer() {
             </div>
           </div>
           <button
+            type="button"
             onClick={() => setIsCartOpen(false)}
-            className="text-white hover:bg-white/20 p-2.5 rounded-xl transition-all hover:rotate-90 duration-300"
+            className="text-white hover:bg-white/20 p-2.5 rounded-xl transition-all hover:rotate-90 duration-300 focus-visible:ring-2 outline-none"
             aria-label="إغلاق السلة"
           >
-            <X className="w-6 h-6" />
+            <X className="w-6 h-6" aria-hidden="true" />
           </button>
         </div>
 
@@ -143,30 +144,32 @@ const CartDrawer = memo(function CartDrawer() {
                   {/* Quantity Controls */}
                   <div className="flex flex-col items-end justify-between">
                     <button
+                      type="button"
                       onClick={() => removeFromCart(item.product.id)}
-                      className="text-red-400 hover:text-red-600 hover:bg-red-50 p-1.5 rounded-lg transition-all hover:scale-110"
+                      className="text-red-400 hover:text-red-600 hover:bg-red-50 p-1.5 rounded-lg transition-all hover:scale-110 focus-visible:ring-2 outline-none"
                       aria-label={`حذف ${item.product.nameAr} من السلة`}
-                      title="حذف من السلة"
                     >
-                      <Trash2 className="w-4 h-4" />
+                      <Trash2 className="w-4 h-4" aria-hidden="true" />
                     </button>
 
                     <div className="flex items-center gap-1 bg-white rounded-full border-2 border-[#E8EAED] p-0.5 shadow-sm">
                       <button
+                        type="button"
                         onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
-                        className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-red-50 hover:text-red-500 transition-colors"
+                        className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-red-50 hover:text-red-500 transition-colors focus-visible:ring-2 outline-none"
                         aria-label={`تقليل كمية ${item.product.nameAr}`}
                       >
-                        <Minus className="w-3 h-3" />
+                        <Minus className="w-3 h-3" aria-hidden="true" />
                       </button>
                       <span className="w-6 text-center font-bold text-sm">{item.quantity}</span>
                       <button
+                        type="button"
                         onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
                         disabled={item.quantity >= item.product.stock}
-                        className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-emerald-50 hover:text-emerald-500 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                        className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-emerald-50 hover:text-emerald-500 transition-colors disabled:opacity-40 disabled:cursor-not-allowed focus-visible:ring-2 outline-none"
                         aria-label={`زيادة كمية ${item.product.nameAr}`}
                       >
-                        <Plus className="w-3 h-3" />
+                        <Plus className="w-3 h-3" aria-hidden="true" />
                       </button>
                     </div>
                   </div>
@@ -218,14 +221,16 @@ const CartDrawer = memo(function CartDrawer() {
             {/* Actions Row */}
             <div className="flex gap-2">
               <button
+                type="button"
                 onClick={() => setIsCartOpen(false)}
-                className="flex-1 text-[#2C2420] hover:bg-[#E8EAED] py-2.5 rounded-xl transition-colors font-medium text-sm border-2 border-[#E8EAED]"
+                className="flex-1 text-[#2C2420] hover:bg-[#E8EAED] py-2.5 rounded-xl transition-colors font-medium text-sm border-2 border-[#E8EAED] focus-visible:ring-2 outline-none"
               >
                 متابعة التسوق
               </button>
               <button
+                type="button"
                 onClick={clearCart}
-                className="text-red-500 hover:bg-red-50 px-4 py-2.5 rounded-xl transition-colors text-sm font-medium border-2 border-red-100"
+                className="text-red-500 hover:bg-red-50 px-4 py-2.5 rounded-xl transition-colors text-sm font-medium border-2 border-red-100 focus-visible:ring-2 outline-none"
               >
                 إفراغ 🗑️
               </button>
