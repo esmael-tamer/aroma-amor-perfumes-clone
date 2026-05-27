@@ -159,7 +159,7 @@ const CartDrawer = memo(function CartDrawer() {
                       >
                         <Minus className="w-3 h-3" />
                       </button>
-                      <span className="w-6 text-center font-bold text-sm">{item.quantity}</span>
+                      <span className="w-6 text-center font-bold text-sm" aria-live="polite">{item.quantity}</span>
                       <button
                         onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
                         disabled={item.quantity >= item.product.stock}
