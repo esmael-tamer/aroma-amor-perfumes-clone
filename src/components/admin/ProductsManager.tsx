@@ -122,7 +122,7 @@ export default function ProductsManager() {
           <h1 className="text-2xl font-bold text-gray-800">إدارة المنتجات</h1>
           <p className="text-gray-500">{products.length} منتج</p>
         </div>
-        <button type="button"
+        <button
           onClick={openAddModal}
           className="flex items-center gap-2 bg-[#2C2420] hover:bg-[#4A5568] text-white px-6 py-3 rounded-xl transition-colors"
         >
@@ -197,14 +197,14 @@ export default function ProductsManager() {
                 <span className="text-xs text-gray-500">{product.categoryAr}</span>
               </div>
               <div className="flex gap-2 pt-2">
-                <button type="button"
+                <button
                   onClick={() => openEditModal(product)}
                   className="flex-1 flex items-center justify-center gap-2 bg-blue-50 text-blue-600 hover:bg-blue-100 py-2 rounded-lg transition-colors"
                 >
                   <Edit2 className="w-4 h-4" />
                   تعديل
                 </button>
-                <button type="button"
+                <button
                   onClick={() => handleDelete(product.id)}
                   className="flex items-center justify-center bg-red-50 text-red-600 hover:bg-red-100 p-2 rounded-lg transition-colors"
                   aria-label="حذف المنتج"
@@ -234,7 +234,7 @@ export default function ProductsManager() {
               <h2 className="text-xl font-bold text-gray-800">
                 {editingProduct ? 'تعديل المنتج' : 'إضافة منتج جديد'}
               </h2>
-              <button type="button" onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-gray-100 rounded-lg" aria-label="إغلاق">
+              <button onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-gray-100 rounded-lg" aria-label="إغلاق">
                 <X className="w-5 h-5" />
               </button>
             </div>

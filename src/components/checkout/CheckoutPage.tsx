@@ -188,7 +188,7 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
           </p>
           
           <Link href="/">
-            <Button type="button" className="bg-gradient-to-r from-[#2C2420] to-[#4A5568] text-white px-12 py-6 rounded-full text-lg font-bold hover:shadow-xl transition-all">
+            <Button className="bg-gradient-to-r from-[#2C2420] to-[#4A5568] text-white px-12 py-6 rounded-full text-lg font-bold hover:shadow-xl transition-all">
               العودة للرئيسية
             </Button>
           </Link>
@@ -206,7 +206,7 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
           <h1 className="text-3xl font-bold text-[#2C2420]">السلة فارغة</h1>
           <p className="text-[#4A5568]">أضف بعض المنتجات للبدء في الطلب</p>
           <Link href="/">
-            <Button type="button" className="bg-gradient-to-r from-[#2C2420] to-[#4A5568] text-white px-12 py-6 rounded-full text-lg font-bold hover:shadow-xl transition-all">
+            <Button className="bg-gradient-to-r from-[#2C2420] to-[#4A5568] text-white px-12 py-6 rounded-full text-lg font-bold hover:shadow-xl transition-all">
               تصفح المنتجات
             </Button>
           </Link>
@@ -281,10 +281,11 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
 
                 <div className="grid gap-6">
                   <div>
-                    <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                    <label htmlFor="fullName" className="block text-sm font-bold text-[#2C2420] mb-2">
                       الاسم الكامل <span className="text-red-500">*</span>
                     </label>
                     <input
+                      id="fullName"
                       type="text"
                       name="fullName"
                       value={formData.fullName}
@@ -296,10 +297,11 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                    <label htmlFor="phone" className="block text-sm font-bold text-[#2C2420] mb-2">
                       رقم الهاتف <span className="text-red-500">*</span>
                     </label>
                     <input
+                      id="phone"
                       type="tel"
                       name="phone"
                       value={formData.phone}
@@ -312,10 +314,11 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                    <label htmlFor="email" className="block text-sm font-bold text-[#2C2420] mb-2">
                       البريد الإلكتروني (اختياري)
                     </label>
                     <input
+                      id="email"
                       type="email"
                       name="email"
                       value={formData.email}
@@ -528,7 +531,7 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
             {/* Navigation Buttons */}
             <div className="flex gap-4">
               {step > 1 && (
-                <Button type="button"
+                <Button
                   onClick={() => setStep(prev => (prev - 1) as 1 | 2)}
                   variant="outline"
                   className="flex-1 py-6 rounded-full text-lg font-bold border-2 border-[#2C2420] text-[#2C2420] hover:bg-[#2C2420] hover:text-white"
@@ -537,14 +540,14 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                 </Button>
               )}
               {step < 3 ? (
-                <Button type="button"
+                <Button
                   onClick={handleNextStep}
                   className="flex-1 bg-gradient-to-r from-[#2C2420] to-[#4A5568] text-white py-6 rounded-full text-lg font-bold hover:shadow-xl transition-all"
                 >
                   التالي
                 </Button>
               ) : (
-                <Button type="button"
+                <Button
                   onClick={handleSubmitOrder}
                   disabled={isSubmitting}
                   className="flex-1 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white py-6 rounded-full text-lg font-bold hover:shadow-xl transition-all disabled:opacity-70"
