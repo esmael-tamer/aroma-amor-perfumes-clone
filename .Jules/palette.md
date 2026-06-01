@@ -5,6 +5,3 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
-## 2024-06-01 - Fix missing labels association in Checkout form
-**Learning:** Forms without proper labels or error associations negatively impact accessibility.
-**Action:** Added IDs to all inputs and linked them to labels with `htmlFor` in the checkout page.
