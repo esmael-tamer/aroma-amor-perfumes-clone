@@ -234,11 +234,13 @@ const AdminDashboard = memo(function AdminDashboard() {
                         <td className="px-6 py-4">
                           <div className="flex items-center gap-2">
                             <button
+                              type="button"
                               onClick={() => setSelectedOrder(order)}
-                              className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                              className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors focus-visible:ring-2 outline-none"
                               title="عرض التفاصيل"
+                              aria-label={`عرض تفاصيل الطلب ${order.id}`}
                             >
-                              <Eye className="w-5 h-5" />
+                              <Eye className="w-5 h-5" aria-hidden="true" />
                             </button>
                           </div>
                         </td>
@@ -263,11 +265,12 @@ const AdminDashboard = memo(function AdminDashboard() {
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-2xl font-bold text-gray-800">تفاصيل الطلب</h3>
               <button
+                type="button"
                 onClick={() => setSelectedOrder(null)}
                 aria-label="إغلاق تفاصيل الطلب"
-                className="text-gray-400 hover:text-gray-600"
+                className="text-gray-400 hover:text-gray-600 focus-visible:ring-2 outline-none rounded-full"
               >
-                <XCircle className="w-8 h-8" />
+                <XCircle className="w-8 h-8" aria-hidden="true" />
               </button>
             </div>
 
