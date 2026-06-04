@@ -172,9 +172,8 @@ export default function CategoriesManager() {
                 <label className="block text-sm font-medium text-gray-700 mb-2">الأيقونة</label>
                 <div className="flex flex-wrap gap-2">
                   {emojiOptions.map(emoji => (
-                    <button
+                    <button type="button"
                       key={emoji}
-                      type="button"
                       onClick={() => setFormData({ ...formData, icon: emoji })}
                       className={`w-12 h-12 text-2xl rounded-xl border-2 transition-all ${
                         formData.icon === emoji 
