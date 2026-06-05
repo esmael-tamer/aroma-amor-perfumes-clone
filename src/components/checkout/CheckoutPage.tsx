@@ -281,12 +281,10 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
 
                 <div className="grid gap-6">
                   <div>
-                    <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                    <label htmlFor="fullName" className="block text-sm font-bold text-[#2C2420] mb-2">
                       الاسم الكامل <span className="text-red-500">*</span>
                     </label>
-                    <input
-                      type="text"
-                      name="fullName"
+                    <input id="fullName" type="text" name="fullName"
                       value={formData.fullName}
                       onChange={handleInputChange}
                       className={`w-full px-4 py-4 rounded-xl border-2 ${errors.fullName ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
@@ -296,12 +294,10 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                    <label htmlFor="phone" className="block text-sm font-bold text-[#2C2420] mb-2">
                       رقم الهاتف <span className="text-red-500">*</span>
                     </label>
-                    <input
-                      type="tel"
-                      name="phone"
+                    <input id="phone" type="tel" name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
                       className={`w-full px-4 py-4 rounded-xl border-2 ${errors.phone ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
@@ -312,12 +308,10 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                    <label htmlFor="email" className="block text-sm font-bold text-[#2C2420] mb-2">
                       البريد الإلكتروني (اختياري)
                     </label>
-                    <input
-                      type="email"
-                      name="email"
+                    <input id="email" type="email" name="email"
                       value={formData.email}
                       onChange={handleInputChange}
                       className={`w-full px-4 py-4 rounded-xl border-2 ${errors.email ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
@@ -361,12 +355,10 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                      <label htmlFor="city" className="block text-sm font-bold text-[#2C2420] mb-2">
                         المدينة <span className="text-red-500">*</span>
                       </label>
-                      <input
-                        type="text"
-                        name="city"
+                      <input id="city" type="text" name="city"
                         value={formData.city}
                         onChange={handleInputChange}
                         className={`w-full px-4 py-4 rounded-xl border-2 ${errors.city ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
@@ -377,12 +369,10 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                    <label htmlFor="area" className="block text-sm font-bold text-[#2C2420] mb-2">
                       المنطقة <span className="text-red-500">*</span>
                     </label>
-                    <input
-                      type="text"
-                      name="area"
+                    <input id="area" type="text" name="area"
                       value={formData.area}
                       onChange={handleInputChange}
                       className={`w-full px-4 py-4 rounded-xl border-2 ${errors.area ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
@@ -393,12 +383,10 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
 
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                      <label htmlFor="block" className="block text-sm font-bold text-[#2C2420] mb-2">
                         القطعة <span className="text-red-500">*</span>
                       </label>
-                      <input
-                        type="text"
-                        name="block"
+                      <input id="block" type="text" name="block"
                         value={formData.block}
                         onChange={handleInputChange}
                         className={`w-full px-4 py-4 rounded-xl border-2 ${errors.block ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
@@ -407,12 +395,10 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                       {errors.block && <p className="text-red-500 text-sm mt-1">{errors.block}</p>}
                     </div>
                     <div>
-                      <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                      <label htmlFor="street" className="block text-sm font-bold text-[#2C2420] mb-2">
                         الشارع <span className="text-red-500">*</span>
                       </label>
-                      <input
-                        type="text"
-                        name="street"
+                      <input id="street" type="text" name="street"
                         value={formData.street}
                         onChange={handleInputChange}
                         className={`w-full px-4 py-4 rounded-xl border-2 ${errors.street ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
@@ -424,12 +410,10 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
 
                   <div className="grid sm:grid-cols-3 gap-4">
                     <div>
-                      <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                      <label htmlFor="building" className="block text-sm font-bold text-[#2C2420] mb-2">
                         المبنى <span className="text-red-500">*</span>
                       </label>
-                      <input
-                        type="text"
-                        name="building"
+                      <input id="building" type="text" name="building"
                         value={formData.building}
                         onChange={handleInputChange}
                         className={`w-full px-4 py-4 rounded-xl border-2 ${errors.building ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
@@ -438,12 +422,10 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                       {errors.building && <p className="text-red-500 text-sm mt-1">{errors.building}</p>}
                     </div>
                     <div>
-                      <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                      <label htmlFor="floor" className="block text-sm font-bold text-[#2C2420] mb-2">
                         الطابق
                       </label>
-                      <input
-                        type="text"
-                        name="floor"
+                      <input id="floor" type="text" name="floor"
                         value={formData.floor}
                         onChange={handleInputChange}
                         className="w-full px-4 py-4 rounded-xl border-2 border-[#E8EAED] focus:border-[#2C2420] focus:outline-none transition-colors"
@@ -451,12 +433,10 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                      <label htmlFor="apartment" className="block text-sm font-bold text-[#2C2420] mb-2">
                         الشقة
                       </label>
-                      <input
-                        type="text"
-                        name="apartment"
+                      <input id="apartment" type="text" name="apartment"
                         value={formData.apartment}
                         onChange={handleInputChange}
                         className="w-full px-4 py-4 rounded-xl border-2 border-[#E8EAED] focus:border-[#2C2420] focus:outline-none transition-colors"

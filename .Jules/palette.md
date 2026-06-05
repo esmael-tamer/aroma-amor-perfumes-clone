@@ -5,3 +5,6 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+## 2025-06-05 - Missing IDs on Form Elements
+**Learning:** Found multiple form inputs in CheckoutPage.tsx without `id` attributes, disconnecting them from their `label`s which use `htmlFor` implicitly or are missing it entirely. This is a common a11y issue.
+**Action:** Always verify that every `<label>` has an `htmlFor` attribute matching its associated `<input id="...">` to ensure proper screen reader linkage.
