@@ -5,3 +5,6 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+## 2025-02-27 - Dynamic ARIA Labels in Lists
+**Learning:** Icon-only action buttons mapped inside long lists (like order tables) create repetitive, ambiguous announcements (e.g., just "View Details") for screen reader users when using static `aria-label`s or relying on `title` tooltips.
+**Action:** Always populate `aria-label`s dynamically using unique identifiers (e.g., `order.id` or item names) for list actions, and hide decorative SVG icons with `aria-hidden="true"`.
