@@ -291,6 +291,7 @@ const AdminDashboard = memo(function AdminDashboard() {
               <div className="flex flex-wrap gap-2">
                 {Object.entries(statusConfig).map(([key, value]) => (
                   <button
+                    type="button"
                     key={key}
                     onClick={() => {
                       updateOrderStatus(selectedOrder.id, key as Order['status']);
@@ -401,6 +402,7 @@ const AdminDashboard = memo(function AdminDashboard() {
 
             {/* Delete Order */}
             <button
+              type="button"
               onClick={() => {
                 if (confirm('هل أنت متأكد من حذف هذا الطلب؟')) {
                   deleteOrder(selectedOrder.id);
