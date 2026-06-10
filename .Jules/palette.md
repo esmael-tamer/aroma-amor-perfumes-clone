@@ -5,3 +5,6 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+## 2024-06-11 - Dynamic Text Announcements
+**Learning:** For dynamic inline text values that update without a page reload (like cart item quantities), adding `aria-live="polite"` ensures screen readers will naturally announce the updates as the value changes.
+**Action:** Always add `aria-live="polite"` to the container elements of dynamic text (e.g., quantities, counters) when the change occurs client-side.
