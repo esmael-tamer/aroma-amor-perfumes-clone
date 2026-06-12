@@ -188,7 +188,7 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
           </p>
           
           <Link href="/">
-            <Button className="bg-gradient-to-r from-[#2C2420] to-[#4A5568] text-white px-12 py-6 rounded-full text-lg font-bold hover:shadow-xl transition-all">
+            <Button type="button" className="bg-gradient-to-r from-[#2C2420] to-[#4A5568] text-white px-12 py-6 rounded-full text-lg font-bold hover:shadow-xl transition-all">
               العودة للرئيسية
             </Button>
           </Link>
@@ -206,7 +206,7 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
           <h1 className="text-3xl font-bold text-[#2C2420]">السلة فارغة</h1>
           <p className="text-[#4A5568]">أضف بعض المنتجات للبدء في الطلب</p>
           <Link href="/">
-            <Button className="bg-gradient-to-r from-[#2C2420] to-[#4A5568] text-white px-12 py-6 rounded-full text-lg font-bold hover:shadow-xl transition-all">
+            <Button type="button" className="bg-gradient-to-r from-[#2C2420] to-[#4A5568] text-white px-12 py-6 rounded-full text-lg font-bold hover:shadow-xl transition-all">
               تصفح المنتجات
             </Button>
           </Link>
@@ -281,10 +281,11 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
 
                 <div className="grid gap-6">
                   <div>
-                    <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                    <label htmlFor="fullName" className="block text-sm font-bold text-[#2C2420] mb-2">
                       الاسم الكامل <span className="text-red-500">*</span>
                     </label>
                     <input
+                      id="fullName"
                       type="text"
                       name="fullName"
                       value={formData.fullName}
@@ -296,10 +297,11 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                    <label htmlFor="phone" className="block text-sm font-bold text-[#2C2420] mb-2">
                       رقم الهاتف <span className="text-red-500">*</span>
                     </label>
                     <input
+                      id="phone"
                       type="tel"
                       name="phone"
                       value={formData.phone}
@@ -312,10 +314,11 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                    <label htmlFor="email" className="block text-sm font-bold text-[#2C2420] mb-2">
                       البريد الإلكتروني (اختياري)
                     </label>
                     <input
+                      id="email"
                       type="email"
                       name="email"
                       value={formData.email}
@@ -361,10 +364,11 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                      <label htmlFor="city" className="block text-sm font-bold text-[#2C2420] mb-2">
                         المدينة <span className="text-red-500">*</span>
                       </label>
                       <input
+                        id="city"
                         type="text"
                         name="city"
                         value={formData.city}
@@ -377,10 +381,11 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                    <label htmlFor="area" className="block text-sm font-bold text-[#2C2420] mb-2">
                       المنطقة <span className="text-red-500">*</span>
                     </label>
                     <input
+                      id="area"
                       type="text"
                       name="area"
                       value={formData.area}
@@ -393,10 +398,11 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
 
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                      <label htmlFor="block" className="block text-sm font-bold text-[#2C2420] mb-2">
                         القطعة <span className="text-red-500">*</span>
                       </label>
                       <input
+                        id="block"
                         type="text"
                         name="block"
                         value={formData.block}
@@ -407,10 +413,11 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                       {errors.block && <p className="text-red-500 text-sm mt-1">{errors.block}</p>}
                     </div>
                     <div>
-                      <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                      <label htmlFor="street" className="block text-sm font-bold text-[#2C2420] mb-2">
                         الشارع <span className="text-red-500">*</span>
                       </label>
                       <input
+                        id="street"
                         type="text"
                         name="street"
                         value={formData.street}
@@ -424,10 +431,11 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
 
                   <div className="grid sm:grid-cols-3 gap-4">
                     <div>
-                      <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                      <label htmlFor="building" className="block text-sm font-bold text-[#2C2420] mb-2">
                         المبنى <span className="text-red-500">*</span>
                       </label>
                       <input
+                        id="building"
                         type="text"
                         name="building"
                         value={formData.building}
@@ -438,10 +446,11 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                       {errors.building && <p className="text-red-500 text-sm mt-1">{errors.building}</p>}
                     </div>
                     <div>
-                      <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                      <label htmlFor="floor" className="block text-sm font-bold text-[#2C2420] mb-2">
                         الطابق
                       </label>
                       <input
+                        id="floor"
                         type="text"
                         name="floor"
                         value={formData.floor}
@@ -451,10 +460,11 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                      <label htmlFor="apartment" className="block text-sm font-bold text-[#2C2420] mb-2">
                         الشقة
                       </label>
                       <input
+                        id="apartment"
                         type="text"
                         name="apartment"
                         value={formData.apartment}
@@ -466,10 +476,11 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                    <label htmlFor="notes" className="block text-sm font-bold text-[#2C2420] mb-2">
                       ملاحظات إضافية
                     </label>
                     <textarea
+                      id="notes"
                       name="notes"
                       value={formData.notes}
                       onChange={handleInputChange}
@@ -529,6 +540,7 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
             <div className="flex gap-4">
               {step > 1 && (
                 <Button
+                  type="button"
                   onClick={() => setStep(prev => (prev - 1) as 1 | 2)}
                   variant="outline"
                   className="flex-1 py-6 rounded-full text-lg font-bold border-2 border-[#2C2420] text-[#2C2420] hover:bg-[#2C2420] hover:text-white"
@@ -538,6 +550,7 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
               )}
               {step < 3 ? (
                 <Button
+                  type="button"
                   onClick={handleNextStep}
                   className="flex-1 bg-gradient-to-r from-[#2C2420] to-[#4A5568] text-white py-6 rounded-full text-lg font-bold hover:shadow-xl transition-all"
                 >
@@ -545,6 +558,7 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                 </Button>
               ) : (
                 <Button
+                  type="button"
                   onClick={handleSubmitOrder}
                   disabled={isSubmitting}
                   className="flex-1 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white py-6 rounded-full text-lg font-bold hover:shadow-xl transition-all disabled:opacity-70"
