@@ -59,16 +59,15 @@ const CartDrawer = memo(function CartDrawer() {
             </div>
             <div>
               <h2 className="text-xl font-bold">سلة التسوق</h2>
-              <p className="text-xs text-white/70" aria-live="polite">{totalItems} منتج</p>
+              <p className="text-xs text-white/70">{totalItems} منتج</p>
             </div>
           </div>
           <button
-            type="button"
             onClick={() => setIsCartOpen(false)}
             className="text-white hover:bg-white/20 p-2.5 rounded-xl transition-all hover:rotate-90 duration-300"
             aria-label="إغلاق السلة"
           >
-            <X className="w-6 h-6" aria-hidden="true" />
+            <X className="w-6 h-6" />
           </button>
         </div>
 
@@ -144,33 +143,30 @@ const CartDrawer = memo(function CartDrawer() {
                   {/* Quantity Controls */}
                   <div className="flex flex-col items-end justify-between">
                     <button
-                      type="button"
                       onClick={() => removeFromCart(item.product.id)}
                       className="text-red-400 hover:text-red-600 hover:bg-red-50 p-1.5 rounded-lg transition-all hover:scale-110"
                       aria-label={`حذف ${item.product.nameAr} من السلة`}
                       title="حذف من السلة"
                     >
-                      <Trash2 className="w-4 h-4" aria-hidden="true" />
+                      <Trash2 className="w-4 h-4" />
                     </button>
 
                     <div className="flex items-center gap-1 bg-white rounded-full border-2 border-[#E8EAED] p-0.5 shadow-sm">
                       <button
-                        type="button"
                         onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
                         className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-red-50 hover:text-red-500 transition-colors"
                         aria-label={`تقليل كمية ${item.product.nameAr}`}
                       >
-                        <Minus className="w-3 h-3" aria-hidden="true" />
+                        <Minus className="w-3 h-3" />
                       </button>
-                      <span className="w-6 text-center font-bold text-sm" aria-live="polite">{item.quantity}</span>
+                      <span className="w-6 text-center font-bold text-sm">{item.quantity}</span>
                       <button
-                        type="button"
                         onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
                         disabled={item.quantity >= item.product.stock}
                         className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-emerald-50 hover:text-emerald-500 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
                         aria-label={`زيادة كمية ${item.product.nameAr}`}
                       >
-                        <Plus className="w-3 h-3" aria-hidden="true" />
+                        <Plus className="w-3 h-3" />
                       </button>
                     </div>
                   </div>
