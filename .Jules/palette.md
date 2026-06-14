@@ -5,8 +5,3 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
-
-
-## 2024-06-14 - Dynamic Text Updates & Icon Buttons
-**Learning:** Screen readers won't announce updates to inline dynamic text like cart item quantities unless properly configured, and decorative icons inside icon-only buttons can cause redundant announcements.
-**Action:** Add `aria-live="polite"` to spans or paragraphs containing dynamic values that update without a page reload (like cart quantities), and always add `aria-hidden="true"` to SVG icons inside icon-only buttons that use `aria-label`.
