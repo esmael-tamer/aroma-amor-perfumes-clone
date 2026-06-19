@@ -5,3 +5,6 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+## 2024-06-19 - Dynamic Labels for Data Tables
+**Learning:** Static `title` attributes on action buttons inside data tables (like "View Details") provide insufficient context for screen reader users, making it difficult to know which row the action applies to.
+**Action:** Always use dynamic `aria-label`s that incorporate the row's unique identifier (e.g., `order.id` or `nameAr`) on icon-only buttons within lists and tables.
