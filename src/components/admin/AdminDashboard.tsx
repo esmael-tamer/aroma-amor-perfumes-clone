@@ -80,7 +80,7 @@ const AdminDashboard = memo(function AdminDashboard() {
               </div>
             </div>
             <Link href="/">
-              <Button type="button" variant="outline" className="border-white text-white hover:bg-white hover:text-[#2C2420]">
+              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-[#2C2420]">
                 <ArrowLeft className="w-4 h-4 ml-2" />
                 العودة للمتجر
               </Button>
