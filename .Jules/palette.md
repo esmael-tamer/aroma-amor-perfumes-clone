@@ -5,3 +5,7 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+
+## 2024-06-22 - Explicitly Link Form Inputs
+**Learning:** Form accessibility requires explicitly linking `<input>` elements to `<label>` elements using `id` and `htmlFor` attributes, even if they are nested or visually grouped.
+**Action:** Always add explicit `id` to inputs and corresponding `htmlFor` to labels, and link error messages with `aria-invalid` and `aria-describedby`.
