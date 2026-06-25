@@ -5,3 +5,9 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+## 2024-06-24 - Skip to Content link for Keyboard Accessibility
+**Learning:** Screen reader and keyboard users benefit significantly from a "Skip to Content" link to bypass repetitive navigation. It's an essential accessibility feature missing from the global layout or header.
+**Action:** Add a visually hidden "Skip to Content" link at the top of the header that becomes visible on focus.
+## 2024-06-24 - Main Content Target for Skip Link
+**Learning:** For 'Skip to Content' links to work properly without visual glitches, the target container (like `<main>`) must accept focus. It should have `id="main-content"` and `tabIndex={-1}`. The codebase is missing these standard attributes on `<main>` tags.
+**Action:** Always add `id="main-content"`, `tabIndex={-1}`, and `className="outline-none"` to `<main>` tags that will serve as skip link targets.
