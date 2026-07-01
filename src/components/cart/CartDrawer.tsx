@@ -90,8 +90,7 @@ const CartDrawer = memo(function CartDrawer() {
                 <h3 className="text-2xl font-bold text-[#2C2420]">السلة فارغة</h3>
                 <p className="text-[#4A5568]">اكتشف مجموعتنا الفاخرة من العطور!</p>
               </div>
-              <Button
-                onClick={() => setIsCartOpen(false)}
+              <Button type="button"                 onClick={() => setIsCartOpen(false)}
                 className="bg-gradient-to-r from-[#2C2420] to-[#4A5568] hover:from-[#4A5568] hover:to-[#2C2420] text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105"
               >
                 تصفح المنتجات ✨

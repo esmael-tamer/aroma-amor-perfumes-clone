@@ -186,8 +186,7 @@ function CalendarDayButton({
   }, [modifiers.focused])
 
   return (
-    <Button
-      ref={ref}
+    <Button type="button"       ref={ref}
       variant="ghost"
       size="icon"
       data-day={day.date.toLocaleDateString()}
