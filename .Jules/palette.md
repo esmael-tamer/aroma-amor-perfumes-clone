@@ -5,3 +5,7 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+
+## 2024-05-26 - Accessible Tooltips on Disabled Native Buttons
+**Learning:** Native disabled `<button>` elements do not trigger hover events for `title` tooltips, making the reason for them being disabled inaccessible to mouse users.
+**Action:** Always wrap disabled native buttons in a `div` containing the `title` attribute to ensure the tooltip is accessible while preserving the button's disabled state.
