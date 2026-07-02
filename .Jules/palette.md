@@ -5,3 +5,7 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+
+## 2024-07-02 - Skip to Content Links Styling
+**Learning:** Using `sr-only` and `focus:not-sr-only` for 'Skip to Content' links can sometimes cause spacing quirks or jumpy visual feedback when focused.
+**Action:** Use CSS translate utilities (e.g., `-translate-y-[150%] focus:translate-y-0 transition-transform`) for visually hiding accessible skip links to provide smoother visual feedback when they are focused by a keyboard user.
