@@ -8,6 +8,7 @@ import { CartProvider } from "@/context/CartContext";
 import { OrdersProvider } from "@/context/OrdersContext";
 import { SiteSettingsProvider } from "@/context/SiteSettingsContext";
 import CartDrawer from "@/components/cart/CartDrawer";
+import { SkipLink } from "@/components/ui/skip-link";
 
 // Metadata للـ SEO
 export const metadata: Metadata = {
@@ -71,6 +72,7 @@ export default function RootLayout({
           <OrdersProvider>
             <CartProvider>
               <ErrorReporter />
+              <SkipLink />
               <Script
                 src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/scripts//route-messenger.js"
                 strategy="afterInteractive"
