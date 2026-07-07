@@ -62,7 +62,7 @@ const CartDrawer = memo(function CartDrawer() {
               <p className="text-xs text-white/70">{totalItems} منتج</p>
             </div>
           </div>
-          <button type="button"
+          <button
             onClick={() => setIsCartOpen(false)}
             className="text-white hover:bg-white/20 p-2.5 rounded-xl transition-all hover:rotate-90 duration-300"
             aria-label="إغلاق السلة"
@@ -89,7 +89,7 @@ const CartDrawer = memo(function CartDrawer() {
                 <h3 className="text-2xl font-bold text-[#2C2420]">السلة فارغة</h3>
                 <p className="text-[#4A5568]">اكتشف مجموعتنا الفاخرة من العطور!</p>
               </div>
-              <Button
+              <Button type="button"
                 onClick={() => setIsCartOpen(false)}
                 className="bg-gradient-to-r from-[#2C2420] to-[#4A5568] hover:from-[#4A5568] hover:to-[#2C2420] text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105"
               >
@@ -142,7 +142,7 @@ const CartDrawer = memo(function CartDrawer() {
 
                   {/* Quantity Controls */}
                   <div className="flex flex-col items-end justify-between">
-                    <button type="button"
+                    <button
                       onClick={() => removeFromCart(item.product.id)}
                       className="text-red-400 hover:text-red-600 hover:bg-red-50 p-1.5 rounded-lg transition-all hover:scale-110"
                       aria-label={`حذف ${item.product.nameAr} من السلة`}
@@ -152,7 +152,7 @@ const CartDrawer = memo(function CartDrawer() {
                     </button>
 
                     <div className="flex items-center gap-1 bg-white rounded-full border-2 border-[#E8EAED] p-0.5 shadow-sm">
-                      <button type="button"
+                      <button
                         onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
                         className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-red-50 hover:text-red-500 transition-colors"
                         aria-label={`تقليل كمية ${item.product.nameAr}`}
@@ -160,7 +160,7 @@ const CartDrawer = memo(function CartDrawer() {
                         <Minus className="w-3 h-3" />
                       </button>
                       <span className="w-6 text-center font-bold text-sm">{item.quantity}</span>
-                      <button type="button"
+                      <button
                         onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
                         disabled={item.quantity >= item.product.stock}
                         className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-emerald-50 hover:text-emerald-500 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
@@ -217,13 +217,13 @@ const CartDrawer = memo(function CartDrawer() {
 
             {/* Actions Row */}
             <div className="flex gap-2">
-              <button type="button"
+              <button
                 onClick={() => setIsCartOpen(false)}
                 className="flex-1 text-[#2C2420] hover:bg-[#E8EAED] py-2.5 rounded-xl transition-colors font-medium text-sm border-2 border-[#E8EAED]"
               >
                 متابعة التسوق
               </button>
-              <button type="button"
+              <button
                 onClick={clearCart}
                 className="text-red-500 hover:bg-red-50 px-4 py-2.5 rounded-xl transition-colors text-sm font-medium border-2 border-red-100"
               >
