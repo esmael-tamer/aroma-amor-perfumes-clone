@@ -216,7 +216,7 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#E8EAED] to-white">
+    <main id="main-content" tabIndex={-1} className="outline-none min-h-screen bg-gradient-to-b from-[#E8EAED] to-white">
       {/* Header */}
       <header className="bg-gradient-to-r from-[#2C2420] to-[#4A5568] text-white py-6">
         <div className="container mx-auto px-4">
@@ -637,7 +637,7 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 });
 
