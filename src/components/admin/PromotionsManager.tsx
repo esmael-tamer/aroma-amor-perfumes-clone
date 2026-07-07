@@ -109,7 +109,7 @@ export default function PromotionsManager() {
           <h1 className="text-2xl font-bold text-gray-800">إدارة العروض والخصومات</h1>
           <p className="text-gray-500">{promotions.length} عرض</p>
         </div>
-        <button
+        <button type="button"
           onClick={openAddModal}
           className="flex items-center gap-2 bg-[#2C2420] hover:bg-[#4A5568] text-white px-6 py-3 rounded-xl transition-colors"
         >
@@ -154,7 +154,7 @@ export default function PromotionsManager() {
                 <div className="flex flex-wrap items-center gap-3 text-sm">
                   <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full font-mono font-bold flex items-center gap-2">
                     {promotion.code}
-                    <button 
+                    <button type="button"
                       onClick={() => copyCode(promotion.code)}
                       className="hover:text-[#2C2420]"
                       aria-label="نسخ الكود"
@@ -195,21 +195,21 @@ export default function PromotionsManager() {
 
               {/* Actions */}
               <div className="flex items-center gap-2">
-                <button
+                <button type="button"
                   onClick={() => toggleActive(promotion)}
                   className={`p-2 rounded-lg ${promotion.isActive ? 'text-emerald-500' : 'text-gray-400'}`}
                   aria-label={promotion.isActive ? 'إلغاء التفعيل' : 'تفعيل'}
                 >
                   {promotion.isActive ? <ToggleRight className="w-8 h-8" /> : <ToggleLeft className="w-8 h-8" />}
                 </button>
-                <button
+                <button type="button"
                   onClick={() => openEditModal(promotion)}
                   className="p-2 bg-blue-50 text-blue-600 hover:bg-blue-100 rounded-lg transition-colors"
                   aria-label="تعديل العرض"
                 >
                   <Edit2 className="w-5 h-5" />
                 </button>
-                <button
+                <button type="button"
                   onClick={() => handleDelete(promotion.id)}
                   className="p-2 bg-red-50 text-red-600 hover:bg-red-100 rounded-lg transition-colors"
                   aria-label="حذف العرض"
@@ -239,7 +239,7 @@ export default function PromotionsManager() {
               <h2 className="text-xl font-bold text-gray-800">
                 {editingPromotion ? 'تعديل العرض' : 'إضافة عرض جديد'}
               </h2>
-              <button onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-gray-100 rounded-lg" aria-label="إغلاق">
+              <button type="button" onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-gray-100 rounded-lg" aria-label="إغلاق">
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -281,8 +281,7 @@ export default function PromotionsManager() {
                     placeholder="AROMA2024"
                     className="flex-1 px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#2C2420] focus:outline-none font-mono"
                   />
-                  <button
-                    type="button"
+                  <button type="button"
                     onClick={generateCode}
                     className="px-4 py-3 bg-gray-100 hover:bg-gray-200 rounded-xl transition-colors"
                   >
@@ -353,8 +352,7 @@ export default function PromotionsManager() {
               </div>
 
               <div className="flex items-center gap-3 pt-2">
-                <button
-                  type="button"
+                <button type="button"
                   onClick={() => setFormData({ ...formData, isActive: !formData.isActive })}
                   className={`p-1 rounded-lg ${formData.isActive ? 'text-emerald-500' : 'text-gray-400'}`}
                   aria-label={formData.isActive ? 'إلغاء تفعيل العرض' : 'تفعيل العرض'}
@@ -367,15 +365,13 @@ export default function PromotionsManager() {
               </div>
 
               <div className="flex gap-3 pt-4">
-                <button
-                  type="submit"
+                <button type="button"
                   className="flex-1 flex items-center justify-center gap-2 bg-[#2C2420] hover:bg-[#4A5568] text-white py-3 rounded-xl transition-colors"
                 >
                   <Save className="w-5 h-5" />
                   {editingPromotion ? 'حفظ التعديلات' : 'إضافة العرض'}
                 </button>
-                <button
-                  type="button"
+                <button type="button"
                   onClick={() => setIsModalOpen(false)}
                   className="px-6 py-3 border-2 border-gray-200 hover:bg-gray-50 rounded-xl transition-colors"
                 >
