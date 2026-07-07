@@ -168,7 +168,7 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
   // صفحة الطلب المكتمل
   if (orderComplete) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-[#E8EAED] to-white flex items-center justify-center p-4">
+      <main id="main-content" tabIndex={-1} className="min-h-screen bg-gradient-to-b from-[#E8EAED] to-white flex items-center justify-center p-4 outline-none">
         <div className="bg-white rounded-3xl p-12 shadow-2xl text-center max-w-lg w-full space-y-6">
           <div className="w-24 h-24 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-xl">
             <Check className="w-12 h-12 text-white" />
@@ -188,35 +188,35 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
           </p>
           
           <Link href="/">
-            <Button className="bg-gradient-to-r from-[#2C2420] to-[#4A5568] text-white px-12 py-6 rounded-full text-lg font-bold hover:shadow-xl transition-all">
+            <Button type="button" className="bg-gradient-to-r from-[#2C2420] to-[#4A5568] text-white px-12 py-6 rounded-full text-lg font-bold hover:shadow-xl transition-all">
               العودة للرئيسية
             </Button>
           </Link>
         </div>
-      </div>
+      </main>
     );
   }
 
   // سلة فارغة
   if (items.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-[#E8EAED] to-white flex items-center justify-center p-4">
+      <main id="main-content" tabIndex={-1} className="min-h-screen bg-gradient-to-b from-[#E8EAED] to-white flex items-center justify-center p-4 outline-none">
         <div className="bg-white rounded-3xl p-12 shadow-2xl text-center max-w-lg w-full space-y-6">
           <div className="text-8xl">🛒</div>
           <h1 className="text-3xl font-bold text-[#2C2420]">السلة فارغة</h1>
           <p className="text-[#4A5568]">أضف بعض المنتجات للبدء في الطلب</p>
           <Link href="/">
-            <Button className="bg-gradient-to-r from-[#2C2420] to-[#4A5568] text-white px-12 py-6 rounded-full text-lg font-bold hover:shadow-xl transition-all">
+            <Button type="button" className="bg-gradient-to-r from-[#2C2420] to-[#4A5568] text-white px-12 py-6 rounded-full text-lg font-bold hover:shadow-xl transition-all">
               تصفح المنتجات
             </Button>
           </Link>
         </div>
-      </div>
+      </main>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#E8EAED] to-white">
+    <main id="main-content" tabIndex={-1} className="min-h-screen bg-gradient-to-b from-[#E8EAED] to-white outline-none">
       {/* Header */}
       <header className="bg-gradient-to-r from-[#2C2420] to-[#4A5568] text-white py-6">
         <div className="container mx-auto px-4">
@@ -528,7 +528,7 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
             {/* Navigation Buttons */}
             <div className="flex gap-4">
               {step > 1 && (
-                <Button
+                <Button type="button"
                   onClick={() => setStep(prev => (prev - 1) as 1 | 2)}
                   variant="outline"
                   className="flex-1 py-6 rounded-full text-lg font-bold border-2 border-[#2C2420] text-[#2C2420] hover:bg-[#2C2420] hover:text-white"
@@ -537,14 +537,14 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                 </Button>
               )}
               {step < 3 ? (
-                <Button
+                <Button type="button"
                   onClick={handleNextStep}
                   className="flex-1 bg-gradient-to-r from-[#2C2420] to-[#4A5568] text-white py-6 rounded-full text-lg font-bold hover:shadow-xl transition-all"
                 >
                   التالي
                 </Button>
               ) : (
-                <Button
+                <Button type="button"
                   onClick={handleSubmitOrder}
                   disabled={isSubmitting}
                   className="flex-1 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white py-6 rounded-full text-lg font-bold hover:shadow-xl transition-all disabled:opacity-70"
@@ -637,7 +637,7 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 });
 
