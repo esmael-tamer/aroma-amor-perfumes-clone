@@ -281,7 +281,7 @@ export default function PromotionsManager() {
                     placeholder="AROMA2024"
                     className="flex-1 px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-[#2C2420] focus:outline-none font-mono"
                   />
-                  <button
+                  <button type="button"
                     type="button"
                     onClick={generateCode}
                     className="px-4 py-3 bg-gray-100 hover:bg-gray-200 rounded-xl transition-colors"
@@ -353,7 +353,7 @@ export default function PromotionsManager() {
               </div>
 
               <div className="flex items-center gap-3 pt-2">
-                <button
+                <button type="button"
                   type="button"
                   onClick={() => setFormData({ ...formData, isActive: !formData.isActive })}
                   className={`p-1 rounded-lg ${formData.isActive ? 'text-emerald-500' : 'text-gray-400'}`}
@@ -367,14 +367,14 @@ export default function PromotionsManager() {
               </div>
 
               <div className="flex gap-3 pt-4">
-                <button
+                <button type="button"
                   type="submit"
                   className="flex-1 flex items-center justify-center gap-2 bg-[#2C2420] hover:bg-[#4A5568] text-white py-3 rounded-xl transition-colors"
                 >
                   <Save className="w-5 h-5" />
                   {editingPromotion ? 'حفظ التعديلات' : 'إضافة العرض'}
                 </button>
-                <button
+                <button type="button"
                   type="button"
                   onClick={() => setIsModalOpen(false)}
                   className="px-6 py-3 border-2 border-gray-200 hover:bg-gray-50 rounded-xl transition-colors"
