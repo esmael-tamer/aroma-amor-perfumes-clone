@@ -5,3 +5,7 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+
+## 2024-07-12 - Skip to Content Links and Focus Management
+**Learning:** When implementing "Skip to Content" links, the target container must be able to accept programmatic focus so that keyboard users are properly navigated down the page. However, this can result in an unwanted visible focus ring on the entire main content area.
+**Action:** Always add `tabIndex={-1}` and `className="outline-none"` to the target container (e.g., `<div id="main-content">`) to ensure it accepts programmatic focus without displaying a visible focus ring, providing a seamless experience for keyboard and screen reader users.
