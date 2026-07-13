@@ -90,6 +90,7 @@ const CartDrawer = memo(function CartDrawer() {
                 <p className="text-[#4A5568]">اكتشف مجموعتنا الفاخرة من العطور!</p>
               </div>
               <Button
+                type="button"
                 onClick={() => setIsCartOpen(false)}
                 className="bg-gradient-to-r from-[#2C2420] to-[#4A5568] hover:from-[#4A5568] hover:to-[#2C2420] text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105"
               >
