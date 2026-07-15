@@ -81,7 +81,15 @@ export default function RootLayout({
                 data-debug="true"
                 data-custom-data='{"appName": "YourApp", "version": "1.0.0", "greeting": "hi"}'
               />
-              {children}
+              <a
+                href="#main-content"
+                className="fixed right-4 top-4 z-[100] -translate-y-24 focus:translate-y-0 bg-[#2C2420] text-white px-4 py-2 rounded-md font-bold shadow-lg transition-transform focus:outline-none focus:ring-2 focus:ring-[#9B8F85]"
+              >
+                تخطي إلى المحتوى
+              </a>
+              <div id="main-content" tabIndex={-1} className="outline-none">
+                {children}
+              </div>
               <CartDrawer />
               <VisualEditsMessenger />
             </CartProvider>
