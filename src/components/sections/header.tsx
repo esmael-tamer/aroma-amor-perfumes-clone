@@ -81,7 +81,7 @@ const Header = memo(function Header() {
             {/* Search Button - Desktop */}
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button
+                <Button type="button"
                   variant="ghost"
                   size="icon"
                   className="hidden md:flex text-[#2C2420] hover:bg-[#E8EAED]"
@@ -99,8 +99,8 @@ const Header = memo(function Header() {
             <Tooltip>
               <TooltipTrigger asChild>
                 <Link href="/admin">
-                  <Button
-                    variant="ghost"
+                  <Button type="button"
+                  variant="ghost"
                     size="icon"
                     className="hidden md:flex text-[#2C2420] hover:bg-[#E8EAED]"
                     aria-label="لوحة التحكم"
@@ -117,7 +117,7 @@ const Header = memo(function Header() {
             {/* Shopping Cart */}
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button
+                <Button type="button"
                   variant="ghost"
                   size="icon"
                   onClick={openCart}
@@ -141,7 +141,7 @@ const Header = memo(function Header() {
             </Tooltip>
 
             {/* Contact Phone - Desktop */}
-            <Button
+            <Button type="button"
               className="hidden lg:flex bg-gradient-to-r from-[#2C2420] to-[#4A5568] hover:from-[#4A5568] hover:to-[#2C2420] text-white gap-2 rounded-full px-6 shadow-lg hover:shadow-xl transition-all font-bold"
               aria-label="اتصل بنا"
             >
@@ -150,8 +150,8 @@ const Header = memo(function Header() {
             </Button>
 
             {/* Mobile Menu Button */}
-            <Button
-              variant="ghost"
+            <Button type="button"
+                  variant="ghost"
               size="icon"
               className="lg:hidden text-[#2C2420]"
               onClick={toggleMenu}
@@ -188,7 +188,7 @@ const Header = memo(function Header() {
               </a>
             ))}
             <div className="pt-4 border-t-2 border-[#E8EAED] flex flex-col gap-3">
-              <Button className="bg-gradient-to-r from-[#2C2420] to-[#4A5568] hover:from-[#4A5568] hover:to-[#2C2420] text-white w-full rounded-full py-6 font-bold shadow-lg">
+              <Button type="button" className="bg-gradient-to-r from-[#2C2420] to-[#4A5568] hover:from-[#4A5568] hover:to-[#2C2420] text-white w-full rounded-full py-6 font-bold shadow-lg">
                 <Phone className="w-4 h-4 ml-2" aria-hidden="true" />
                 📞 اتصل الآن
               </Button>
