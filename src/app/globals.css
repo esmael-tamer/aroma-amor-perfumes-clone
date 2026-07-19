@@ -1,12 +1,12 @@
 /* Updated: 2025-11-23T03:21:38.311Z */
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-background: #E8EAED;
+  --color-background: #e8eaed;
   --color-foreground: #0a0a0a;
 
   --color-card: #ffffff;
@@ -74,11 +74,11 @@
   }
 
   /* Aroma Amor Custom Colors */
-  --color-logo-background: #D4CCC4;
-  --color-logo-text: #2C2420;
-  --color-logo-border-text: #9B8F85;
-  --color-loader-primary: #4A5568;
-  --color-loader-secondary: #CBD5E0;
+  --color-logo-background: #d4ccc4;
+  --color-logo-text: #2c2420;
+  --color-logo-border-text: #9b8f85;
+  --color-loader-primary: #4a5568;
+  --color-loader-secondary: #cbd5e0;
 
   /* Aroma Amor Custom Fonts */
   --font-logo-script: "Great Vibes", cursive;
@@ -146,7 +146,8 @@
     --sidebar-ring: var(--color-sidebar-ring);
   }
 
-  html, body {
+  html,
+  body {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -173,18 +174,32 @@ nextjs-portal {
 
 /* Custom Animations */
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 @keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(212, 204, 196, 0.3); }
-  50% { box-shadow: 0 0 40px rgba(212, 204, 196, 0.6); }
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(212, 204, 196, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(212, 204, 196, 0.6);
+  }
 }
 
 .animate-float {
@@ -192,7 +207,12 @@ nextjs-portal {
 }
 
 .animate-shimmer {
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
 }
@@ -244,7 +264,7 @@ nextjs-portal {
 
 /* Gradient Text */
 .gradient-text {
-  background: linear-gradient(135deg, #2C2420 0%, #9B8F85 50%, #D4CCC4 100%);
+  background: linear-gradient(135deg, #2c2420 0%, #9b8f85 50%, #d4ccc4 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -274,14 +294,14 @@ nextjs-portal {
 }
 
 ::-webkit-scrollbar-track {
-  background: #E8EAED;
+  background: #e8eaed;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #D4CCC4 0%, #9B8F85 100%);
+  background: linear-gradient(180deg, #d4ccc4 0%, #9b8f85 100%);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #9B8F85 0%, #2C2420 100%);
+  background: linear-gradient(180deg, #9b8f85 0%, #2c2420 100%);
 }

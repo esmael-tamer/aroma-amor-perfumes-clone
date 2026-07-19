@@ -1,53 +1,72 @@
-'use client';
+"use client";
 
-import { memo, useEffect } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { X, Plus, Minus, ShoppingBag, Trash2, Sparkles, Gift, Truck } from 'lucide-react';
-import { useCart } from '@/context/CartContext';
-import { CURRENCY } from '@/lib/constants';
+import { memo, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import {
+  X,
+  Plus,
+  Minus,
+  ShoppingBag,
+  Trash2,
+  Sparkles,
+  Gift,
+  Truck,
+} from "lucide-react";
+import { useCart } from "@/context/CartContext";
+import { CURRENCY } from "@/lib/constants";
 
 const CartDrawer = memo(function CartDrawer() {
-  const { items, isCartOpen, setIsCartOpen, removeFromCart, updateQuantity, totalPrice, totalItems, clearCart } = useCart();
+  const {
+    items,
+    isCartOpen,
+    setIsCartOpen,
+    removeFromCart,
+    updateQuantity,
+    totalPrice,
+    totalItems,
+    clearCart,
+  } = useCart();
 
   // منع التمرير عند فتح السلة
   useEffect(() => {
     if (isCartOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = "unset";
     };
   }, [isCartOpen]);
 
   // إغلاق السلة عند ضغط زر Escape
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setIsCartOpen(false);
+      if (e.key === "Escape") setIsCartOpen(false);
     };
 
     if (isCartOpen) {
-      window.addEventListener('keydown', handleEscape);
+      window.addEventListener("keydown", handleEscape);
     }
-    return () => window.removeEventListener('keydown', handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
   }, [isCartOpen, setIsCartOpen]);
 
   if (!isCartOpen) return null;
 
-  const itemSubtotal = (price: number, quantity: number) => (price * quantity).toFixed(3);
+  const itemSubtotal = (price: number, quantity: number) =>
+    (price * quantity).toFixed(3);
 
   return (
     <>
       {/* Backdrop */}
-      <div 
+      <div
         className="fixed inset-0 bg-black/70 backdrop-blur-md z-50 transition-all duration-300"
         onClick={() => setIsCartOpen(false)}
         aria-hidden="true"
       />
-      
+
       {/* Drawer */}
       <div className="fixed top-0 left-0 h-full w-full max-w-md bg-white z-50 shadow-2xl flex flex-col animate-in slide-in-from-left duration-300">
         {/* Header */}
@@ -63,6 +82,7 @@ const CartDrawer = memo(function CartDrawer() {
             </div>
           </div>
           <button
+            type="button"
             onClick={() => setIsCartOpen(false)}
             className="text-white hover:bg-white/20 p-2.5 rounded-xl transition-all hover:rotate-90 duration-300"
             aria-label="إغلاق السلة"
@@ -86,10 +106,15 @@ const CartDrawer = memo(function CartDrawer() {
                 <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-16 h-2 bg-gray-200 rounded-full blur-sm" />
               </div>
               <div className="space-y-2">
-                <h3 className="text-2xl font-bold text-[#2C2420]">السلة فارغة</h3>
-                <p className="text-[#4A5568]">اكتشف مجموعتنا الفاخرة من العطور!</p>
+                <h3 className="text-2xl font-bold text-[#2C2420]">
+                  السلة فارغة
+                </h3>
+                <p className="text-[#4A5568]">
+                  اكتشف مجموعتنا الفاخرة من العطور!
+                </p>
               </div>
               <Button
+                type="button"
                 onClick={() => setIsCartOpen(false)}
                 className="bg-gradient-to-r from-[#2C2420] to-[#4A5568] hover:from-[#4A5568] hover:to-[#2C2420] text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105"
               >
@@ -123,7 +148,9 @@ const CartDrawer = memo(function CartDrawer() {
                     <h4 className="font-bold text-[#2C2420] text-sm line-clamp-1 group-hover:text-[#4A5568] transition-colors">
                       {item.product.nameAr}
                     </h4>
-                    <p className="text-xs text-[#9B8F85]">{item.product.categoryAr}</p>
+                    <p className="text-xs text-[#9B8F85]">
+                      {item.product.categoryAr}
+                    </p>
                     <div className="flex items-center gap-2">
                       <span className="text-base font-bold text-[#2C2420]">
                         {item.product.price} {CURRENCY.symbol}
@@ -136,13 +163,15 @@ const CartDrawer = memo(function CartDrawer() {
                     </div>
                     {/* Item Subtotal */}
                     <p className="text-xs text-emerald-600 font-medium">
-                      المجموع: {itemSubtotal(item.product.price, item.quantity)} {CURRENCY.symbol}
+                      المجموع: {itemSubtotal(item.product.price, item.quantity)}{" "}
+                      {CURRENCY.symbol}
                     </p>
                   </div>
 
                   {/* Quantity Controls */}
                   <div className="flex flex-col items-end justify-between">
                     <button
+                      type="button"
                       onClick={() => removeFromCart(item.product.id)}
                       className="text-red-400 hover:text-red-600 hover:bg-red-50 p-1.5 rounded-lg transition-all hover:scale-110"
                       aria-label={`حذف ${item.product.nameAr} من السلة`}
@@ -153,15 +182,23 @@ const CartDrawer = memo(function CartDrawer() {
 
                     <div className="flex items-center gap-1 bg-white rounded-full border-2 border-[#E8EAED] p-0.5 shadow-sm">
                       <button
-                        onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
+                        type="button"
+                        onClick={() =>
+                          updateQuantity(item.product.id, item.quantity - 1)
+                        }
                         className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-red-50 hover:text-red-500 transition-colors"
                         aria-label={`تقليل كمية ${item.product.nameAr}`}
                       >
                         <Minus className="w-3 h-3" />
                       </button>
-                      <span className="w-6 text-center font-bold text-sm">{item.quantity}</span>
+                      <span className="w-6 text-center font-bold text-sm">
+                        {item.quantity}
+                      </span>
                       <button
-                        onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
+                        type="button"
+                        onClick={() =>
+                          updateQuantity(item.product.id, item.quantity + 1)
+                        }
                         disabled={item.quantity >= item.product.stock}
                         className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-emerald-50 hover:text-emerald-500 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
                         aria-label={`زيادة كمية ${item.product.nameAr}`}
@@ -184,7 +221,9 @@ const CartDrawer = memo(function CartDrawer() {
               <Gift className="w-8 h-8 text-amber-500" />
               <div>
                 <p className="text-sm font-bold text-amber-800">عرض خاص! 🎁</p>
-                <p className="text-xs text-amber-600">احصل على عينة مجانية مع كل طلب</p>
+                <p className="text-xs text-amber-600">
+                  احصل على عينة مجانية مع كل طلب
+                </p>
               </div>
             </div>
 
@@ -200,8 +239,12 @@ const CartDrawer = memo(function CartDrawer() {
               </div>
               <div className="border-t border-dashed border-[#E8EAED] pt-2 mt-2">
                 <div className="flex justify-between items-center">
-                  <span className="text-lg font-bold text-[#2C2420]">الإجمالي:</span>
-                  <span className="text-xl font-bold text-[#2C2420]">{totalPrice.toFixed(3)} {CURRENCY.symbol}</span>
+                  <span className="text-lg font-bold text-[#2C2420]">
+                    الإجمالي:
+                  </span>
+                  <span className="text-xl font-bold text-[#2C2420]">
+                    {totalPrice.toFixed(3)} {CURRENCY.symbol}
+                  </span>
                 </div>
               </div>
             </div>
@@ -218,12 +261,14 @@ const CartDrawer = memo(function CartDrawer() {
             {/* Actions Row */}
             <div className="flex gap-2">
               <button
+                type="button"
                 onClick={() => setIsCartOpen(false)}
                 className="flex-1 text-[#2C2420] hover:bg-[#E8EAED] py-2.5 rounded-xl transition-colors font-medium text-sm border-2 border-[#E8EAED]"
               >
                 متابعة التسوق
               </button>
               <button
+                type="button"
                 onClick={clearCart}
                 className="text-red-500 hover:bg-red-50 px-4 py-2.5 rounded-xl transition-colors text-sm font-medium border-2 border-red-100"
               >

@@ -1,14 +1,14 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { 
-  LayoutDashboard, 
-  Package, 
-  FolderTree, 
-  Settings, 
-  ShoppingCart, 
-  Tag, 
+import { useState } from "react";
+import Link from "next/link";
+import {
+  LayoutDashboard,
+  Package,
+  FolderTree,
+  Settings,
+  ShoppingCart,
+  Tag,
   Image as ImageIcon,
   Users,
   BarChart3,
@@ -16,8 +16,8 @@ import {
   Menu,
   X,
   Home,
-  LogOut
-} from 'lucide-react';
+  LogOut,
+} from "lucide-react";
 
 interface AdminLayoutProps {
   children: React.ReactNode;
@@ -25,13 +25,28 @@ interface AdminLayoutProps {
 }
 
 const menuItems = [
-  { id: 'dashboard', label: 'لوحة التحكم', icon: LayoutDashboard, href: '/admin' },
-  { id: 'orders', label: 'الطلبات', icon: ShoppingCart, href: '/admin/orders' },
-  { id: 'products', label: 'المنتجات', icon: Package, href: '/admin/products' },
-  { id: 'categories', label: 'الأقسام', icon: FolderTree, href: '/admin/categories' },
-  { id: 'promotions', label: 'العروض', icon: Tag, href: '/admin/promotions' },
-  { id: 'banners', label: 'البانرات', icon: ImageIcon, href: '/admin/banners' },
-  { id: 'settings', label: 'الإعدادات', icon: Settings, href: '/admin/settings' },
+  {
+    id: "dashboard",
+    label: "لوحة التحكم",
+    icon: LayoutDashboard,
+    href: "/admin",
+  },
+  { id: "orders", label: "الطلبات", icon: ShoppingCart, href: "/admin/orders" },
+  { id: "products", label: "المنتجات", icon: Package, href: "/admin/products" },
+  {
+    id: "categories",
+    label: "الأقسام",
+    icon: FolderTree,
+    href: "/admin/categories",
+  },
+  { id: "promotions", label: "العروض", icon: Tag, href: "/admin/promotions" },
+  { id: "banners", label: "البانرات", icon: ImageIcon, href: "/admin/banners" },
+  {
+    id: "settings",
+    label: "الإعدادات",
+    icon: Settings,
+    href: "/admin/settings",
+  },
 ];
 
 export default function AdminLayout({ children, activeTab }: AdminLayoutProps) {
@@ -41,19 +56,21 @@ export default function AdminLayout({ children, activeTab }: AdminLayoutProps) {
     <div className="min-h-screen bg-gray-100 flex" dir="rtl">
       {/* Mobile Overlay */}
       {isSidebarOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/50 z-40 lg:hidden"
           onClick={() => setIsSidebarOpen(false)}
         />
       )}
 
       {/* Sidebar */}
-      <aside className={`
+      <aside
+        className={`
         fixed lg:static inset-y-0 right-0 z-50
         w-72 bg-gradient-to-b from-[#2C2420] to-[#1a1614] text-white
         transform transition-transform duration-300 ease-in-out
-        ${isSidebarOpen ? 'translate-x-0' : 'translate-x-full lg:translate-x-0'}
-      `}>
+        ${isSidebarOpen ? "translate-x-0" : "translate-x-full lg:translate-x-0"}
+      `}
+      >
         {/* Logo */}
         <div className="p-6 border-b border-white/10">
           <div className="flex items-center justify-between">
@@ -62,6 +79,7 @@ export default function AdminLayout({ children, activeTab }: AdminLayoutProps) {
               <p className="text-sm text-white/60">لوحة التحكم</p>
             </div>
             <button
+              type="button"
               onClick={() => setIsSidebarOpen(false)}
               className="lg:hidden p-2 hover:bg-white/10 rounded-lg"
               aria-label="إغلاق القائمة"
@@ -82,9 +100,10 @@ export default function AdminLayout({ children, activeTab }: AdminLayoutProps) {
                 href={item.href}
                 className={`
                   flex items-center gap-3 px-4 py-3 rounded-xl transition-all
-                  ${isActive 
-                    ? 'bg-white text-[#2C2420] shadow-lg' 
-                    : 'text-white/80 hover:bg-white/10 hover:text-white'
+                  ${
+                    isActive
+                      ? "bg-white text-[#2C2420] shadow-lg"
+                      : "text-white/80 hover:bg-white/10 hover:text-white"
                   }
                 `}
               >
@@ -115,6 +134,7 @@ export default function AdminLayout({ children, activeTab }: AdminLayoutProps) {
           <div className="flex items-center justify-between px-6 py-4">
             <div className="flex items-center gap-4">
               <button
+                type="button"
                 onClick={() => setIsSidebarOpen(true)}
                 className="lg:hidden p-2 hover:bg-gray-100 rounded-lg"
                 aria-label="فتح القائمة"
@@ -122,10 +142,11 @@ export default function AdminLayout({ children, activeTab }: AdminLayoutProps) {
                 <Menu className="w-6 h-6" />
               </button>
               <h2 className="text-xl font-bold text-gray-800">
-                {menuItems.find(item => item.id === activeTab)?.label || 'لوحة التحكم'}
+                {menuItems.find((item) => item.id === activeTab)?.label ||
+                  "لوحة التحكم"}
               </h2>
             </div>
-            
+
             <div className="flex items-center gap-4">
               <div className="text-left">
                 <p className="text-sm font-medium text-gray-800">المدير</p>
@@ -139,9 +160,7 @@ export default function AdminLayout({ children, activeTab }: AdminLayoutProps) {
         </header>
 
         {/* Page Content */}
-        <main className="flex-1 p-6">
-          {children}
-        </main>
+        <main className="flex-1 p-6">{children}</main>
       </div>
     </div>
   );

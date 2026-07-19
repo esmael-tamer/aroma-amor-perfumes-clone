@@ -2,7 +2,7 @@
 // Products Data - بيانات المنتجات
 // =====================================================
 
-import type { Product } from '@/lib/constants';
+import type { Product } from "@/lib/constants";
 
 export const products: Product[] = [
   // العطور - Perfumes
@@ -15,10 +15,11 @@ export const products: Product[] = [
     rating: 4.9,
     category: "Perfumes",
     categoryAr: "عطور",
-    image: "https://images.unsplash.com/photo-1541643600914-78b084683601?w=500&q=80",
+    image:
+      "https://images.unsplash.com/photo-1541643600914-78b084683601?w=500&q=80",
     badge: "🔥 الأكثر مبيعاً",
     discount: "82%",
-    stock: 130
+    stock: 130,
   },
   {
     id: 27,
@@ -29,10 +30,11 @@ export const products: Product[] = [
     rating: 5,
     category: "Perfumes",
     categoryAr: "عطور",
-    image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=500&q=80",
+    image:
+      "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=500&q=80",
     badge: "💎 فاخر",
     discount: "87%",
-    stock: 171
+    stock: 171,
   },
   {
     id: 24,
@@ -43,9 +45,10 @@ export const products: Product[] = [
     rating: 4.8,
     category: "Perfumes",
     categoryAr: "عطور",
-    image: "https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=500&q=80",
+    image:
+      "https://images.unsplash.com/photo-1587017539504-67cfbddac569?w=500&q=80",
     discount: "88%",
-    stock: 191
+    stock: 191,
   },
   {
     id: 21,
@@ -56,9 +59,10 @@ export const products: Product[] = [
     rating: 4.9,
     category: "Perfumes",
     categoryAr: "عطور",
-    image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=500&q=80",
+    image:
+      "https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=500&q=80",
     discount: "87%",
-    stock: 173
+    stock: 173,
   },
   {
     id: 18,
@@ -69,9 +73,10 @@ export const products: Product[] = [
     rating: 5,
     category: "Perfumes",
     categoryAr: "عطور",
-    image: "https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=500&q=80",
+    image:
+      "https://images.unsplash.com/photo-1563170351-be82bc888aa4?w=500&q=80",
     discount: "88%",
-    stock: 189
+    stock: 189,
   },
   {
     id: 15,
@@ -82,10 +87,11 @@ export const products: Product[] = [
     rating: 4.8,
     category: "Perfumes",
     categoryAr: "عطور",
-    image: "https://images.unsplash.com/photo-1595425964071-2c1ecb10b52d?w=500&q=80",
+    image:
+      "https://images.unsplash.com/photo-1595425964071-2c1ecb10b52d?w=500&q=80",
     badge: "✨ جديد",
     discount: "82%",
-    stock: 108
+    stock: 108,
   },
   {
     id: 12,
@@ -96,9 +102,10 @@ export const products: Product[] = [
     rating: 4.7,
     category: "Perfumes",
     categoryAr: "عطور",
-    image: "https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=500&q=80",
+    image:
+      "https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=500&q=80",
     discount: "82%",
-    stock: 108
+    stock: 108,
   },
   {
     id: 96,
@@ -109,9 +116,10 @@ export const products: Product[] = [
     rating: 4.6,
     category: "Perfumes",
     categoryAr: "عطور",
-    image: "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=500&q=80",
+    image:
+      "https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?w=500&q=80",
     discount: "32%",
-    stock: 28
+    stock: 28,
   },
   {
     id: 33,
@@ -122,10 +130,11 @@ export const products: Product[] = [
     rating: 4.5,
     category: "Perfumes",
     categoryAr: "عطور",
-    image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=500&q=80",
+    image:
+      "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=500&q=80",
     badge: "🌸 للشعر",
     discount: "91%",
-    stock: 125
+    stock: 125,
   },
 
   // العروض الخاصة - Collections
@@ -138,10 +147,11 @@ export const products: Product[] = [
     rating: 5,
     category: "Collections",
     categoryAr: "المجموعات",
-    image: "https://images.unsplash.com/photo-1591035897819-f4bdf739f446?w=500&q=80",
+    image:
+      "https://images.unsplash.com/photo-1591035897819-f4bdf739f446?w=500&q=80",
     badge: "💎 عرض خاص",
     discount: "46%",
-    stock: 70
+    stock: 70,
   },
   {
     id: 90,
@@ -152,10 +162,11 @@ export const products: Product[] = [
     rating: 5,
     category: "Collections",
     categoryAr: "المجموعات",
-    image: "https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=500&q=80",
+    image:
+      "https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=500&q=80",
     badge: "🔥 الأكثر مبيعاً",
     discount: "55%",
-    stock: 100
+    stock: 100,
   },
   {
     id: 87,
@@ -166,9 +177,10 @@ export const products: Product[] = [
     rating: 4.8,
     category: "Collections",
     categoryAr: "المجموعات",
-    image: "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=500&q=80",
+    image:
+      "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=500&q=80",
     badge: "✨ جديد",
-    stock: 20
+    stock: 20,
   },
   {
     id: 84,
@@ -179,10 +191,11 @@ export const products: Product[] = [
     rating: 5,
     category: "Collections",
     categoryAr: "المجموعات",
-    image: "https://images.unsplash.com/photo-1595078475328-1ab05d0a6a0e?w=500&q=80",
+    image:
+      "https://images.unsplash.com/photo-1595078475328-1ab05d0a6a0e?w=500&q=80",
     badge: "💎 عرض خاص",
     discount: "55%",
-    stock: 100
+    stock: 100,
   },
   {
     id: 81,
@@ -192,8 +205,9 @@ export const products: Product[] = [
     rating: 4.9,
     category: "Collections",
     categoryAr: "المجموعات",
-    image: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=500&q=80",
-    stock: 0
+    image:
+      "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=500&q=80",
+    stock: 0,
   },
 
   // الزيوت - Oils
@@ -206,9 +220,10 @@ export const products: Product[] = [
     rating: 4.7,
     category: "Oils",
     categoryAr: "زيوت",
-    image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=500&q=80",
+    image:
+      "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=500&q=80",
     discount: "64%",
-    stock: 22
+    stock: 22,
   },
 
   // زبدة الجسم - Body Butter
@@ -221,9 +236,10 @@ export const products: Product[] = [
     rating: 4.8,
     category: "Body Butter",
     categoryAr: "زبدة الجسم",
-    image: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=500&q=80",
+    image:
+      "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=500&q=80",
     discount: "38%",
-    stock: 21
+    stock: 21,
   },
 
   // الصابون - Body Soap
@@ -236,9 +252,10 @@ export const products: Product[] = [
     rating: 4.6,
     category: "Body Soap",
     categoryAr: "صابون",
-    image: "https://images.unsplash.com/photo-1617897903246-719242758050?w=500&q=80",
+    image:
+      "https://images.unsplash.com/photo-1617897903246-719242758050?w=500&q=80",
     discount: "58%",
-    stock: 24
+    stock: 24,
   },
   {
     id: 69,
@@ -249,9 +266,10 @@ export const products: Product[] = [
     rating: 4.7,
     category: "Body Soap",
     categoryAr: "صابون",
-    image: "https://images.unsplash.com/photo-1600857062241-98e5dba60f2e?w=500&q=80",
+    image:
+      "https://images.unsplash.com/photo-1600857062241-98e5dba60f2e?w=500&q=80",
     discount: "82%",
-    stock: 55
+    stock: 55,
   },
   {
     id: 66,
@@ -262,9 +280,10 @@ export const products: Product[] = [
     rating: 4.5,
     category: "Body Soap",
     categoryAr: "صابون",
-    image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500&q=80",
+    image:
+      "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500&q=80",
     discount: "55%",
-    stock: 22
+    stock: 22,
   },
   {
     id: 63,
@@ -275,9 +294,10 @@ export const products: Product[] = [
     rating: 4.6,
     category: "Body Soap",
     categoryAr: "صابون",
-    image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=500&q=80",
+    image:
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=500&q=80",
     discount: "64%",
-    stock: 28
+    stock: 28,
   },
   {
     id: 60,
@@ -288,9 +308,10 @@ export const products: Product[] = [
     rating: 4.8,
     category: "Body Soap",
     categoryAr: "صابون",
-    image: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=500&q=80",
+    image:
+      "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=500&q=80",
     discount: "20%",
-    stock: 15
+    stock: 15,
   },
 
   // كريم الجسم - Body Cream
@@ -303,9 +324,10 @@ export const products: Product[] = [
     rating: 4.7,
     category: "Body Cream",
     categoryAr: "كريم الجسم",
-    image: "https://images.unsplash.com/photo-1570554886111-e80fcca6a029?w=500&q=80",
+    image:
+      "https://images.unsplash.com/photo-1570554886111-e80fcca6a029?w=500&q=80",
     discount: "66%",
-    stock: 29
+    stock: 29,
   },
   {
     id: 54,
@@ -315,8 +337,9 @@ export const products: Product[] = [
     rating: 4.6,
     category: "Body Cream",
     categoryAr: "كريم الجسم",
-    image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=500&q=80",
-    stock: 0
+    image:
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=500&q=80",
+    stock: 0,
   },
   {
     id: 51,
@@ -327,9 +350,10 @@ export const products: Product[] = [
     rating: 4.8,
     category: "Body Cream",
     categoryAr: "كريم الجسم",
-    image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=500&q=80",
+    image:
+      "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=500&q=80",
     discount: "63%",
-    stock: 27
+    stock: 27,
   },
 
   // المقشرات - Body Scrub
@@ -342,8 +366,9 @@ export const products: Product[] = [
     rating: 4.5,
     category: "Body Scrub",
     categoryAr: "مقشرات",
-    image: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=500&q=80",
-    stock: 9
+    image:
+      "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=500&q=80",
+    stock: 9,
   },
   {
     id: 45,
@@ -354,9 +379,10 @@ export const products: Product[] = [
     rating: 4.6,
     category: "Body Scrub",
     categoryAr: "مقشرات",
-    image: "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=500&q=80",
+    image:
+      "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=500&q=80",
     discount: "33%",
-    stock: 15
+    stock: 15,
   },
   {
     id: 42,
@@ -367,9 +393,10 @@ export const products: Product[] = [
     rating: 4.7,
     category: "Body Scrub",
     categoryAr: "مقشرات",
-    image: "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=500&q=80",
+    image:
+      "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=500&q=80",
     discount: "57%",
-    stock: 23
+    stock: 23,
   },
   {
     id: 39,
@@ -380,9 +407,10 @@ export const products: Product[] = [
     rating: 4.6,
     category: "Body Scrub",
     categoryAr: "مقشرات",
-    image: "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?w=500&q=80",
+    image:
+      "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?w=500&q=80",
     discount: "60%",
-    stock: 25
+    stock: 25,
   },
   {
     id: 36,
@@ -393,26 +421,29 @@ export const products: Product[] = [
     rating: 4.8,
     category: "Body Scrub",
     categoryAr: "مقشرات",
-    image: "https://images.unsplash.com/photo-1607462109225-6b64ae2dd3cb?w=500&q=80",
+    image:
+      "https://images.unsplash.com/photo-1607462109225-6b64ae2dd3cb?w=500&q=80",
     discount: "29%",
-    stock: 14
-  }
+    stock: 14,
+  },
 ];
 
 // Helper functions
 export const getProductsByCategory = (category: string) => {
-  if (category === 'all') return products;
-  return products.filter(p => p.category.toLowerCase() === category.toLowerCase());
+  if (category === "all") return products;
+  return products.filter(
+    (p) => p.category.toLowerCase() === category.toLowerCase(),
+  );
 };
 
 export const getProductById = (id: number) => {
-  return products.find(p => p.id === id);
+  return products.find((p) => p.id === id);
 };
 
 export const getFeaturedProducts = () => {
-  return products.filter(p => p.badge?.includes('الأكثر مبيعاً'));
+  return products.filter((p) => p.badge?.includes("الأكثر مبيعاً"));
 };
 
 export const getProductsInStock = () => {
-  return products.filter(p => p.stock > 0);
+  return products.filter((p) => p.stock > 0);
 };

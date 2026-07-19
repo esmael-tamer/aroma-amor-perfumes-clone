@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     template: `%s | ${COMPANY_INFO.name}`,
   },
   description: SEO_CONFIG.description,
-  keywords: SEO_CONFIG.keywords,
+  keywords: [...SEO_CONFIG.keywords],
   authors: [{ name: COMPANY_INFO.name }],
   creator: COMPANY_INFO.name,
   publisher: COMPANY_INFO.name,
@@ -26,21 +26,21 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   openGraph: {
-    type: 'website',
-    locale: 'ar_KW',
+    type: "website",
+    locale: "ar_KW",
     siteName: SEO_CONFIG.openGraph.siteName,
     title: SEO_CONFIG.title,
     description: SEO_CONFIG.description,
     images: [{ url: COMPANY_INFO.logo, alt: COMPANY_INFO.name }],
   },
   twitter: {
-    card: 'summary_large_image',
+    card: "summary_large_image",
     title: SEO_CONFIG.title,
     description: SEO_CONFIG.description,
     images: [COMPANY_INFO.logo],
@@ -53,10 +53,10 @@ export const metadata: Metadata = {
 
 // Viewport configuration
 export const viewport: Viewport = {
-  width: 'device-width',
+  width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: '#2C2420',
+  themeColor: "#2C2420",
 };
 
 export default function RootLayout({
