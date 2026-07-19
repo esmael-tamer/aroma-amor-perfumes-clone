@@ -1,13 +1,17 @@
-'use client';
+"use client";
 
-import { memo, useCallback } from 'react';
-import Image from 'next/image';
-import { Button } from '@/components/ui/button';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
-import { ShoppingCart, Star, Tag } from 'lucide-react';
-import type { Product } from '@/lib/constants';
-import { CURRENCY } from '@/lib/constants';
-import { useCart } from '@/context/CartContext';
+import { memo, useCallback } from "react";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { ShoppingCart, Star, Tag } from "lucide-react";
+import type { Product } from "@/lib/constants";
+import { CURRENCY } from "@/lib/constants";
+import { useCart } from "@/context/CartContext";
 
 interface ProductCardProps {
   product: Product;
@@ -39,7 +43,7 @@ const ProductCard = memo(function ProductCard({ product }: ProductCardProps) {
           className="object-cover group-hover:scale-110 transition-transform duration-500"
           loading="lazy"
         />
-        
+
         {/* Badge */}
         {product.badge && (
           <span className="absolute top-4 right-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
@@ -67,7 +71,8 @@ const ProductCard = memo(function ProductCard({ product }: ProductCardProps) {
         {/* Quick Actions */}
         {!isOutOfStock && (
           <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 focus-within:opacity-100 transition-opacity flex items-center justify-center">
-            <Button 
+            <Button
+              type="button"
               size="lg"
               onClick={handleAddToCart}
               className="bg-white text-[#2C2420] hover:bg-[#E8EAED] rounded-full px-8 font-bold shadow-xl"
@@ -92,14 +97,18 @@ const ProductCard = memo(function ProductCard({ product }: ProductCardProps) {
         </h3>
 
         {/* Rating */}
-        <div className="flex items-center gap-1" role="img" aria-label={`تقييم ${product.rating} من 5`}>
+        <div
+          className="flex items-center gap-1"
+          role="img"
+          aria-label={`تقييم ${product.rating} من 5`}
+        >
           {[...Array(5)].map((_, i) => (
             <Star
               key={i}
               className={`w-5 h-5 ${
                 i < Math.floor(product.rating)
-                  ? 'fill-amber-400 text-amber-400'
-                  : 'text-gray-300'
+                  ? "fill-amber-400 text-amber-400"
+                  : "text-gray-300"
               }`}
               aria-hidden="true"
             />
@@ -128,12 +137,16 @@ const ProductCard = memo(function ProductCard({ product }: ProductCardProps) {
               </p>
             )}
           </div>
-          
+
           <Tooltip>
             <TooltipTrigger asChild>
               {isOutOfStock ? (
-                <span tabIndex={0} className="inline-block outline-none focus-visible:ring-2 focus-visible:ring-offset-2 rounded-full">
+                <span
+                  tabIndex={0}
+                  className="inline-block outline-none focus-visible:ring-2 focus-visible:ring-offset-2 rounded-full"
+                >
                   <Button
+                    type="button"
                     size="icon"
                     disabled
                     className="bg-gradient-to-br from-[#2C2420] to-[#4A5568] text-white rounded-full w-14 h-14 shadow-lg opacity-50 cursor-not-allowed"
@@ -144,6 +157,7 @@ const ProductCard = memo(function ProductCard({ product }: ProductCardProps) {
                 </span>
               ) : (
                 <Button
+                  type="button"
                   size="icon"
                   onClick={handleAddToCart}
                   className="bg-gradient-to-br from-[#2C2420] to-[#4A5568] hover:from-[#9B8F85] hover:to-[#2C2420] text-white rounded-full w-14 h-14 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-125 hover:rotate-12"
@@ -154,7 +168,7 @@ const ProductCard = memo(function ProductCard({ product }: ProductCardProps) {
               )}
             </TooltipTrigger>
             <TooltipContent side="top">
-              <p>{isOutOfStock ? 'نفذت الكمية' : 'أضف للسلة'}</p>
+              <p>{isOutOfStock ? "نفذت الكمية" : "أضف للسلة"}</p>
             </TooltipContent>
           </Tooltip>
         </div>

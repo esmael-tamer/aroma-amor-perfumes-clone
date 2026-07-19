@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import AdminLayout from '@/components/admin/AdminLayout';
-import PromotionsManager from '@/components/admin/PromotionsManager';
+import AdminLayout from "@/components/admin/AdminLayout";
+import PromotionsManager from "@/components/admin/PromotionsManager";
 
 export default function PromotionsPage() {
   return (

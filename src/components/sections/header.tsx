@@ -1,20 +1,33 @@
-'use client';
+"use client";
 
-import { useState, useCallback, memo } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
-import { ShoppingCart, Menu, X, Search, User, Phone, MapPin, Settings } from 'lucide-react';
-import { NAVIGATION_LINKS, COMPANY_INFO } from '@/lib/constants';
-import { useCart } from '@/context/CartContext';
+import { useState, useCallback, memo } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import {
+  ShoppingCart,
+  Menu,
+  X,
+  Search,
+  User,
+  Phone,
+  MapPin,
+  Settings,
+} from "lucide-react";
+import { NAVIGATION_LINKS, COMPANY_INFO } from "@/lib/constants";
+import { useCart } from "@/context/CartContext";
 
 const Header = memo(function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { totalItems, setIsCartOpen } = useCart();
 
   const toggleMenu = useCallback(() => {
-    setIsMenuOpen(prev => !prev);
+    setIsMenuOpen((prev) => !prev);
   }, []);
 
   const closeMenu = useCallback(() => {
@@ -34,7 +47,9 @@ const Header = memo(function Header() {
             <div className="flex items-center gap-2">
               <MapPin className="w-4 h-4" aria-hidden="true" />
               <span className="font-bold">📍 الكويت</span>
-              <span className="hidden sm:inline text-white/80">| نوصل لجميع دول الخليج 🚚</span>
+              <span className="hidden sm:inline text-white/80">
+                | نوصل لجميع دول الخليج 🚚
+              </span>
             </div>
             <div className="flex items-center gap-2 font-bold">
               ✨ شحن مجاني على جميع الطلبات | عطور أصلية 100%
@@ -47,7 +62,11 @@ const Header = memo(function Header() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3" aria-label={COMPANY_INFO.name}>
+          <a
+            href="#"
+            className="flex items-center gap-3"
+            aria-label={COMPANY_INFO.name}
+          >
             <Image
               src={COMPANY_INFO.logo}
               alt={`${COMPANY_INFO.name} Logo`}
@@ -57,13 +76,20 @@ const Header = memo(function Header() {
               priority
             />
             <div>
-              <h1 className="text-2xl font-bold text-[#2C2420]">{COMPANY_INFO.name}</h1>
-              <p className="text-xs text-[#9B8F85] font-semibold">{COMPANY_INFO.slogan} 🇰🇼</p>
+              <h1 className="text-2xl font-bold text-[#2C2420]">
+                {COMPANY_INFO.name}
+              </h1>
+              <p className="text-xs text-[#9B8F85] font-semibold">
+                {COMPANY_INFO.slogan} 🇰🇼
+              </p>
             </div>
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8" aria-label="التنقل الرئيسي">
+          <nav
+            className="hidden lg:flex items-center gap-8"
+            aria-label="التنقل الرئيسي"
+          >
             {NAVIGATION_LINKS.map((item) => (
               <a
                 key={item.name}
@@ -82,6 +108,7 @@ const Header = memo(function Header() {
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button
+                  type="button"
                   variant="ghost"
                   size="icon"
                   className="hidden md:flex text-[#2C2420] hover:bg-[#E8EAED]"
@@ -100,6 +127,7 @@ const Header = memo(function Header() {
               <TooltipTrigger asChild>
                 <Link href="/admin">
                   <Button
+                    type="button"
                     variant="ghost"
                     size="icon"
                     className="hidden md:flex text-[#2C2420] hover:bg-[#E8EAED]"
@@ -118,6 +146,7 @@ const Header = memo(function Header() {
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button
+                  type="button"
                   variant="ghost"
                   size="icon"
                   onClick={openCart}
@@ -130,7 +159,7 @@ const Header = memo(function Header() {
                       className="absolute -top-1 -right-1 bg-gradient-to-r from-red-500 to-orange-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold shadow-lg animate-bounce-quick"
                       aria-hidden="true"
                     >
-                      {totalItems > 9 ? '9+' : totalItems}
+                      {totalItems > 9 ? "9+" : totalItems}
                     </span>
                   )}
                 </Button>
@@ -142,6 +171,7 @@ const Header = memo(function Header() {
 
             {/* Contact Phone - Desktop */}
             <Button
+              type="button"
               className="hidden lg:flex bg-gradient-to-r from-[#2C2420] to-[#4A5568] hover:from-[#4A5568] hover:to-[#2C2420] text-white gap-2 rounded-full px-6 shadow-lg hover:shadow-xl transition-all font-bold"
               aria-label="اتصل بنا"
             >
@@ -151,13 +181,14 @@ const Header = memo(function Header() {
 
             {/* Mobile Menu Button */}
             <Button
+              type="button"
               variant="ghost"
               size="icon"
               className="lg:hidden text-[#2C2420]"
               onClick={toggleMenu}
               aria-expanded={isMenuOpen}
               aria-controls="mobile-menu"
-              aria-label={isMenuOpen ? 'إغلاق القائمة' : 'فتح القائمة'}
+              aria-label={isMenuOpen ? "إغلاق القائمة" : "فتح القائمة"}
             >
               {isMenuOpen ? (
                 <X className="w-6 h-6" aria-hidden="true" />
@@ -171,7 +202,7 @@ const Header = memo(function Header() {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <nav 
+        <nav
           id="mobile-menu"
           className="lg:hidden bg-white border-t-2 border-[#E8EAED] shadow-xl"
           aria-label="القائمة الجوال"
@@ -188,7 +219,10 @@ const Header = memo(function Header() {
               </a>
             ))}
             <div className="pt-4 border-t-2 border-[#E8EAED] flex flex-col gap-3">
-              <Button className="bg-gradient-to-r from-[#2C2420] to-[#4A5568] hover:from-[#4A5568] hover:to-[#2C2420] text-white w-full rounded-full py-6 font-bold shadow-lg">
+              <Button
+                type="button"
+                className="bg-gradient-to-r from-[#2C2420] to-[#4A5568] hover:from-[#4A5568] hover:to-[#2C2420] text-white w-full rounded-full py-6 font-bold shadow-lg"
+              >
                 <Phone className="w-4 h-4 ml-2" aria-hidden="true" />
                 📞 اتصل الآن
               </Button>

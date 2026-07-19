@@ -1,39 +1,40 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Image from 'next/image';
-import { useSiteSettings } from '@/context/SiteSettingsContext';
-import { 
-  Plus, 
-  Search, 
-  Edit2, 
-  Trash2, 
-  X, 
+import { useState } from "react";
+import Image from "next/image";
+import { useSiteSettings } from "@/context/SiteSettingsContext";
+import {
+  Plus,
+  Search,
+  Edit2,
+  Trash2,
+  X,
   Save,
   Package,
   Filter,
   Eye,
-  EyeOff
-} from 'lucide-react';
+  EyeOff,
+} from "lucide-react";
 
 export default function ProductsManager() {
-  const { products, addProduct, updateProduct, deleteProduct, categories } = useSiteSettings();
-  const [searchQuery, setSearchQuery] = useState('');
-  const [filterCategory, setFilterCategory] = useState('all');
+  const { products, addProduct, updateProduct, deleteProduct, categories } =
+    useSiteSettings();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filterCategory, setFilterCategory] = useState("all");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState<any>(null);
   const [formData, setFormData] = useState({
-    nameAr: '',
-    nameEn: '',
-    descriptionAr: '',
-    descriptionEn: '',
+    nameAr: "",
+    nameEn: "",
+    descriptionAr: "",
+    descriptionEn: "",
     price: 0,
     originalPrice: 0,
-    categoryAr: '',
-    categoryEn: '',
-    brand: '',
-    size: '',
-    image: '',
+    categoryAr: "",
+    categoryEn: "",
+    brand: "",
+    size: "",
+    image: "",
     stock: 10,
     rating: 4.5,
     reviews: 0,
@@ -42,28 +43,32 @@ export default function ProductsManager() {
     isFeatured: false,
   });
 
-  const filteredProducts = products.filter(product => {
-    const matchesSearch = product.nameAr.includes(searchQuery) || 
-                         (product.nameEn?.toLowerCase().includes(searchQuery.toLowerCase()) ?? false) ||
-                         (product.brand?.toLowerCase().includes(searchQuery.toLowerCase()) ?? false);
-    const matchesCategory = filterCategory === 'all' || product.categoryAr === filterCategory;
+  const filteredProducts = products.filter((product) => {
+    const matchesSearch =
+      product.nameAr.includes(searchQuery) ||
+      (product.nameEn?.toLowerCase().includes(searchQuery.toLowerCase()) ??
+        false) ||
+      (product.brand?.toLowerCase().includes(searchQuery.toLowerCase()) ??
+        false);
+    const matchesCategory =
+      filterCategory === "all" || product.categoryAr === filterCategory;
     return matchesSearch && matchesCategory;
   });
 
   const openAddModal = () => {
     setEditingProduct(null);
     setFormData({
-      nameAr: '',
-      nameEn: '',
-      descriptionAr: '',
-      descriptionEn: '',
+      nameAr: "",
+      nameEn: "",
+      descriptionAr: "",
+      descriptionEn: "",
       price: 0,
       originalPrice: 0,
-      categoryAr: categories[0]?.nameAr || '',
-      categoryEn: categories[0]?.nameEn || '',
-      brand: '',
-      size: '100ml',
-      image: '',
+      categoryAr: categories[0]?.nameAr || "",
+      categoryEn: categories[0]?.nameEn || "",
+      brand: "",
+      size: "100ml",
+      image: "",
       stock: 10,
       rating: 4.5,
       reviews: 0,
@@ -109,7 +114,7 @@ export default function ProductsManager() {
   };
 
   const handleDelete = (id: number) => {
-    if (confirm('هل أنت متأكد من حذف هذا المنتج؟')) {
+    if (confirm("هل أنت متأكد من حذف هذا المنتج؟")) {
       deleteProduct(id);
     }
   };
@@ -123,6 +128,7 @@ export default function ProductsManager() {
           <p className="text-gray-500">{products.length} منتج</p>
         </div>
         <button
+          type="button"
           onClick={openAddModal}
           className="flex items-center gap-2 bg-[#2C2420] hover:bg-[#4A5568] text-white px-6 py-3 rounded-xl transition-colors"
         >
@@ -152,8 +158,10 @@ export default function ProductsManager() {
             aria-label="تصفية حسب القسم"
           >
             <option value="all">جميع الأقسام</option>
-            {categories.map(cat => (
-              <option key={cat.id} value={cat.nameAr}>{cat.nameAr}</option>
+            {categories.map((cat) => (
+              <option key={cat.id} value={cat.nameAr}>
+                {cat.nameAr}
+              </option>
             ))}
           </select>
         </div>
@@ -161,8 +169,11 @@ export default function ProductsManager() {
 
       {/* Products Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        {filteredProducts.map(product => (
-          <div key={product.id} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+        {filteredProducts.map((product) => (
+          <div
+            key={product.id}
+            className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
+          >
             <div className="relative h-48">
               <Image
                 src={product.image}
@@ -172,32 +183,49 @@ export default function ProductsManager() {
               />
               <div className="absolute top-2 right-2 flex gap-1">
                 {product.isNew && (
-                  <span className="bg-emerald-500 text-white text-xs px-2 py-1 rounded-full">جديد</span>
+                  <span className="bg-emerald-500 text-white text-xs px-2 py-1 rounded-full">
+                    جديد
+                  </span>
                 )}
                 {product.isBestseller && (
-                  <span className="bg-amber-500 text-white text-xs px-2 py-1 rounded-full">الأكثر مبيعاً</span>
+                  <span className="bg-amber-500 text-white text-xs px-2 py-1 rounded-full">
+                    الأكثر مبيعاً
+                  </span>
                 )}
               </div>
               <div className="absolute top-2 left-2">
-                <span className={`text-xs px-2 py-1 rounded-full ${product.stock > 0 ? 'bg-emerald-100 text-emerald-700' : 'bg-red-100 text-red-700'}`}>
-                  {product.stock > 0 ? `متوفر: ${product.stock}` : 'نفذ'}
+                <span
+                  className={`text-xs px-2 py-1 rounded-full ${product.stock > 0 ? "bg-emerald-100 text-emerald-700" : "bg-red-100 text-red-700"}`}
+                >
+                  {product.stock > 0 ? `متوفر: ${product.stock}` : "نفذ"}
                 </span>
               </div>
             </div>
             <div className="p-4 space-y-2">
-              <h3 className="font-bold text-gray-800 line-clamp-1">{product.nameAr}</h3>
-              <p className="text-sm text-gray-500">{product.brand || '-'} - {product.size || '-'}</p>
+              <h3 className="font-bold text-gray-800 line-clamp-1">
+                {product.nameAr}
+              </h3>
+              <p className="text-sm text-gray-500">
+                {product.brand || "-"} - {product.size || "-"}
+              </p>
               <div className="flex items-center justify-between">
                 <div>
-                  <span className="font-bold text-[#2C2420]">{product.price} د.ك</span>
+                  <span className="font-bold text-[#2C2420]">
+                    {product.price} د.ك
+                  </span>
                   {(product.originalPrice ?? 0) > 0 && (
-                    <span className="text-xs text-gray-400 line-through mr-2">{product.originalPrice}</span>
+                    <span className="text-xs text-gray-400 line-through mr-2">
+                      {product.originalPrice}
+                    </span>
                   )}
                 </div>
-                <span className="text-xs text-gray-500">{product.categoryAr}</span>
+                <span className="text-xs text-gray-500">
+                  {product.categoryAr}
+                </span>
               </div>
               <div className="flex gap-2 pt-2">
                 <button
+                  type="button"
                   onClick={() => openEditModal(product)}
                   className="flex-1 flex items-center justify-center gap-2 bg-blue-50 text-blue-600 hover:bg-blue-100 py-2 rounded-lg transition-colors"
                 >
@@ -205,6 +233,7 @@ export default function ProductsManager() {
                   تعديل
                 </button>
                 <button
+                  type="button"
                   onClick={() => handleDelete(product.id)}
                   className="flex items-center justify-center bg-red-50 text-red-600 hover:bg-red-100 p-2 rounded-lg transition-colors"
                   aria-label="حذف المنتج"
@@ -220,7 +249,9 @@ export default function ProductsManager() {
       {filteredProducts.length === 0 && (
         <div className="bg-white rounded-2xl p-12 text-center">
           <Package className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-          <h3 className="text-xl font-bold text-gray-800 mb-2">لا توجد منتجات</h3>
+          <h3 className="text-xl font-bold text-gray-800 mb-2">
+            لا توجد منتجات
+          </h3>
           <p className="text-gray-500">أضف منتجاً جديداً للبدء</p>
         </div>
       )}
@@ -228,13 +259,21 @@ export default function ProductsManager() {
       {/* Modal */}
       {isModalOpen && (
         <>
-          <div className="fixed inset-0 bg-black/60 z-50" onClick={() => setIsModalOpen(false)} />
+          <div
+            className="fixed inset-0 bg-black/60 z-50"
+            onClick={() => setIsModalOpen(false)}
+          />
           <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white rounded-2xl shadow-2xl z-50 p-6">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-xl font-bold text-gray-800">
-                {editingProduct ? 'تعديل المنتج' : 'إضافة منتج جديد'}
+                {editingProduct ? "تعديل المنتج" : "إضافة منتج جديد"}
               </h2>
-              <button onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-gray-100 rounded-lg" aria-label="إغلاق">
+              <button
+                type="button"
+                onClick={() => setIsModalOpen(false)}
+                className="p-2 hover:bg-gray-100 rounded-lg"
+                aria-label="إغلاق"
+              >
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -242,35 +281,56 @@ export default function ProductsManager() {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="nameAr" className="block text-sm font-medium text-gray-700 mb-1">الاسم بالعربي *</label>
+                  <label
+                    htmlFor="nameAr"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
+                    الاسم بالعربي *
+                  </label>
                   <input
                     id="nameAr"
                     type="text"
                     required
                     value={formData.nameAr}
-                    onChange={(e) => setFormData({ ...formData, nameAr: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, nameAr: e.target.value })
+                    }
                     className="w-full px-4 py-2 rounded-lg border-2 border-gray-200 focus:border-[#2C2420] focus:outline-none"
                   />
                 </div>
                 <div>
-                  <label htmlFor="nameEn" className="block text-sm font-medium text-gray-700 mb-1">الاسم بالإنجليزي *</label>
+                  <label
+                    htmlFor="nameEn"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
+                    الاسم بالإنجليزي *
+                  </label>
                   <input
                     id="nameEn"
                     type="text"
                     required
                     value={formData.nameEn}
-                    onChange={(e) => setFormData({ ...formData, nameEn: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, nameEn: e.target.value })
+                    }
                     className="w-full px-4 py-2 rounded-lg border-2 border-gray-200 focus:border-[#2C2420] focus:outline-none"
                   />
                 </div>
               </div>
 
               <div>
-                <label htmlFor="descriptionAr" className="block text-sm font-medium text-gray-700 mb-1">الوصف بالعربي</label>
+                <label
+                  htmlFor="descriptionAr"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  الوصف بالعربي
+                </label>
                 <textarea
                   id="descriptionAr"
                   value={formData.descriptionAr}
-                  onChange={(e) => setFormData({ ...formData, descriptionAr: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, descriptionAr: e.target.value })
+                  }
                   rows={2}
                   className="w-full px-4 py-2 rounded-lg border-2 border-gray-200 focus:border-[#2C2420] focus:outline-none"
                 />
@@ -278,36 +338,66 @@ export default function ProductsManager() {
 
               <div className="grid grid-cols-3 gap-4">
                 <div>
-                  <label htmlFor="price" className="block text-sm font-medium text-gray-700 mb-1">السعر *</label>
+                  <label
+                    htmlFor="price"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
+                    السعر *
+                  </label>
                   <input
                     id="price"
                     type="number"
                     required
                     step="0.001"
                     value={formData.price}
-                    onChange={(e) => setFormData({ ...formData, price: parseFloat(e.target.value) })}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        price: parseFloat(e.target.value),
+                      })
+                    }
                     className="w-full px-4 py-2 rounded-lg border-2 border-gray-200 focus:border-[#2C2420] focus:outline-none"
                   />
                 </div>
                 <div>
-                  <label htmlFor="originalPrice" className="block text-sm font-medium text-gray-700 mb-1">السعر القديم</label>
+                  <label
+                    htmlFor="originalPrice"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
+                    السعر القديم
+                  </label>
                   <input
                     id="originalPrice"
                     type="number"
                     step="0.001"
                     value={formData.originalPrice}
-                    onChange={(e) => setFormData({ ...formData, originalPrice: parseFloat(e.target.value) })}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        originalPrice: parseFloat(e.target.value),
+                      })
+                    }
                     className="w-full px-4 py-2 rounded-lg border-2 border-gray-200 focus:border-[#2C2420] focus:outline-none"
                   />
                 </div>
                 <div>
-                  <label htmlFor="stock" className="block text-sm font-medium text-gray-700 mb-1">المخزون *</label>
+                  <label
+                    htmlFor="stock"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
+                    المخزون *
+                  </label>
                   <input
                     id="stock"
                     type="number"
                     required
                     value={formData.stock}
-                    onChange={(e) => setFormData({ ...formData, stock: parseInt(e.target.value) })}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        stock: parseInt(e.target.value),
+                      })
+                    }
                     className="w-full px-4 py-2 rounded-lg border-2 border-gray-200 focus:border-[#2C2420] focus:outline-none"
                   />
                 </div>
@@ -315,34 +405,50 @@ export default function ProductsManager() {
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="categoryAr" className="block text-sm font-medium text-gray-700 mb-1">القسم *</label>
+                  <label
+                    htmlFor="categoryAr"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
+                    القسم *
+                  </label>
                   <select
                     id="categoryAr"
                     required
                     value={formData.categoryAr}
                     onChange={(e) => {
-                      const cat = categories.find(c => c.nameAr === e.target.value);
-                      setFormData({ 
-                        ...formData, 
+                      const cat = categories.find(
+                        (c) => c.nameAr === e.target.value,
+                      );
+                      setFormData({
+                        ...formData,
                         categoryAr: e.target.value,
-                        categoryEn: cat?.nameEn || ''
+                        categoryEn: cat?.nameEn || "",
                       });
                     }}
                     className="w-full px-4 py-2 rounded-lg border-2 border-gray-200 focus:border-[#2C2420] focus:outline-none"
                   >
-                    {categories.map(cat => (
-                      <option key={cat.id} value={cat.nameAr}>{cat.nameAr}</option>
+                    {categories.map((cat) => (
+                      <option key={cat.id} value={cat.nameAr}>
+                        {cat.nameAr}
+                      </option>
                     ))}
                   </select>
                 </div>
                 <div>
-                  <label htmlFor="brand" className="block text-sm font-medium text-gray-700 mb-1">الماركة *</label>
+                  <label
+                    htmlFor="brand"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
+                    الماركة *
+                  </label>
                   <input
                     id="brand"
                     type="text"
                     required
                     value={formData.brand}
-                    onChange={(e) => setFormData({ ...formData, brand: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, brand: e.target.value })
+                    }
                     className="w-full px-4 py-2 rounded-lg border-2 border-gray-200 focus:border-[#2C2420] focus:outline-none"
                   />
                 </div>
@@ -350,24 +456,38 @@ export default function ProductsManager() {
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="size" className="block text-sm font-medium text-gray-700 mb-1">الحجم</label>
+                  <label
+                    htmlFor="size"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
+                    الحجم
+                  </label>
                   <input
                     id="size"
                     type="text"
                     value={formData.size}
-                    onChange={(e) => setFormData({ ...formData, size: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, size: e.target.value })
+                    }
                     placeholder="100ml"
                     className="w-full px-4 py-2 rounded-lg border-2 border-gray-200 focus:border-[#2C2420] focus:outline-none"
                   />
                 </div>
                 <div>
-                  <label htmlFor="image" className="block text-sm font-medium text-gray-700 mb-1">رابط الصورة *</label>
+                  <label
+                    htmlFor="image"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
+                    رابط الصورة *
+                  </label>
                   <input
                     id="image"
                     type="url"
                     required
                     value={formData.image}
-                    onChange={(e) => setFormData({ ...formData, image: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, image: e.target.value })
+                    }
                     className="w-full px-4 py-2 rounded-lg border-2 border-gray-200 focus:border-[#2C2420] focus:outline-none"
                   />
                 </div>
@@ -378,7 +498,9 @@ export default function ProductsManager() {
                   <input
                     type="checkbox"
                     checked={formData.isNew}
-                    onChange={(e) => setFormData({ ...formData, isNew: e.target.checked })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, isNew: e.target.checked })
+                    }
                     className="w-4 h-4 rounded"
                   />
                   <span className="text-sm">منتج جديد</span>
@@ -387,7 +509,12 @@ export default function ProductsManager() {
                   <input
                     type="checkbox"
                     checked={formData.isBestseller}
-                    onChange={(e) => setFormData({ ...formData, isBestseller: e.target.checked })}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        isBestseller: e.target.checked,
+                      })
+                    }
                     className="w-4 h-4 rounded"
                   />
                   <span className="text-sm">الأكثر مبيعاً</span>
@@ -396,7 +523,9 @@ export default function ProductsManager() {
                   <input
                     type="checkbox"
                     checked={formData.isFeatured}
-                    onChange={(e) => setFormData({ ...formData, isFeatured: e.target.checked })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, isFeatured: e.target.checked })
+                    }
                     className="w-4 h-4 rounded"
                   />
                   <span className="text-sm">منتج مميز</span>
@@ -409,7 +538,7 @@ export default function ProductsManager() {
                   className="flex-1 flex items-center justify-center gap-2 bg-[#2C2420] hover:bg-[#4A5568] text-white py-3 rounded-xl transition-colors"
                 >
                   <Save className="w-5 h-5" />
-                  {editingProduct ? 'حفظ التعديلات' : 'إضافة المنتج'}
+                  {editingProduct ? "حفظ التعديلات" : "إضافة المنتج"}
                 </button>
                 <button
                   type="button"

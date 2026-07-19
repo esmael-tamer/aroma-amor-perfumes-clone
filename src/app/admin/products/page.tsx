@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import AdminLayout from '@/components/admin/AdminLayout';
-import ProductsManager from '@/components/admin/ProductsManager';
+import AdminLayout from "@/components/admin/AdminLayout";
+import ProductsManager from "@/components/admin/ProductsManager";
 
 export default function ProductsPage() {
   return (

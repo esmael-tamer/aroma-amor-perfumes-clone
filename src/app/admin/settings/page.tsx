@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import AdminLayout from '@/components/admin/AdminLayout';
-import SettingsManager from '@/components/admin/SettingsManager';
+import AdminLayout from "@/components/admin/AdminLayout";
+import SettingsManager from "@/components/admin/SettingsManager";
 
 export default function SettingsPage() {
   return (

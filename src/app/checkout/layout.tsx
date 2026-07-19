@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { CartProvider } from '@/context/CartContext';
-import CartDrawer from '@/components/cart/CartDrawer';
+import { CartProvider } from "@/context/CartContext";
+import CartDrawer from "@/components/cart/CartDrawer";
 
 export default function CheckoutLayout({
   children,

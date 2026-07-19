@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import { useState, memo } from 'react';
-import Image from 'next/image';
-import { useOrders, Order } from '@/context/OrdersContext';
-import { CURRENCY, COMPANY_INFO } from '@/lib/constants';
-import { 
-  Package, 
-  Clock, 
-  CheckCircle, 
-  Truck, 
-  XCircle, 
-  Eye, 
+import { useState, memo } from "react";
+import Image from "next/image";
+import { useOrders, Order } from "@/context/OrdersContext";
+import { CURRENCY, COMPANY_INFO } from "@/lib/constants";
+import {
+  Package,
+  Clock,
+  CheckCircle,
+  Truck,
+  XCircle,
+  Eye,
   Search,
   Filter,
   TrendingUp,
@@ -22,41 +22,64 @@ import {
   MapPin,
   Calendar,
   ChevronDown,
-  RefreshCw
-} from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
+  RefreshCw,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const statusConfig = {
-  pending: { label: 'قيد الانتظار', color: 'bg-yellow-100 text-yellow-800', icon: Clock },
-  confirmed: { label: 'مؤكد', color: 'bg-blue-100 text-blue-800', icon: CheckCircle },
-  processing: { label: 'قيد التجهيز', color: 'bg-purple-100 text-purple-800', icon: Package },
-  shipped: { label: 'تم الشحن', color: 'bg-indigo-100 text-indigo-800', icon: Truck },
-  delivered: { label: 'تم التوصيل', color: 'bg-green-100 text-green-800', icon: CheckCircle },
-  cancelled: { label: 'ملغي', color: 'bg-red-100 text-red-800', icon: XCircle },
+  pending: {
+    label: "قيد الانتظار",
+    color: "bg-yellow-100 text-yellow-800",
+    icon: Clock,
+  },
+  confirmed: {
+    label: "مؤكد",
+    color: "bg-blue-100 text-blue-800",
+    icon: CheckCircle,
+  },
+  processing: {
+    label: "قيد التجهيز",
+    color: "bg-purple-100 text-purple-800",
+    icon: Package,
+  },
+  shipped: {
+    label: "تم الشحن",
+    color: "bg-indigo-100 text-indigo-800",
+    icon: Truck,
+  },
+  delivered: {
+    label: "تم التوصيل",
+    color: "bg-green-100 text-green-800",
+    icon: CheckCircle,
+  },
+  cancelled: { label: "ملغي", color: "bg-red-100 text-red-800", icon: XCircle },
 };
 
 const AdminDashboard = memo(function AdminDashboard() {
   const { orders, stats, updateOrderStatus, deleteOrder } = useOrders();
   const [selectedOrder, setSelectedOrder] = useState<Order | null>(null);
-  const [filterStatus, setFilterStatus] = useState<string>('all');
-  const [searchTerm, setSearchTerm] = useState('');
+  const [filterStatus, setFilterStatus] = useState<string>("all");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const filteredOrders = orders
-    .filter(order => filterStatus === 'all' || order.status === filterStatus)
-    .filter(order => 
-      order.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      order.customer.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      order.customer.phone.includes(searchTerm)
+    .filter((order) => filterStatus === "all" || order.status === filterStatus)
+    .filter(
+      (order) =>
+        order.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        order.customer.fullName
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase()) ||
+        order.customer.phone.includes(searchTerm),
     );
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('ar-KW', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit',
+    return new Date(dateString).toLocaleDateString("ar-KW", {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
     });
   };
 
@@ -80,7 +103,11 @@ const AdminDashboard = memo(function AdminDashboard() {
               </div>
             </div>
             <Link href="/">
-              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-[#2C2420]">
+              <Button
+                type="button"
+                variant="outline"
+                className="border-white text-white hover:bg-white hover:text-[#2C2420]"
+              >
                 <ArrowLeft className="w-4 h-4 ml-2" />
                 العودة للمتجر
               </Button>
@@ -96,7 +123,9 @@ const AdminDashboard = memo(function AdminDashboard() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-gray-500 text-sm">إجمالي الطلبات</p>
-                <p className="text-3xl font-bold text-gray-800">{stats.totalOrders}</p>
+                <p className="text-3xl font-bold text-gray-800">
+                  {stats.totalOrders}
+                </p>
               </div>
               <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center">
                 <ShoppingBag className="w-7 h-7 text-blue-600" />
@@ -108,7 +137,9 @@ const AdminDashboard = memo(function AdminDashboard() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-gray-500 text-sm">طلبات قيد التنفيذ</p>
-                <p className="text-3xl font-bold text-gray-800">{stats.pendingOrders}</p>
+                <p className="text-3xl font-bold text-gray-800">
+                  {stats.pendingOrders}
+                </p>
               </div>
               <div className="w-14 h-14 bg-yellow-100 rounded-full flex items-center justify-center">
                 <Clock className="w-7 h-7 text-yellow-600" />
@@ -120,7 +151,9 @@ const AdminDashboard = memo(function AdminDashboard() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-gray-500 text-sm">طلبات مكتملة</p>
-                <p className="text-3xl font-bold text-gray-800">{stats.completedOrders}</p>
+                <p className="text-3xl font-bold text-gray-800">
+                  {stats.completedOrders}
+                </p>
               </div>
               <div className="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center">
                 <CheckCircle className="w-7 h-7 text-green-600" />
@@ -132,7 +165,10 @@ const AdminDashboard = memo(function AdminDashboard() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-gray-500 text-sm">إجمالي الإيرادات</p>
-                <p className="text-3xl font-bold text-gray-800">{stats.totalRevenue.toFixed(3)} <span className="text-lg">{CURRENCY.symbol}</span></p>
+                <p className="text-3xl font-bold text-gray-800">
+                  {stats.totalRevenue.toFixed(3)}{" "}
+                  <span className="text-lg">{CURRENCY.symbol}</span>
+                </p>
               </div>
               <div className="w-14 h-14 bg-emerald-100 rounded-full flex items-center justify-center">
                 <DollarSign className="w-7 h-7 text-emerald-600" />
@@ -189,7 +225,9 @@ const AdminDashboard = memo(function AdminDashboard() {
           {filteredOrders.length === 0 ? (
             <div className="p-12 text-center">
               <div className="text-6xl mb-4">📦</div>
-              <h3 className="text-xl font-bold text-gray-600 mb-2">لا توجد طلبات</h3>
+              <h3 className="text-xl font-bold text-gray-600 mb-2">
+                لا توجد طلبات
+              </h3>
               <p className="text-gray-400">الطلبات الجديدة ستظهر هنا</p>
             </div>
           ) : (
@@ -197,36 +235,61 @@ const AdminDashboard = memo(function AdminDashboard() {
               <table className="w-full">
                 <thead className="bg-gray-50">
                   <tr>
-                    <th className="px-6 py-4 text-right text-sm font-bold text-gray-600">رقم الطلب</th>
-                    <th className="px-6 py-4 text-right text-sm font-bold text-gray-600">العميل</th>
-                    <th className="px-6 py-4 text-right text-sm font-bold text-gray-600">التاريخ</th>
-                    <th className="px-6 py-4 text-right text-sm font-bold text-gray-600">المبلغ</th>
-                    <th className="px-6 py-4 text-right text-sm font-bold text-gray-600">الحالة</th>
-                    <th className="px-6 py-4 text-right text-sm font-bold text-gray-600">إجراءات</th>
+                    <th className="px-6 py-4 text-right text-sm font-bold text-gray-600">
+                      رقم الطلب
+                    </th>
+                    <th className="px-6 py-4 text-right text-sm font-bold text-gray-600">
+                      العميل
+                    </th>
+                    <th className="px-6 py-4 text-right text-sm font-bold text-gray-600">
+                      التاريخ
+                    </th>
+                    <th className="px-6 py-4 text-right text-sm font-bold text-gray-600">
+                      المبلغ
+                    </th>
+                    <th className="px-6 py-4 text-right text-sm font-bold text-gray-600">
+                      الحالة
+                    </th>
+                    <th className="px-6 py-4 text-right text-sm font-bold text-gray-600">
+                      إجراءات
+                    </th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100">
                   {filteredOrders.map((order) => {
                     const StatusIcon = statusConfig[order.status].icon;
                     return (
-                      <tr key={order.id} className="hover:bg-gray-50 transition-colors">
+                      <tr
+                        key={order.id}
+                        className="hover:bg-gray-50 transition-colors"
+                      >
                         <td className="px-6 py-4">
-                          <span className="font-mono font-bold text-[#2C2420]">{order.id}</span>
+                          <span className="font-mono font-bold text-[#2C2420]">
+                            {order.id}
+                          </span>
                         </td>
                         <td className="px-6 py-4">
                           <div>
-                            <p className="font-semibold text-gray-800">{order.customer.fullName}</p>
-                            <p className="text-sm text-gray-500">{order.customer.phone}</p>
+                            <p className="font-semibold text-gray-800">
+                              {order.customer.fullName}
+                            </p>
+                            <p className="text-sm text-gray-500">
+                              {order.customer.phone}
+                            </p>
                           </div>
                         </td>
                         <td className="px-6 py-4 text-sm text-gray-600">
                           {formatDate(order.createdAt)}
                         </td>
                         <td className="px-6 py-4">
-                          <span className="font-bold text-gray-800">{order.totalPrice.toFixed(3)} {CURRENCY.symbol}</span>
+                          <span className="font-bold text-gray-800">
+                            {order.totalPrice.toFixed(3)} {CURRENCY.symbol}
+                          </span>
                         </td>
                         <td className="px-6 py-4">
-                          <span className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium ${statusConfig[order.status].color}`}>
+                          <span
+                            className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-sm font-medium ${statusConfig[order.status].color}`}
+                          >
                             <StatusIcon className="w-4 h-4" />
                             {statusConfig[order.status].label}
                           </span>
@@ -234,6 +297,7 @@ const AdminDashboard = memo(function AdminDashboard() {
                         <td className="px-6 py-4">
                           <div className="flex items-center gap-2">
                             <button
+                              type="button"
                               onClick={() => setSelectedOrder(order)}
                               className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                               title="عرض التفاصيل"
@@ -255,7 +319,7 @@ const AdminDashboard = memo(function AdminDashboard() {
       {/* Order Details Modal */}
       {selectedOrder && (
         <>
-          <div 
+          <div
             className="fixed inset-0 bg-black/60 z-50"
             onClick={() => setSelectedOrder(null)}
           />
@@ -263,6 +327,7 @@ const AdminDashboard = memo(function AdminDashboard() {
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-2xl font-bold text-gray-800">تفاصيل الطلب</h3>
               <button
+                type="button"
                 onClick={() => setSelectedOrder(null)}
                 aria-label="إغلاق تفاصيل الطلب"
                 className="text-gray-400 hover:text-gray-600"
@@ -275,28 +340,41 @@ const AdminDashboard = memo(function AdminDashboard() {
             <div className="flex items-center justify-between mb-6 p-4 bg-gray-50 rounded-xl">
               <div>
                 <p className="text-sm text-gray-500">رقم الطلب</p>
-                <p className="font-mono font-bold text-xl text-[#2C2420]">{selectedOrder.id}</p>
+                <p className="font-mono font-bold text-xl text-[#2C2420]">
+                  {selectedOrder.id}
+                </p>
               </div>
-              <span className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold ${statusConfig[selectedOrder.status].color}`}>
+              <span
+                className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold ${statusConfig[selectedOrder.status].color}`}
+              >
                 {statusConfig[selectedOrder.status].label}
               </span>
             </div>
 
             {/* Update Status */}
             <div className="mb-6">
-              <label className="block text-sm font-bold text-gray-600 mb-2">تحديث حالة الطلب:</label>
+              <label className="block text-sm font-bold text-gray-600 mb-2">
+                تحديث حالة الطلب:
+              </label>
               <div className="flex flex-wrap gap-2">
                 {Object.entries(statusConfig).map(([key, value]) => (
                   <button
+                    type="button"
                     key={key}
                     onClick={() => {
-                      updateOrderStatus(selectedOrder.id, key as Order['status']);
-                      setSelectedOrder({ ...selectedOrder, status: key as Order['status'] });
+                      updateOrderStatus(
+                        selectedOrder.id,
+                        key as Order["status"],
+                      );
+                      setSelectedOrder({
+                        ...selectedOrder,
+                        status: key as Order["status"],
+                      });
                     }}
                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
                       selectedOrder.status === key
-                        ? 'bg-[#2C2420] text-white'
-                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                        ? "bg-[#2C2420] text-white"
+                        : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                     }`}
                   >
                     {value.label}
@@ -314,18 +392,25 @@ const AdminDashboard = memo(function AdminDashboard() {
               <div className="grid grid-cols-2 gap-4 text-sm">
                 <div>
                   <span className="text-gray-500">الاسم:</span>
-                  <span className="font-medium mr-2">{selectedOrder.customer.fullName}</span>
+                  <span className="font-medium mr-2">
+                    {selectedOrder.customer.fullName}
+                  </span>
                 </div>
                 <div>
                   <span className="text-gray-500">الهاتف:</span>
-                  <a href={`tel:${selectedOrder.customer.phone}`} className="font-medium mr-2 text-blue-600">
+                  <a
+                    href={`tel:${selectedOrder.customer.phone}`}
+                    className="font-medium mr-2 text-blue-600"
+                  >
                     {selectedOrder.customer.phone}
                   </a>
                 </div>
                 {selectedOrder.customer.email && (
                   <div className="col-span-2">
                     <span className="text-gray-500">البريد:</span>
-                    <span className="font-medium mr-2">{selectedOrder.customer.email}</span>
+                    <span className="font-medium mr-2">
+                      {selectedOrder.customer.email}
+                    </span>
                   </div>
                 )}
               </div>
@@ -340,14 +425,20 @@ const AdminDashboard = memo(function AdminDashboard() {
               <p className="text-sm text-gray-700">
                 {selectedOrder.address.country} - {selectedOrder.address.city}
                 <br />
-                {selectedOrder.address.area} - قطعة {selectedOrder.address.block} - شارع {selectedOrder.address.street}
+                {selectedOrder.address.area} - قطعة{" "}
+                {selectedOrder.address.block} - شارع{" "}
+                {selectedOrder.address.street}
                 <br />
                 مبنى {selectedOrder.address.building}
-                {selectedOrder.address.floor && ` - طابق ${selectedOrder.address.floor}`}
-                {selectedOrder.address.apartment && ` - شقة ${selectedOrder.address.apartment}`}
+                {selectedOrder.address.floor &&
+                  ` - طابق ${selectedOrder.address.floor}`}
+                {selectedOrder.address.apartment &&
+                  ` - شقة ${selectedOrder.address.apartment}`}
               </p>
               {selectedOrder.notes && (
-                <p className="mt-2 text-sm text-gray-500 italic">ملاحظات: {selectedOrder.notes}</p>
+                <p className="mt-2 text-sm text-gray-500 italic">
+                  ملاحظات: {selectedOrder.notes}
+                </p>
               )}
             </div>
 
@@ -359,15 +450,30 @@ const AdminDashboard = memo(function AdminDashboard() {
               </h4>
               <div className="space-y-3">
                 {selectedOrder.items.map((item, index) => (
-                  <div key={index} className="flex items-center gap-4 p-3 bg-gray-50 rounded-xl">
+                  <div
+                    key={index}
+                    className="flex items-center gap-4 p-3 bg-gray-50 rounded-xl"
+                  >
                     <div className="relative w-16 h-16 rounded-lg overflow-hidden">
-                      <Image src={item.image} alt={item.productName} fill className="object-cover" />
+                      <Image
+                        src={item.image}
+                        alt={item.productName}
+                        fill
+                        className="object-cover"
+                      />
                     </div>
                     <div className="flex-1">
-                      <p className="font-medium text-gray-800">{item.productName}</p>
-                      <p className="text-sm text-gray-500">{item.price} {CURRENCY.symbol} × {item.quantity}</p>
+                      <p className="font-medium text-gray-800">
+                        {item.productName}
+                      </p>
+                      <p className="text-sm text-gray-500">
+                        {item.price} {CURRENCY.symbol} × {item.quantity}
+                      </p>
                     </div>
-                    <p className="font-bold text-gray-800">{(item.price * item.quantity).toFixed(3)} {CURRENCY.symbol}</p>
+                    <p className="font-bold text-gray-800">
+                      {(item.price * item.quantity).toFixed(3)}{" "}
+                      {CURRENCY.symbol}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -376,13 +482,15 @@ const AdminDashboard = memo(function AdminDashboard() {
             {/* Total */}
             <div className="p-4 bg-[#2C2420] text-white rounded-xl flex items-center justify-between">
               <span className="font-bold text-lg">الإجمالي:</span>
-              <span className="font-bold text-2xl">{selectedOrder.totalPrice.toFixed(3)} {CURRENCY.symbol}</span>
+              <span className="font-bold text-2xl">
+                {selectedOrder.totalPrice.toFixed(3)} {CURRENCY.symbol}
+              </span>
             </div>
 
             {/* Actions */}
             <div className="flex gap-3 mt-6">
               <a
-                href={`https://wa.me/${selectedOrder.customer.phone.replace(/\D/g, '')}?text=${encodeURIComponent(`مرحباً ${selectedOrder.customer.fullName}، بخصوص طلبك رقم ${selectedOrder.id}...`)}`}
+                href={`https://wa.me/${selectedOrder.customer.phone.replace(/\D/g, "")}?text=${encodeURIComponent(`مرحباً ${selectedOrder.customer.fullName}، بخصوص طلبك رقم ${selectedOrder.id}...`)}`}
                 target="_blank"
                 className="flex-1 bg-green-500 hover:bg-green-600 text-white py-3 rounded-xl font-bold text-center transition-colors"
               >
@@ -398,8 +506,9 @@ const AdminDashboard = memo(function AdminDashboard() {
 
             {/* Delete Order */}
             <button
+              type="button"
               onClick={() => {
-                if (confirm('هل أنت متأكد من حذف هذا الطلب؟')) {
+                if (confirm("هل أنت متأكد من حذف هذا الطلب؟")) {
                   deleteOrder(selectedOrder.id);
                   setSelectedOrder(null);
                 }
