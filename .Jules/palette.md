@@ -5,3 +5,7 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+
+## 2024-05-27 - Skip to Content for Next.js App Router
+**Learning:** Adding a Skip to Content link in Next.js App Router is best placed at the very top of `layout.tsx` targeting a wrapper around `{children}`. Target elements need `tabIndex={-1}` and `outline-none` to accept programmatic focus without showing unwanted default focus rings.
+**Action:** When implementing Skip to Content, wrap the layout `{children}` in a `<main id="main-content" tabIndex={-1} className="outline-none">` (or `<div>` if `main` is used deeper) to ensure cross-page keyboard accessibility.
