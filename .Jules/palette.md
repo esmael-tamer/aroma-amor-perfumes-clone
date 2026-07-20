@@ -5,6 +5,3 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
-## 2024-05-24 - [Fixing Checkout Form Labels]
-**Learning:** For optimal form accessibility, `<label>` elements must explicitly link to their corresponding fields using `id` and `htmlFor` attributes, even if they visually appear grouped or nested, to ensure robust screen reader compatibility.
-**Action:** Always add `htmlFor` attributes matching the input ids to labels.
