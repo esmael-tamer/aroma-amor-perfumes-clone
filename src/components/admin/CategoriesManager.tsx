@@ -138,7 +138,7 @@ export default function CategoriesManager() {
               <h2 className="text-xl font-bold text-gray-800">
                 {editingCategory ? 'تعديل القسم' : 'إضافة قسم جديد'}
               </h2>
-              <button type="button"  onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-gray-100 rounded-lg" aria-label="إغلاق">
+              <button type="button" onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-gray-100 rounded-lg" aria-label="إغلاق">
                 <X className="w-5 h-5" />
               </button>
             </div>
