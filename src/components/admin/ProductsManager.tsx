@@ -125,6 +125,7 @@ export default function ProductsManager() {
         <button
           onClick={openAddModal}
           className="flex items-center gap-2 bg-[#2C2420] hover:bg-[#4A5568] text-white px-6 py-3 rounded-xl transition-colors"
+          aria-label="إضافة منتج جديد"
         >
           <Plus className="w-5 h-5" />
           إضافة منتج
@@ -200,6 +201,7 @@ export default function ProductsManager() {
                 <button
                   onClick={() => openEditModal(product)}
                   className="flex-1 flex items-center justify-center gap-2 bg-blue-50 text-blue-600 hover:bg-blue-100 py-2 rounded-lg transition-colors"
+                  aria-label={`تعديل منتج ${product.nameAr}`}
                 >
                   <Edit2 className="w-4 h-4" />
                   تعديل
@@ -407,6 +409,7 @@ export default function ProductsManager() {
                 <button
                   type="submit"
                   className="flex-1 flex items-center justify-center gap-2 bg-[#2C2420] hover:bg-[#4A5568] text-white py-3 rounded-xl transition-colors"
+                  aria-label={editingProduct ? 'حفظ تعديلات المنتج' : 'حفظ المنتج الجديد'}
                 >
                   <Save className="w-5 h-5" />
                   {editingProduct ? 'حفظ التعديلات' : 'إضافة المنتج'}
@@ -415,6 +418,7 @@ export default function ProductsManager() {
                   type="button"
                   onClick={() => setIsModalOpen(false)}
                   className="px-6 py-3 border-2 border-gray-200 hover:bg-gray-50 rounded-xl transition-colors"
+                  aria-label="إلغاء"
                 >
                   إلغاء
                 </button>

@@ -51,8 +51,10 @@ const ProductsSection = memo(function ProductsSection() {
         >
           {PRODUCT_CATEGORIES.map((category) => (
             <button
+              type="button"
               key={category.id}
               onClick={() => handleCategoryChange(category.id)}
+              aria-label={`تصفية حسب ${category.name}`}
               className={`px-8 py-4 rounded-full font-bold transition-all duration-300 shadow-md hover:shadow-xl ${
                 selectedCategory === category.id
                   ? 'bg-gradient-to-r from-[#2C2420] to-[#4A5568] text-white shadow-2xl scale-110'
