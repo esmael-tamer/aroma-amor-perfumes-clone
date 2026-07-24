@@ -5,3 +5,7 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+
+## 2024-07-23 - Accessibility of custom buttons
+**Learning:** Adding explicit aria-label attributes to `<button>` elements (especially icon-only and interactive/form buttons) ensures screen reader support and better accessibility. Missing aria-labels makes buttons meaningless to assistive technologies.
+**Action:** Always provide descriptive `aria-label`s for interactive buttons, particularly ones without text content or dynamic states like toggles.

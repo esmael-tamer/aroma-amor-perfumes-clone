@@ -71,9 +71,10 @@ export default function CategoriesManager() {
           <h1 className="text-2xl font-bold text-gray-800">إدارة الأقسام</h1>
           <p className="text-gray-500">{categories.length} قسم</p>
         </div>
-        <button
+        <button type="button"
           onClick={openAddModal}
           className="flex items-center gap-2 bg-[#2C2420] hover:bg-[#4A5568] text-white px-6 py-3 rounded-xl transition-colors"
+          aria-label="إضافة قسم جديد"
         >
           <Plus className="w-5 h-5" />
           إضافة قسم
@@ -91,7 +92,7 @@ export default function CategoriesManager() {
           >
             <div className="flex items-start justify-between mb-4">
               <div className="text-5xl">{category.icon}</div>
-              <button
+              <button type="button"
                 onClick={() => toggleActive(category)}
                 className={`p-1 rounded-lg ${category.isActive ? 'text-emerald-500' : 'text-gray-400'}`}
                 aria-label={category.isActive ? 'إلغاء التفعيل' : 'تفعيل'}
@@ -102,14 +103,15 @@ export default function CategoriesManager() {
             <h3 className="text-xl font-bold text-gray-800 mb-1">{category.nameAr}</h3>
             <p className="text-gray-500 mb-4">{category.nameEn}</p>
             <div className="flex gap-2">
-              <button
+              <button type="button"
                 onClick={() => openEditModal(category)}
                 className="flex-1 flex items-center justify-center gap-2 bg-blue-50 text-blue-600 hover:bg-blue-100 py-2 rounded-lg transition-colors"
+                aria-label={`تعديل قسم ${category.nameAr}`}
               >
                 <Edit2 className="w-4 h-4" />
                 تعديل
               </button>
-              <button
+              <button type="button"
                 onClick={() => handleDelete(category.id)}
                 className="flex items-center justify-center bg-red-50 text-red-600 hover:bg-red-100 p-2 rounded-lg transition-colors"
                 aria-label="حذف القسم"
@@ -138,7 +140,7 @@ export default function CategoriesManager() {
               <h2 className="text-xl font-bold text-gray-800">
                 {editingCategory ? 'تعديل القسم' : 'إضافة قسم جديد'}
               </h2>
-              <button onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-gray-100 rounded-lg" aria-label="إغلاق">
+              <button type="button" onClick={() => setIsModalOpen(false)} className="p-2 hover:bg-gray-100 rounded-lg" aria-label="إغلاق">
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -193,6 +195,7 @@ export default function CategoriesManager() {
                   type="button"
                   onClick={() => setFormData({ ...formData, isActive: !formData.isActive })}
                   className={`p-1 rounded-lg ${formData.isActive ? 'text-emerald-500' : 'text-gray-400'}`}
+                  aria-label={formData.isActive ? 'إلغاء التفعيل' : 'تفعيل'}
                 >
                   {formData.isActive ? <ToggleRight className="w-8 h-8" /> : <ToggleLeft className="w-8 h-8" />}
                 </button>
@@ -205,6 +208,7 @@ export default function CategoriesManager() {
                 <button
                   type="submit"
                   className="flex-1 flex items-center justify-center gap-2 bg-[#2C2420] hover:bg-[#4A5568] text-white py-3 rounded-xl transition-colors"
+                  aria-label={editingCategory ? 'حفظ تعديلات القسم' : 'حفظ القسم الجديد'}
                 >
                   <Save className="w-5 h-5" />
                   {editingCategory ? 'حفظ التعديلات' : 'إضافة القسم'}
@@ -213,6 +217,7 @@ export default function CategoriesManager() {
                   type="button"
                   onClick={() => setIsModalOpen(false)}
                   className="px-6 py-3 border-2 border-gray-200 hover:bg-gray-50 rounded-xl transition-colors"
+                  aria-label="إلغاء"
                 >
                   إلغاء
                 </button>

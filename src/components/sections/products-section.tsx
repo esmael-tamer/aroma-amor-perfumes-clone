@@ -51,8 +51,10 @@ const ProductsSection = memo(function ProductsSection() {
         >
           {PRODUCT_CATEGORIES.map((category) => (
             <button
+              type="button"
               key={category.id}
               onClick={() => handleCategoryChange(category.id)}
+              aria-label={`تصفية حسب ${category.name}`}
               className={`px-8 py-4 rounded-full font-bold transition-all duration-300 shadow-md hover:shadow-xl ${
                 selectedCategory === category.id
                   ? 'bg-gradient-to-r from-[#2C2420] to-[#4A5568] text-white shadow-2xl scale-110'
@@ -104,14 +106,14 @@ const ProductsSection = memo(function ProductsSection() {
               <span className="text-emerald-400">+ شحن مجاني لجميع دول الخليج 🚚</span>
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
-              <Button 
+              <Button type="button"
                 size="lg"
                 className="bg-gradient-to-r from-amber-400 to-orange-500 text-[#2C2420] hover:from-amber-500 hover:to-orange-600 px-12 py-8 text-xl rounded-full font-bold shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110"
                 aria-label="تسوق الآن واستفد من العروض"
               >
                 تسوق الآن واستفد 🛒
               </Button>
-              <Button 
+              <Button type="button"
                 size="lg"
                 variant="outline"
                 className="border-2 border-white text-white hover:bg-white hover:text-[#2C2420] px-12 py-8 text-xl rounded-full font-bold transition-all duration-300 hover:scale-105"

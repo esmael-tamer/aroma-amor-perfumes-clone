@@ -276,6 +276,7 @@ export default function SettingsManager() {
             type="submit"
             disabled={isSaving}
             className="flex items-center gap-2 bg-[#2C2420] hover:bg-[#4A5568] text-white px-8 py-3 rounded-xl transition-colors disabled:opacity-50"
+            aria-label="حفظ إعدادات المتجر"
           >
             <Save className="w-5 h-5" />
             {isSaving ? 'جاري الحفظ...' : 'حفظ التغييرات'}
