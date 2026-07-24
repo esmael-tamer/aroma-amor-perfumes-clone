@@ -1,7 +1,5 @@
-## 2024-05-23 - Hidden Focus Traps in Overlays
-**Learning:** Elements hidden with `opacity-0` (like hover actions) are still focusable by keyboard, creating a confusing "invisible focus" state.
-**Action:** Always add `focus-within:opacity-100` (or `group-focus-within` if needed) to the container when using `opacity-0` for hover effects on interactive elements.
+## 2023-10-27 - [Aroma Amor Perfumes]
 
-## 2024-05-25 - Self-Contained Tooltips
-**Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
-**Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+**Learning:** Reviewing the code for button structure and `hover:` or `focus:` states, there is a good number of buttons with appropriate visual feedback. However, one common pattern missing in standard forms is an accessible "skip to content" link. Often these Next.js projects lack a hidden "Skip to main content" link at the very top of the app which helps keyboard users skip navigation headers.
+
+**Action:** Add a "skip to main content" link that is screen-reader only until focused (`sr-only focus:not-sr-only focus:fixed focus:top-4 focus:z-50 ...`) in the root layout or header.
