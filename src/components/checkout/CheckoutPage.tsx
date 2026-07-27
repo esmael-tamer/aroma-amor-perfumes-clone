@@ -498,8 +498,7 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                     { id: 'knet', title: 'كي نت', icon: '💳', desc: 'الدفع الإلكتروني عبر كي نت' },
                     { id: 'card', title: 'بطاقة ائتمان', icon: '💳', desc: 'Visa / Mastercard' },
                   ].map(method => (
-                    <label
-                      htmlFor={`payment-${method.id}`}
+                    <label htmlFor={`payment-${method.id}`}
                       key={method.id}
                       className={`flex items-center gap-4 p-6 rounded-2xl border-2 cursor-pointer transition-all ${
                         formData.paymentMethod === method.id
