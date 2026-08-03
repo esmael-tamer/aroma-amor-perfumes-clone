@@ -5,3 +5,6 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+## 2026-08-02 - RTL Accessibility & Skip Links
+**Learning:** Implementing "Skip to Content" in Arabic/RTL Next.js applications requires both RTL-aware positioning (`right-4` instead of `left-4`) for logical reading order start, and persistent layout wrappers (`#main-content`) with `tabIndex={-1} outline-none` to manage programmatic focus without introducing visual artifacts.
+**Action:** Standardize Skip to Content patterns in RTL layouts using Tailwind's `right-4` and focus-visible utility combinations.
