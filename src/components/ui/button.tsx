@@ -46,6 +46,7 @@ function Button({
     asChild?: boolean
   }) {
   const Comp = asChild ? Slot : "button"
+  if (!asChild && !props.type) props.type = "button"
 
   return (
     <Comp
