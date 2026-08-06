@@ -71,7 +71,7 @@ const HeroSection = memo(function HeroSection() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button 
+              <Button
                 size="lg" 
                 className="bg-[#2C2420] hover:bg-[#2C2420]/90 text-white px-10 py-7 text-xl rounded-full shadow-lg hover:shadow-xl transition-all"
                 onClick={scrollToProducts}
@@ -79,7 +79,7 @@ const HeroSection = memo(function HeroSection() {
               >
                 تسوق الآن 🛍️
               </Button>
-              <Button 
+              <Button
                 size="lg" 
                 variant="outline"
                 className="border-2 border-[#2C2420] text-[#2C2420] hover:bg-[#2C2420] hover:text-white px-10 py-7 text-xl rounded-full transition-all"
@@ -154,7 +154,7 @@ const HeroSection = memo(function HeroSection() {
       </div>
 
       {/* Scroll Indicator */}
-      <button 
+      <button
         onClick={scrollToProducts}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer"
         aria-label="اذهب إلى المنتجات"
