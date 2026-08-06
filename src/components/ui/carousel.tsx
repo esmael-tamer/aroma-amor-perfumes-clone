@@ -180,7 +180,7 @@ function CarouselPrevious({
   const { orientation, scrollPrev, canScrollPrev } = useCarousel()
 
   return (
-    <Button type="button"
+    <Button
       data-slot="carousel-previous"
       variant={variant}
       size={size}
@@ -210,7 +210,7 @@ function CarouselNext({
   const { orientation, scrollNext, canScrollNext } = useCarousel()
 
   return (
-    <Button type="button"
+    <Button
       data-slot="carousel-next"
       variant={variant}
       size={size}
