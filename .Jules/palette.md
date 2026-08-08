@@ -5,7 +5,3 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
-
-## 2024-08-09 - Skip to Content Target Placement
-**Learning:** Skip to content links require their target container to manage programmatic focus without showing unwanted focus rings.
-**Action:** Add `tabIndex={-1}` and `outline-none` (Tailwind) to the target element (e.g., `<div id="main-content">`) to ensure focus works correctly without visual artifacts.
