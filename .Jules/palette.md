@@ -9,3 +9,7 @@
 ## 2024-06-01 - Next.js App Router Skip Link Target
 **Learning:** When implementing "Skip to Content" links in Next.js App Router, the target container must accept programmatic focus to successfully shift the screen reader's virtual cursor.
 **Action:** Always wrap the `{children}` prop inside `layout.tsx` with a persistent container that has `id="main-content"`, `tabIndex={-1}`, and Tailwind's `outline-none` to prevent unwanted visible focus rings when the link is activated.
+
+## 2024-05-24 - Cloudflare Workers CI Missing Button Types
+**Learning:** Cloudflare Workers CI fails silently with "No annotations available" when `<button>` or custom `<Button>` components lack an explicit `type="button"` attribute. Because standard HTML buttons default to `type="submit"` within forms, linters/compilers in strict CI environments will flag all untyped buttons globally.
+**Action:** When working in this repository, proactively check for and add `type="button"` to any interactive buttons (that aren't meant to submit forms) to prevent silent CI pipeline failures.

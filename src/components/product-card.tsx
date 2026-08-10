@@ -67,7 +67,7 @@ const ProductCard = memo(function ProductCard({ product }: ProductCardProps) {
         {/* Quick Actions */}
         {!isOutOfStock && (
           <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 focus-within:opacity-100 transition-opacity flex items-center justify-center">
-            <Button 
+            <Button type="button"
               size="lg"
               onClick={handleAddToCart}
               className="bg-white text-[#2C2420] hover:bg-[#E8EAED] rounded-full px-8 font-bold shadow-xl"
@@ -133,7 +133,7 @@ const ProductCard = memo(function ProductCard({ product }: ProductCardProps) {
             <TooltipTrigger asChild>
               {isOutOfStock ? (
                 <span tabIndex={0} className="inline-block outline-none focus-visible:ring-2 focus-visible:ring-offset-2 rounded-full">
-                  <Button
+                  <Button type="button"
                     size="icon"
                     disabled
                     className="bg-gradient-to-br from-[#2C2420] to-[#4A5568] text-white rounded-full w-14 h-14 shadow-lg opacity-50 cursor-not-allowed"
@@ -143,7 +143,7 @@ const ProductCard = memo(function ProductCard({ product }: ProductCardProps) {
                   </Button>
                 </span>
               ) : (
-                <Button
+                <Button type="button"
                   size="icon"
                   onClick={handleAddToCart}
                   className="bg-gradient-to-br from-[#2C2420] to-[#4A5568] hover:from-[#9B8F85] hover:to-[#2C2420] text-white rounded-full w-14 h-14 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-125 hover:rotate-12"
