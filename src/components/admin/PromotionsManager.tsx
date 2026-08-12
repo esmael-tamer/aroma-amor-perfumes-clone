@@ -154,7 +154,7 @@ export default function PromotionsManager() {
                 <div className="flex flex-wrap items-center gap-3 text-sm">
                   <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full font-mono font-bold flex items-center gap-2">
                     {promotion.code}
-                    <button 
+                    <button
                       onClick={() => copyCode(promotion.code)}
                       className="hover:text-[#2C2420]"
                       aria-label="نسخ الكود"
