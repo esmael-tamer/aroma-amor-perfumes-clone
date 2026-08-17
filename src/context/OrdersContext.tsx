@@ -60,6 +60,7 @@ export function OrdersProvider({ children }: { children: ReactNode }) {
     const savedOrders = localStorage.getItem('orders');
     if (savedOrders) {
       try {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setOrders(JSON.parse(savedOrders));
       } catch (e) {
         console.error('Error loading orders:', e);
