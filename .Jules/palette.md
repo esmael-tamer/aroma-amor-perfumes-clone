@@ -5,3 +5,7 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+
+## 2024-08-23 - Skip to Content Wrapper Focus Ring
+**Learning:** Target containers for 'Skip to Content' links (like `#main-content`) will show an unwanted visible focus ring when programmatically focused by the browser if not handled properly.
+**Action:** Always add `tabIndex={-1}` and Tailwind's `outline-none` class to the target container wrapper in Next.js `layout.tsx` to ensure proper accessibility behavior without visual regressions.
