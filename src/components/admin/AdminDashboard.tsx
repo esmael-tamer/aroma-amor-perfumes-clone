@@ -237,6 +237,7 @@ const AdminDashboard = memo(function AdminDashboard() {
                               onClick={() => setSelectedOrder(order)}
                               className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                               title="عرض التفاصيل"
+                              aria-label="عرض تفاصيل الطلب"
                             >
                               <Eye className="w-5 h-5" />
                             </button>
@@ -405,6 +406,7 @@ const AdminDashboard = memo(function AdminDashboard() {
                 }
               }}
               className="w-full mt-3 text-red-500 hover:bg-red-50 py-2 rounded-xl font-medium transition-colors"
+              aria-label="حذف الطلب"
             >
               🗑️ حذف الطلب
             </button>

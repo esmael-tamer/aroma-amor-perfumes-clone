@@ -226,6 +226,7 @@ const CartDrawer = memo(function CartDrawer() {
               <button
                 onClick={clearCart}
                 className="text-red-500 hover:bg-red-50 px-4 py-2.5 rounded-xl transition-colors text-sm font-medium border-2 border-red-100"
+                aria-label="إفراغ السلة"
               >
                 إفراغ 🗑️
               </button>
