@@ -5,3 +5,6 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+## 2024-05-26 - Skip to Content Wrapper Strategy
+**Learning:** Adding `#main-content` to `<body>` breaks programmatic focus shifting in Next.js layouts due to missing `tabIndex`.
+**Action:** Always wrap `{children}` in a `<div id="main-content" tabIndex={-1} className="outline-none">` inside layout providers to safely manage focus without visible focus rings.
