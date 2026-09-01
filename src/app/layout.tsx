@@ -67,12 +67,6 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl">
       <body className="antialiased">
-        <a
-          href="#main-content"
-          className="absolute -top-10 right-4 z-50 bg-primary text-primary-foreground px-4 py-2 rounded-md font-medium transition-all focus:top-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-        >
-          تخطي إلى المحتوى الرئيسي
-        </a>
         <SiteSettingsProvider>
           <OrdersProvider>
             <CartProvider>
@@ -87,9 +81,7 @@ export default function RootLayout({
                 data-debug="true"
                 data-custom-data='{"appName": "YourApp", "version": "1.0.0", "greeting": "hi"}'
               />
-              <div id="main-content" tabIndex={-1} className="outline-none">
-                {children}
-              </div>
+              {children}
               <CartDrawer />
               <VisualEditsMessenger />
             </CartProvider>

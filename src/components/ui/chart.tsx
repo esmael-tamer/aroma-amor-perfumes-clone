@@ -118,7 +118,10 @@ function ChartTooltipContent({
   color,
   nameKey,
   labelKey,
-}: React.ComponentProps<typeof RechartsPrimitive.Tooltip> & { payload?: any[]; label?: any; } &
+}: React.ComponentProps<typeof RechartsPrimitive.Tooltip> & {
+  payload?: any[];
+  label?: any;
+} &
   React.ComponentProps<"div"> & {
     hideLabel?: boolean
     hideIndicator?: boolean
@@ -129,7 +132,7 @@ function ChartTooltipContent({
   const { config } = useChart()
 
   const tooltipLabel = React.useMemo(() => {
-    if (hideLabel || !payload?.length) {
+    if (hideLabel || !payload || !Array.isArray(payload) || !payload.length) {
       return null
     }
 
@@ -164,7 +167,7 @@ function ChartTooltipContent({
     labelKey,
   ])
 
-  if (!active || !payload?.length) {
+  if (!active || !payload || !Array.isArray(payload) || !payload.length) {
     return null
   }
 
@@ -257,13 +260,15 @@ function ChartLegendContent({
   verticalAlign = "bottom",
   nameKey,
 }: React.ComponentProps<"div"> &
-  Omit<RechartsPrimitive.LegendProps, "payload" | "verticalAlign"> & { payload?: any[]; verticalAlign?: any } & {
+  Omit<RechartsPrimitive.LegendProps, "payload" | "verticalAlign"> & {
+  payload?: any[];
+  verticalAlign?: any;
     hideIcon?: boolean
     nameKey?: string
   }) {
   const { config } = useChart()
 
-  if (!payload?.length) {
+  if (!payload || !Array.isArray(payload) || !payload.length) {
     return null
   }
 
