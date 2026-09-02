@@ -87,7 +87,7 @@ export default function RootLayout({
               >
                 تخطي إلى المحتوى الرئيسي
               </a>
-              <div id="main-content" tabIndex={-1} className="outline-none">
+              <div id="main-content" tabIndex={-1} className="outline-none flex-1 flex flex-col w-full">
                 {children}
               </div>
               <CartDrawer />
