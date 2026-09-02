@@ -5,3 +5,7 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+
+## 2024-05-30 - Skip to Content Link
+**Learning:** Adding a "skip to content" link requires `focus:z-[100]` or similar high z-index and `focus:fixed` rather than `focus:absolute` when sticky headers or overlapping fixed elements are present to ensure it's fully visible when focused. Furthermore, the main layout wrapper needs `tabIndex={-1}` and `outline-none` so focus correctly transitions without ugly browser outlines.
+**Action:** Always use `focus:fixed` and high z-index for skip links. Ensure `#main-content` target has `-1` tabindex and outline removal.
