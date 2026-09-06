@@ -5,3 +5,7 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+
+## 2024-05-26 - Skip to Content Target Focus Management
+**Learning:** When navigating via a "Skip to Content" link, the target element needs to programmatically receive focus, which can sometimes display an unwanted focus ring.
+**Action:** Add `tabIndex={-1}` and `outline-none` (Tailwind) to the target element (e.g., `<div id="main-content">`) to ensure it accepts focus invisibly.
