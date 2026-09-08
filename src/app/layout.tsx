@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     template: `%s | ${COMPANY_INFO.name}`,
   },
   description: SEO_CONFIG.description,
-  keywords: SEO_CONFIG.keywords,
+  keywords: [...SEO_CONFIG.keywords],
   authors: [{ name: COMPANY_INFO.name }],
   creator: COMPANY_INFO.name,
   publisher: COMPANY_INFO.name,
@@ -81,7 +81,15 @@ export default function RootLayout({
                 data-debug="true"
                 data-custom-data='{"appName": "YourApp", "version": "1.0.0", "greeting": "hi"}'
               />
-              {children}
+              <a
+                href="#main-content"
+                className="sr-only focus:not-sr-only bg-background text-foreground p-4 z-[100] fixed top-0 right-4 rounded-b-md shadow-md outline-none focus-visible:ring-ring focus-visible:ring-2 font-medium"
+              >
+                تخطي إلى المحتوى الرئيسي
+              </a>
+              <div id="main-content" tabIndex={-1} className="outline-none flex-1 flex flex-col">
+                {children}
+              </div>
               <CartDrawer />
               <VisualEditsMessenger />
             </CartProvider>
