@@ -172,7 +172,7 @@ export default function CategoriesManager() {
                 <label className="block text-sm font-medium text-gray-700 mb-2">الأيقونة</label>
                 <div className="flex flex-wrap gap-2">
                   {emojiOptions.map(emoji => (
-                    <button
+                    <button type="button"
                       key={emoji}
                       type="button"
                       onClick={() => setFormData({ ...formData, icon: emoji })}
@@ -189,7 +189,7 @@ export default function CategoriesManager() {
               </div>
 
               <div className="flex items-center gap-3 pt-2">
-                <button
+                <button type="button"
                   type="button"
                   onClick={() => setFormData({ ...formData, isActive: !formData.isActive })}
                   className={`p-1 rounded-lg ${formData.isActive ? 'text-emerald-500' : 'text-gray-400'}`}
@@ -202,14 +202,14 @@ export default function CategoriesManager() {
               </div>
 
               <div className="flex gap-3 pt-4">
-                <button
+                <button type="button"
                   type="submit"
                   className="flex-1 flex items-center justify-center gap-2 bg-[#2C2420] hover:bg-[#4A5568] text-white py-3 rounded-xl transition-colors"
                 >
                   <Save className="w-5 h-5" />
                   {editingCategory ? 'حفظ التعديلات' : 'إضافة القسم'}
                 </button>
-                <button
+                <button type="button"
                   type="button"
                   onClick={() => setIsModalOpen(false)}
                   className="px-6 py-3 border-2 border-gray-200 hover:bg-gray-50 rounded-xl transition-colors"
