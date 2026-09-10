@@ -5,3 +5,7 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+
+## 2024-05-27 - Skip to Content Wrapper
+**Learning:** To satisfy "Skip to Content" keyboard accessibility focusing without producing ugly default focus rings on the container wrapper, use `tabIndex={-1}` combined with Tailwind's `outline-none` class.
+**Action:** When creating a target wrapper (e.g. `<div id="main-content">`) for skip links, explicitly style it with `className="outline-none" tabIndex={-1}`.
