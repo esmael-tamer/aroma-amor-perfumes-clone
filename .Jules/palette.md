@@ -5,3 +5,7 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+
+## 2024-09-12 - Replacing Native Titles with Tooltips
+**Learning:** Native `title` attributes cause inconsistent UX and overlapping native/custom tooltips when mixed in a design system.
+**Action:** For icon-only buttons, consistently use the custom `Tooltip` component instead of native `title` attributes for better accessibility and uniform styling.
