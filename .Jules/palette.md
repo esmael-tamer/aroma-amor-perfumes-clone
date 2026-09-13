@@ -9,3 +9,7 @@
 ## 2024-05-27 - Skip to Content Links in App Router
 **Learning:** Target containers for 'Skip to Content' links must have `tabIndex={-1}` and `outline-none` to accept programmatic focus properly without showing an unwanted visible focus ring. In Next.js App Router, placing this ID on a persistent wrapper exactly around `{children}` inside any Context Providers in `layout.tsx` (e.g., `<div id="main-content">`) ensures the browser can correctly shift programmatic focus into the main React tree.
 **Action:** Always add `tabIndex={-1}` and `outline-none` to target containers for skip links.
+
+## 2024-05-27 - TypeScript Strict Mode CI Compliance
+**Learning:** If a CI build fails but local `pnpm build` succeeds, it might be due to `ignoreBuildErrors: true` masking issues locally. CI environments (like Cloudflare Workers) often run strict `tsc --noEmit`. Also, when fixing missing properties for Recharts components like `Tooltip` or `Legend`, substituting `React.ComponentProps` with an explicit `Omit` (e.g. `Omit<React.ComponentProps<typeof RechartsPrimitive.Tooltip>, "payload" | "label"> & { payload?: any[]; label?: any; }`) effectively resolves strict constraint issues.
+**Action:** Always run `pnpm exec tsc --noEmit` locally before submission to guarantee strict TypeScript compliance.
