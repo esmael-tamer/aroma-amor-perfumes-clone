@@ -5,3 +5,7 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+
+## 2024-05-25 - RTL Skip to Content Link
+**Learning:** In RTL (Arabic) interfaces, skip-to-content links must be positioned using `right-*` rather than `left-*` to appear at the logical start of the reading order.
+**Action:** Always use `right-4` instead of `left-4` for absolute positioned accessibility links in Arabic/RTL layouts.
