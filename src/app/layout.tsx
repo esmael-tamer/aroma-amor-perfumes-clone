@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     template: `%s | ${COMPANY_INFO.name}`,
   },
   description: SEO_CONFIG.description,
-  keywords: SEO_CONFIG.keywords,
+  keywords: [...SEO_CONFIG.keywords],
   authors: [{ name: COMPANY_INFO.name }],
   creator: COMPANY_INFO.name,
   publisher: COMPANY_INFO.name,
@@ -70,6 +70,7 @@ export default function RootLayout({
         <SiteSettingsProvider>
           <OrdersProvider>
             <CartProvider>
+              <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:right-4 focus:bg-white focus:text-primary focus:px-6 focus:py-3 focus:rounded-xl focus:font-bold focus:shadow-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-ring">تخطي إلى المحتوى الأساسي</a>
               <ErrorReporter />
               <Script
                 src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/scripts//route-messenger.js"
@@ -81,7 +82,9 @@ export default function RootLayout({
                 data-debug="true"
                 data-custom-data='{"appName": "YourApp", "version": "1.0.0", "greeting": "hi"}'
               />
-              {children}
+              <div id="main-content" tabIndex={-1} className="outline-none">
+                {children}
+              </div>
               <CartDrawer />
               <VisualEditsMessenger />
             </CartProvider>
