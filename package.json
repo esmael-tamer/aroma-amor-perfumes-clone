@@ -99,6 +99,7 @@
     },
     "devDependencies": {
         "@eslint/eslintrc": "^3.3.1",
+        "@next/eslint-plugin-next": "^16.3.5",
         "@tailwindcss/postcss": "^4",
         "@types/node": "^20",
         "@types/react": "^19",
