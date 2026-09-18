@@ -67,6 +67,12 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl">
       <body className="antialiased">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:right-4 focus:z-[100] bg-white text-[#2C2420] px-4 py-2 rounded-lg shadow-xl border-2 border-[#2C2420] font-bold outline-none focus:ring-2 focus:ring-[#2C2420]"
+        >
+          تخطي إلى المحتوى
+        </a>
         <SiteSettingsProvider>
           <OrdersProvider>
             <CartProvider>

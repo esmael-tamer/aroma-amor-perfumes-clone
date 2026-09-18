@@ -5,3 +5,6 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+## 2024-10-24 - Skip to Content Link
+**Learning:** The Skip to Content link is essential for keyboard accessibility but must have focus:z-[100] to bypass Next.js layout headers, and the target container needs tabIndex={-1} and outline-none to avoid ugly focus rings when targeted programmatically.
+**Action:** Always ensure target `<main>` wrappers correctly manage focus without introducing visible rings.
