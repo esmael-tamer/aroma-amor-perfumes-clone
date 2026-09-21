@@ -43,7 +43,7 @@ export default function AdminPage() {
     },
     { 
       label: 'طلبات قيد الانتظار', 
-      value: stats.pending, 
+      value: stats.pending,
       icon: TrendingUp, 
       color: 'bg-purple-500',
       href: '/admin/orders'
