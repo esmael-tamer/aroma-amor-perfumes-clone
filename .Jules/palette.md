@@ -5,3 +5,6 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+## 2024-05-26 - Missing ARIA Labels on Toggle Buttons
+**Learning:** Icon-only toggle buttons (like those used for activating/deactivating items) are easily missed during accessibility audits if they just swap icons (e.g., `ToggleLeft` vs `ToggleRight`) without text.
+**Action:** Always add dynamic `aria-label` attributes to stateful toggle buttons that reflect the *action* they will perform (e.g., "تفعيل" / "إلغاء التفعيل").

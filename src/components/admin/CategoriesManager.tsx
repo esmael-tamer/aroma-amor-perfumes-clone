@@ -189,10 +189,7 @@ export default function CategoriesManager() {
               </div>
 
               <div className="flex items-center gap-3 pt-2">
-                <button
-                  type="button"
-                  onClick={() => setFormData({ ...formData, isActive: !formData.isActive })}
-                  className={`p-1 rounded-lg ${formData.isActive ? 'text-emerald-500' : 'text-gray-400'}`}
+                <button type="button" onClick={() => setFormData({ ...formData, isActive: !formData.isActive })} className={`p-1 rounded-lg ${formData.isActive ? 'text-emerald-500' : 'text-gray-400'}`} aria-label={formData.isActive ? 'إلغاء التفعيل' : 'تفعيل'}
                 >
                   {formData.isActive ? <ToggleRight className="w-8 h-8" /> : <ToggleLeft className="w-8 h-8" />}
                 </button>
