@@ -216,7 +216,7 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#E8EAED] to-white">
+    <div id="main-content" tabIndex={-1} className="min-h-screen bg-gradient-to-b from-[#E8EAED] to-white outline-none">
       {/* Header */}
       <header className="bg-gradient-to-r from-[#2C2420] to-[#4A5568] text-white py-6">
         <div className="container mx-auto px-4">
