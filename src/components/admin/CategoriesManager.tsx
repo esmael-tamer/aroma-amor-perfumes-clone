@@ -16,7 +16,7 @@ import {
 export default function CategoriesManager() {
   const { categories, addCategory, updateCategory, deleteCategory } = useSiteSettings();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingCategory, setEditingCategory] = useState<any>(null);
+  const [editingCategory, setEditingCategory] = useState<any>(null); // eslint-disable-line @typescript-eslint/no-explicit-any
   const [formData, setFormData] = useState({
     nameAr: '',
     nameEn: '',
@@ -32,7 +32,7 @@ export default function CategoriesManager() {
     setIsModalOpen(true);
   };
 
-  const openEditModal = (category: any) => {
+  const openEditModal = (category: any) => { // eslint-disable-line @typescript-eslint/no-explicit-any
     setEditingCategory(category);
     setFormData({
       nameAr: category.nameAr,
@@ -59,7 +59,7 @@ export default function CategoriesManager() {
     }
   };
 
-  const toggleActive = (category: any) => {
+  const toggleActive = (category: any) => { // eslint-disable-line @typescript-eslint/no-explicit-any
     updateCategory(category.id, { isActive: !category.isActive });
   };
 

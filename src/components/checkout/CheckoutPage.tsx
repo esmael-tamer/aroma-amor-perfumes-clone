@@ -14,8 +14,6 @@ import {
   MapPin,
   Phone,
   User,
-  Mail,
-  MessageSquare,
   ShoppingBag,
 } from "lucide-react";
 import Link from "next/link";

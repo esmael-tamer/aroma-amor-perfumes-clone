@@ -12,8 +12,6 @@ import {
   Save,
   Package,
   Filter,
-  Eye,
-  EyeOff
 } from 'lucide-react';
 
 export default function ProductsManager() {
@@ -21,7 +19,7 @@ export default function ProductsManager() {
   const [searchQuery, setSearchQuery] = useState('');
   const [filterCategory, setFilterCategory] = useState('all');
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingProduct, setEditingProduct] = useState<any>(null);
+  const [editingProduct, setEditingProduct] = useState<any>(null); // eslint-disable-line @typescript-eslint/no-explicit-any
   const [formData, setFormData] = useState({
     nameAr: '',
     nameEn: '',
@@ -74,7 +72,7 @@ export default function ProductsManager() {
     setIsModalOpen(true);
   };
 
-  const openEditModal = (product: any) => {
+  const openEditModal = (product: any) => { // eslint-disable-line @typescript-eslint/no-explicit-any
     setEditingProduct(product);
     setFormData({
       nameAr: product.nameAr,
@@ -103,7 +101,7 @@ export default function ProductsManager() {
     if (editingProduct) {
       updateProduct(editingProduct.id, formData);
     } else {
-      addProduct(formData as any);
+      addProduct(formData as any); // eslint-disable-line @typescript-eslint/no-explicit-any
     }
     setIsModalOpen(false);
   };

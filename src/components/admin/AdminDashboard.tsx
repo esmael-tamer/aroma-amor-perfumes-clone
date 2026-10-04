@@ -13,16 +13,11 @@ import {
   Eye, 
   Search,
   Filter,
-  TrendingUp,
   Users,
   DollarSign,
   ShoppingBag,
   ArrowLeft,
-  Phone,
   MapPin,
-  Calendar,
-  ChevronDown,
-  RefreshCw
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';

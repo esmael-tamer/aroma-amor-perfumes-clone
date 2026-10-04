@@ -10,13 +10,10 @@ import {
   ShoppingCart, 
   Tag, 
   Image as ImageIcon,
-  Users,
-  BarChart3,
   ArrowRight,
   Menu,
   X,
   Home,
-  LogOut
 } from 'lucide-react';
 
 interface AdminLayoutProps {
