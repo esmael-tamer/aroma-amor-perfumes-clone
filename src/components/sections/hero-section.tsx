@@ -12,7 +12,7 @@ const HeroSection = memo(function HeroSection() {
   }, []);
 
   // Memoize GCC countries display
-  const gccDisplay = useMemo(() => 
+  const gccDisplay = useMemo(() =>
     GCC_COUNTRIES.map(country => `${country.flag} ${country.name}`),
     []
   );
@@ -154,7 +154,7 @@ const HeroSection = memo(function HeroSection() {
       </div>
 
       {/* Scroll Indicator */}
-      <button 
+      <button type="button"
         onClick={scrollToProducts}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer"
         aria-label="اذهب إلى المنتجات"
