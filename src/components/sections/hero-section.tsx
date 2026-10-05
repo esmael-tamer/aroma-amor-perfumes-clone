@@ -1,10 +1,10 @@
 'use client';
 
-import { memo, useCallback } from 'react';
+import { memo, useCallback, useMemo } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { MapPin,} from 'lucide-react';
-import { COMPANY_INFO, COMPANY_STATS } from '@/lib/constants';
+import { MapPin, Truck } from 'lucide-react';
+import { GCC_COUNTRIES, COMPANY_INFO, COMPANY_STATS } from '@/lib/constants';
 
 const HeroSection = memo(function HeroSection() {
   const scrollToProducts = useCallback(() => {
@@ -12,6 +12,10 @@ const HeroSection = memo(function HeroSection() {
   }, []);
 
   // Memoize GCC countries display
+  const gccDisplay = useMemo(() =>
+    GCC_COUNTRIES.map(country => `${country.flag} ${country.name}`),
+    []
+  );
 
   return (
     <section 
@@ -150,7 +154,7 @@ const HeroSection = memo(function HeroSection() {
       </div>
 
       {/* Scroll Indicator */}
-      <button 
+      <button type="button"
         onClick={scrollToProducts}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer"
         aria-label="اذهب إلى المنتجات"

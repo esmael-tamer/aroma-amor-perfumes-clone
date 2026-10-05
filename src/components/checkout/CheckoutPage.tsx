@@ -1,24 +1,15 @@
-"use client";
+'use client';
 
-import { useState, memo } from "react";
-import Image from "next/image";
-import { useCart } from "@/context/CartContext";
-import { useOrders } from "@/context/OrdersContext";
-import { Button } from "@/components/ui/button";
-import { CURRENCY, GCC_COUNTRIES, COMPANY_INFO } from "@/lib/constants";
-import {
-  ArrowRight,
-  Check,
-  Truck,
-  CreditCard,
-  MapPin,
-  Phone,
-  User,
-  ShoppingBag,
-} from "lucide-react";
-import Link from "next/link";
+import { useState, memo } from 'react';
+import Image from 'next/image';
+import { useCart } from '@/context/CartContext';
+import { useOrders } from '@/context/OrdersContext';
+import { Button } from '@/components/ui/button';
+import { CURRENCY, GCC_COUNTRIES, COMPANY_INFO } from '@/lib/constants';
+import { ArrowRight, Check, Truck, CreditCard, MapPin, Phone, User, Mail, MessageSquare, ShoppingBag } from 'lucide-react';
+import Link from 'next/link';
 
-type PaymentMethod = "cod" | "knet" | "card";
+type PaymentMethod = 'cod' | 'knet' | 'card';
 
 interface FormData {
   fullName: string;
@@ -42,22 +33,22 @@ const CheckoutPage = memo(function CheckoutPage() {
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [orderComplete, setOrderComplete] = useState(false);
-  const [orderNumber, setOrderNumber] = useState("");
+  const [orderNumber, setOrderNumber] = useState('');
 
   const [formData, setFormData] = useState<FormData>({
-    fullName: "",
-    phone: "",
-    email: "",
-    country: "الكويت",
-    city: "",
-    area: "",
-    block: "",
-    street: "",
-    building: "",
-    floor: "",
-    apartment: "",
-    notes: "",
-    paymentMethod: "cod",
+    fullName: '',
+    phone: '',
+    email: '',
+    country: 'الكويت',
+    city: '',
+    area: '',
+    block: '',
+    street: '',
+    building: '',
+    floor: '',
+    apartment: '',
+    notes: '',
+    paymentMethod: 'cod',
   });
 
   const [errors, setErrors] = useState<Partial<FormData>>({});
@@ -65,39 +56,33 @@ const CheckoutPage = memo(function CheckoutPage() {
   const shippingCost = 0; // شحن مجاني
   const finalTotal = totalPrice + shippingCost;
 
-  const handleInputChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >,
-  ) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData(prev => ({ ...prev, [name]: value }));
     // مسح الخطأ عند الكتابة
     if (errors[name as keyof FormData]) {
-      setErrors((prev) => ({ ...prev, [name]: undefined }));
+      setErrors(prev => ({ ...prev, [name]: undefined }));
     }
   };
 
   const validateStep1 = () => {
     const newErrors: Partial<FormData> = {};
-    if (!formData.fullName.trim()) newErrors.fullName = "الاسم مطلوب";
-    if (!formData.phone.trim()) newErrors.phone = "رقم الهاتف مطلوب";
-    if (formData.phone && !/^[\d\s+()-]+$/.test(formData.phone))
-      newErrors.phone = "رقم هاتف غير صالح";
-    if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
-      newErrors.email = "بريد إلكتروني غير صالح";
+    if (!formData.fullName.trim()) newErrors.fullName = 'الاسم مطلوب';
+    if (!formData.phone.trim()) newErrors.phone = 'رقم الهاتف مطلوب';
+    if (formData.phone && !/^[\d\s+()-]+$/.test(formData.phone)) newErrors.phone = 'رقم هاتف غير صالح';
+    if (formData.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) newErrors.email = 'بريد إلكتروني غير صالح';
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const validateStep2 = () => {
     const newErrors: Partial<FormData> = {};
-    if (!formData.country) newErrors.country = "الدولة مطلوبة";
-    if (!formData.city.trim()) newErrors.city = "المدينة مطلوبة";
-    if (!formData.area.trim()) newErrors.area = "المنطقة مطلوبة";
-    if (!formData.block.trim()) newErrors.block = "القطعة مطلوبة";
-    if (!formData.street.trim()) newErrors.street = "الشارع مطلوب";
-    if (!formData.building.trim()) newErrors.building = "المبنى مطلوب";
+    if (!formData.country) newErrors.country = 'الدولة مطلوبة';
+    if (!formData.city.trim()) newErrors.city = 'المدينة مطلوبة';
+    if (!formData.area.trim()) newErrors.area = 'المنطقة مطلوبة';
+    if (!formData.block.trim()) newErrors.block = 'القطعة مطلوبة';
+    if (!formData.street.trim()) newErrors.street = 'الشارع مطلوب';
+    if (!formData.building.trim()) newErrors.building = 'المبنى مطلوب';
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -114,7 +99,7 @@ const CheckoutPage = memo(function CheckoutPage() {
     setIsSubmitting(true);
 
     // محاكاة إرسال الطلب
-    await new Promise((resolve) => setTimeout(resolve, 2000));
+    await new Promise(resolve => setTimeout(resolve, 2000));
 
     // حفظ الطلب في النظام
     const orderNum = addOrder({
@@ -133,7 +118,7 @@ const CheckoutPage = memo(function CheckoutPage() {
         floor: formData.floor || undefined,
         apartment: formData.apartment || undefined,
       },
-      items: items.map((item) => ({
+      items: items.map(item => ({
         productId: item.product.id,
         productName: item.product.nameAr,
         quantity: item.quantity,
@@ -154,26 +139,26 @@ const CheckoutPage = memo(function CheckoutPage() {
 👤 *معلومات العميل:*
 الاسم: ${formData.fullName}
 الهاتف: ${formData.phone}
-${formData.email ? `البريد: ${formData.email}` : ""}
+${formData.email ? `البريد: ${formData.email}` : ''}
 
 📍 *عنوان التوصيل:*
 ${formData.country} - ${formData.city}
 المنطقة: ${formData.area}
 قطعة: ${formData.block} - شارع: ${formData.street}
-مبنى: ${formData.building}${formData.floor ? ` - طابق: ${formData.floor}` : ""}${formData.apartment ? ` - شقة: ${formData.apartment}` : ""}
-${formData.notes ? `ملاحظات: ${formData.notes}` : ""}
+مبنى: ${formData.building}${formData.floor ? ` - طابق: ${formData.floor}` : ''}${formData.apartment ? ` - شقة: ${formData.apartment}` : ''}
+${formData.notes ? `ملاحظات: ${formData.notes}` : ''}
 
 🛍️ *المنتجات:*
-${items.map((item) => `• ${item.product.nameAr} × ${item.quantity} = ${(item.product.price * item.quantity).toFixed(3)} ${CURRENCY.symbol}`).join("\n")}
+${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.product.price * item.quantity).toFixed(3)} ${CURRENCY.symbol}`).join('\n')}
 
 💰 *المجموع: ${finalTotal.toFixed(3)} ${CURRENCY.symbol}*
-💳 طريقة الدفع: ${formData.paymentMethod === "cod" ? "الدفع عند الاستلام" : formData.paymentMethod === "knet" ? "كي نت" : "بطاقة ائتمان"}
+💳 طريقة الدفع: ${formData.paymentMethod === 'cod' ? 'الدفع عند الاستلام' : formData.paymentMethod === 'knet' ? 'كي نت' : 'بطاقة ائتمان'}
 🚚 الشحن: مجاني
     `.trim();
 
     // فتح واتساب في تبويب جديد
     const whatsappUrl = `https://wa.me/96500000000?text=${encodeURIComponent(whatsappMessage)}`;
-    window.open(whatsappUrl, "_blank");
+    window.open(whatsappUrl, '_blank');
 
     setIsSubmitting(false);
     setOrderComplete(true);
@@ -189,9 +174,7 @@ ${items.map((item) => `• ${item.product.nameAr} × ${item.quantity} = ${(item.
             <Check className="w-12 h-12 text-white" />
           </div>
 
-          <h1 className="text-3xl font-bold text-[#2C2420]">
-            تم استلام طلبك بنجاح! 🎉
-          </h1>
+          <h1 className="text-3xl font-bold text-[#2C2420]">تم استلام طلبك بنجاح! 🎉</h1>
 
           <div className="bg-[#F8F9FA] rounded-2xl p-6 space-y-3">
             <p className="text-[#4A5568]">رقم الطلب:</p>
@@ -248,10 +231,7 @@ ${items.map((item) => `• ${item.product.nameAr} × ${item.quantity} = ${(item.
               />
               <span className="text-xl font-bold">{COMPANY_INFO.name}</span>
             </Link>
-            <Link
-              href="/"
-              className="flex items-center gap-2 hover:text-amber-400 transition-colors"
-            >
+            <Link href="/" className="flex items-center gap-2 hover:text-amber-400 transition-colors">
               <ArrowRight className="w-5 h-5" />
               <span>العودة للمتجر</span>
             </Link>
@@ -263,28 +243,24 @@ ${items.map((item) => `• ${item.product.nameAr} × ${item.quantity} = ${(item.
       <div className="container mx-auto px-4 py-8">
         <div className="flex items-center justify-center gap-4 mb-12">
           {[
-            { num: 1, title: "المعلومات", icon: User },
-            { num: 2, title: "العنوان", icon: MapPin },
-            { num: 3, title: "الدفع", icon: CreditCard },
+            { num: 1, title: 'المعلومات', icon: User },
+            { num: 2, title: 'العنوان', icon: MapPin },
+            { num: 3, title: 'الدفع', icon: CreditCard },
           ].map((s, i) => (
             <div key={s.num} className="flex items-center">
-              <div
-                className={`flex items-center gap-3 px-6 py-3 rounded-full transition-all ${
-                  step >= s.num
-                    ? "bg-gradient-to-r from-[#2C2420] to-[#4A5568] text-white shadow-lg"
-                    : "bg-white text-[#9B8F85] border-2 border-[#E8EAED]"
-                }`}
-              >
+              <div className={`flex items-center gap-3 px-6 py-3 rounded-full transition-all ${
+                step >= s.num
+                  ? 'bg-gradient-to-r from-[#2C2420] to-[#4A5568] text-white shadow-lg'
+                  : 'bg-white text-[#9B8F85] border-2 border-[#E8EAED]'
+              }`}>
                 <s.icon className="w-5 h-5" />
                 <span className="font-bold hidden sm:inline">{s.title}</span>
                 <span className="font-bold sm:hidden">{s.num}</span>
               </div>
               {i < 2 && (
-                <div
-                  className={`w-12 h-1 mx-2 rounded-full transition-all ${
-                    step > s.num ? "bg-[#2C2420]" : "bg-[#E8EAED]"
-                  }`}
-                />
+                <div className={`w-12 h-1 mx-2 rounded-full transition-all ${
+                  step > s.num ? 'bg-[#2C2420]' : 'bg-[#E8EAED]'
+                }`} />
               )}
             </div>
           ))}
@@ -300,17 +276,12 @@ ${items.map((item) => `• ${item.product.nameAr} × ${item.quantity} = ${(item.
                   <div className="w-12 h-12 bg-gradient-to-br from-[#2C2420] to-[#4A5568] rounded-full flex items-center justify-center">
                     <User className="w-6 h-6 text-white" />
                   </div>
-                  <h2 className="text-2xl font-bold text-[#2C2420]">
-                    المعلومات الشخصية
-                  </h2>
+                  <h2 className="text-2xl font-bold text-[#2C2420]">المعلومات الشخصية</h2>
                 </div>
 
                 <div className="grid gap-6">
                   <div>
-                    <label
-                      htmlFor="fullName"
-                      className="block text-sm font-bold text-[#2C2420] mb-2"
-                    >
+                    <label htmlFor="fullName" className="block text-sm font-bold text-[#2C2420] mb-2">
                       الاسم الكامل <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -319,21 +290,14 @@ ${items.map((item) => `• ${item.product.nameAr} × ${item.quantity} = ${(item.
                       name="fullName"
                       value={formData.fullName}
                       onChange={handleInputChange}
-                      className={`w-full px-4 py-4 rounded-xl border-2 ${errors.fullName ? "border-red-500" : "border-[#E8EAED]"} focus:border-[#2C2420] focus:outline-none transition-colors`}
+                      className={`w-full px-4 py-4 rounded-xl border-2 ${errors.fullName ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
                       placeholder="أدخل اسمك الكامل"
                     />
-                    {errors.fullName && (
-                      <p className="text-red-500 text-sm mt-1">
-                        {errors.fullName}
-                      </p>
-                    )}
+                    {errors.fullName && <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>}
                   </div>
 
                   <div>
-                    <label
-                      htmlFor="phone"
-                      className="block text-sm font-bold text-[#2C2420] mb-2"
-                    >
+                    <label htmlFor="phone" className="block text-sm font-bold text-[#2C2420] mb-2">
                       رقم الهاتف <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -342,22 +306,15 @@ ${items.map((item) => `• ${item.product.nameAr} × ${item.quantity} = ${(item.
                       name="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      className={`w-full px-4 py-4 rounded-xl border-2 ${errors.phone ? "border-red-500" : "border-[#E8EAED]"} focus:border-[#2C2420] focus:outline-none transition-colors`}
+                      className={`w-full px-4 py-4 rounded-xl border-2 ${errors.phone ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
                       placeholder="+965 XXXX XXXX"
                       dir="ltr"
                     />
-                    {errors.phone && (
-                      <p className="text-red-500 text-sm mt-1">
-                        {errors.phone}
-                      </p>
-                    )}
+                    {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
                   </div>
 
                   <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-bold text-[#2C2420] mb-2"
-                    >
+                    <label htmlFor="email" className="block text-sm font-bold text-[#2C2420] mb-2">
                       البريد الإلكتروني (اختياري)
                     </label>
                     <input
@@ -366,15 +323,11 @@ ${items.map((item) => `• ${item.product.nameAr} × ${item.quantity} = ${(item.
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className={`w-full px-4 py-4 rounded-xl border-2 ${errors.email ? "border-red-500" : "border-[#E8EAED]"} focus:border-[#2C2420] focus:outline-none transition-colors`}
+                      className={`w-full px-4 py-4 rounded-xl border-2 ${errors.email ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
                       placeholder="example@email.com"
                       dir="ltr"
                     />
-                    {errors.email && (
-                      <p className="text-red-500 text-sm mt-1">
-                        {errors.email}
-                      </p>
-                    )}
+                    {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
                   </div>
                 </div>
               </div>
@@ -387,18 +340,13 @@ ${items.map((item) => `• ${item.product.nameAr} × ${item.quantity} = ${(item.
                   <div className="w-12 h-12 bg-gradient-to-br from-[#2C2420] to-[#4A5568] rounded-full flex items-center justify-center">
                     <MapPin className="w-6 h-6 text-white" />
                   </div>
-                  <h2 className="text-2xl font-bold text-[#2C2420]">
-                    عنوان التوصيل
-                  </h2>
+                  <h2 className="text-2xl font-bold text-[#2C2420]">عنوان التوصيل</h2>
                 </div>
 
                 <div className="grid gap-6">
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label
-                        htmlFor="country-select"
-                        className="block text-sm font-bold text-[#2C2420] mb-2"
-                      >
+                      <label htmlFor="country-select" className="block text-sm font-bold text-[#2C2420] mb-2">
                         الدولة <span className="text-red-500">*</span>
                       </label>
                       <select
@@ -408,7 +356,7 @@ ${items.map((item) => `• ${item.product.nameAr} × ${item.quantity} = ${(item.
                         onChange={handleInputChange}
                         className="w-full px-4 py-4 rounded-xl border-2 border-[#E8EAED] focus:border-[#2C2420] focus:outline-none transition-colors bg-white"
                       >
-                        {GCC_COUNTRIES.map((country) => (
+                        {GCC_COUNTRIES.map(country => (
                           <option key={country.name} value={country.name}>
                             {country.flag} {country.name}
                           </option>
@@ -416,34 +364,24 @@ ${items.map((item) => `• ${item.product.nameAr} × ${item.quantity} = ${(item.
                       </select>
                     </div>
                     <div>
-                      <label
-                        htmlFor="city"
-                        className="block text-sm font-bold text-[#2C2420] mb-2"
-                      >
+                      <label htmlFor="city" className="block text-sm font-bold text-[#2C2420] mb-2">
                         المدينة <span className="text-red-500">*</span>
                       </label>
                       <input
                         type="text"
                         id="city"
-                        name="city"
+                      name="city"
                         value={formData.city}
                         onChange={handleInputChange}
-                        className={`w-full px-4 py-4 rounded-xl border-2 ${errors.city ? "border-red-500" : "border-[#E8EAED]"} focus:border-[#2C2420] focus:outline-none transition-colors`}
+                        className={`w-full px-4 py-4 rounded-xl border-2 ${errors.city ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
                         placeholder="مثال: مدينة الكويت"
                       />
-                      {errors.city && (
-                        <p className="text-red-500 text-sm mt-1">
-                          {errors.city}
-                        </p>
-                      )}
+                      {errors.city && <p className="text-red-500 text-sm mt-1">{errors.city}</p>}
                     </div>
                   </div>
 
                   <div>
-                    <label
-                      htmlFor="area"
-                      className="block text-sm font-bold text-[#2C2420] mb-2"
-                    >
+                    <label htmlFor="area" className="block text-sm font-bold text-[#2C2420] mb-2">
                       المنطقة <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -452,95 +390,69 @@ ${items.map((item) => `• ${item.product.nameAr} × ${item.quantity} = ${(item.
                       name="area"
                       value={formData.area}
                       onChange={handleInputChange}
-                      className={`w-full px-4 py-4 rounded-xl border-2 ${errors.area ? "border-red-500" : "border-[#E8EAED]"} focus:border-[#2C2420] focus:outline-none transition-colors`}
+                      className={`w-full px-4 py-4 rounded-xl border-2 ${errors.area ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
                       placeholder="مثال: السالمية"
                     />
-                    {errors.area && (
-                      <p className="text-red-500 text-sm mt-1">{errors.area}</p>
-                    )}
+                    {errors.area && <p className="text-red-500 text-sm mt-1">{errors.area}</p>}
                   </div>
 
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label
-                        htmlFor="block"
-                        className="block text-sm font-bold text-[#2C2420] mb-2"
-                      >
+                      <label htmlFor="block" className="block text-sm font-bold text-[#2C2420] mb-2">
                         القطعة <span className="text-red-500">*</span>
                       </label>
                       <input
                         type="text"
                         id="block"
-                        name="block"
+                      name="block"
                         value={formData.block}
                         onChange={handleInputChange}
-                        className={`w-full px-4 py-4 rounded-xl border-2 ${errors.block ? "border-red-500" : "border-[#E8EAED]"} focus:border-[#2C2420] focus:outline-none transition-colors`}
+                        className={`w-full px-4 py-4 rounded-xl border-2 ${errors.block ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
                         placeholder="رقم القطعة"
                       />
-                      {errors.block && (
-                        <p className="text-red-500 text-sm mt-1">
-                          {errors.block}
-                        </p>
-                      )}
+                      {errors.block && <p className="text-red-500 text-sm mt-1">{errors.block}</p>}
                     </div>
                     <div>
-                      <label
-                        htmlFor="street"
-                        className="block text-sm font-bold text-[#2C2420] mb-2"
-                      >
+                      <label htmlFor="street" className="block text-sm font-bold text-[#2C2420] mb-2">
                         الشارع <span className="text-red-500">*</span>
                       </label>
                       <input
                         type="text"
                         id="street"
-                        name="street"
+                      name="street"
                         value={formData.street}
                         onChange={handleInputChange}
-                        className={`w-full px-4 py-4 rounded-xl border-2 ${errors.street ? "border-red-500" : "border-[#E8EAED]"} focus:border-[#2C2420] focus:outline-none transition-colors`}
+                        className={`w-full px-4 py-4 rounded-xl border-2 ${errors.street ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
                         placeholder="اسم أو رقم الشارع"
                       />
-                      {errors.street && (
-                        <p className="text-red-500 text-sm mt-1">
-                          {errors.street}
-                        </p>
-                      )}
+                      {errors.street && <p className="text-red-500 text-sm mt-1">{errors.street}</p>}
                     </div>
                   </div>
 
                   <div className="grid sm:grid-cols-3 gap-4">
                     <div>
-                      <label
-                        htmlFor="building"
-                        className="block text-sm font-bold text-[#2C2420] mb-2"
-                      >
+                      <label htmlFor="building" className="block text-sm font-bold text-[#2C2420] mb-2">
                         المبنى <span className="text-red-500">*</span>
                       </label>
                       <input
                         type="text"
                         id="building"
-                        name="building"
+                      name="building"
                         value={formData.building}
                         onChange={handleInputChange}
-                        className={`w-full px-4 py-4 rounded-xl border-2 ${errors.building ? "border-red-500" : "border-[#E8EAED]"} focus:border-[#2C2420] focus:outline-none transition-colors`}
+                        className={`w-full px-4 py-4 rounded-xl border-2 ${errors.building ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
                         placeholder="رقم المبنى"
                       />
-                      {errors.building && (
-                        <p className="text-red-500 text-sm mt-1">
-                          {errors.building}
-                        </p>
-                      )}
+                      {errors.building && <p className="text-red-500 text-sm mt-1">{errors.building}</p>}
                     </div>
                     <div>
-                      <label
-                        htmlFor="floor"
-                        className="block text-sm font-bold text-[#2C2420] mb-2"
-                      >
+                      <label htmlFor="floor" className="block text-sm font-bold text-[#2C2420] mb-2">
                         الطابق
                       </label>
                       <input
                         type="text"
                         id="floor"
-                        name="floor"
+                      name="floor"
                         value={formData.floor}
                         onChange={handleInputChange}
                         className="w-full px-4 py-4 rounded-xl border-2 border-[#E8EAED] focus:border-[#2C2420] focus:outline-none transition-colors"
@@ -548,16 +460,13 @@ ${items.map((item) => `• ${item.product.nameAr} × ${item.quantity} = ${(item.
                       />
                     </div>
                     <div>
-                      <label
-                        htmlFor="apartment"
-                        className="block text-sm font-bold text-[#2C2420] mb-2"
-                      >
+                      <label htmlFor="apartment" className="block text-sm font-bold text-[#2C2420] mb-2">
                         الشقة
                       </label>
                       <input
                         type="text"
                         id="apartment"
-                        name="apartment"
+                      name="apartment"
                         value={formData.apartment}
                         onChange={handleInputChange}
                         className="w-full px-4 py-4 rounded-xl border-2 border-[#E8EAED] focus:border-[#2C2420] focus:outline-none transition-colors"
@@ -567,10 +476,7 @@ ${items.map((item) => `• ${item.product.nameAr} × ${item.quantity} = ${(item.
                   </div>
 
                   <div>
-                    <label
-                      htmlFor="notes"
-                      className="block text-sm font-bold text-[#2C2420] mb-2"
-                    >
+                    <label htmlFor="notes" className="block text-sm font-bold text-[#2C2420] mb-2">
                       ملاحظات إضافية
                     </label>
                     <textarea
@@ -594,38 +500,21 @@ ${items.map((item) => `• ${item.product.nameAr} × ${item.quantity} = ${(item.
                   <div className="w-12 h-12 bg-gradient-to-br from-[#2C2420] to-[#4A5568] rounded-full flex items-center justify-center">
                     <CreditCard className="w-6 h-6 text-white" />
                   </div>
-                  <h2 className="text-2xl font-bold text-[#2C2420]">
-                    طريقة الدفع
-                  </h2>
+                  <h2 className="text-2xl font-bold text-[#2C2420]">طريقة الدفع</h2>
                 </div>
 
                 <div className="space-y-4">
                   {[
-                    {
-                      id: "cod",
-                      title: "الدفع عند الاستلام",
-                      icon: "💵",
-                      desc: "ادفع نقداً عند استلام طلبك",
-                    },
-                    {
-                      id: "knet",
-                      title: "كي نت",
-                      icon: "💳",
-                      desc: "الدفع الإلكتروني عبر كي نت",
-                    },
-                    {
-                      id: "card",
-                      title: "بطاقة ائتمان",
-                      icon: "💳",
-                      desc: "Visa / Mastercard",
-                    },
-                  ].map((method) => (
+                    { id: 'cod', title: 'الدفع عند الاستلام', icon: '💵', desc: 'ادفع نقداً عند استلام طلبك' },
+                    { id: 'knet', title: 'كي نت', icon: '💳', desc: 'الدفع الإلكتروني عبر كي نت' },
+                    { id: 'card', title: 'بطاقة ائتمان', icon: '💳', desc: 'Visa / Mastercard' },
+                  ].map(method => (
                     <label
                       key={method.id}
                       className={`flex items-center gap-4 p-6 rounded-2xl border-2 cursor-pointer transition-all ${
                         formData.paymentMethod === method.id
-                          ? "border-[#2C2420] bg-[#F8F9FA] shadow-lg"
-                          : "border-[#E8EAED] hover:border-[#D4CCC4]"
+                          ? 'border-[#2C2420] bg-[#F8F9FA] shadow-lg'
+                          : 'border-[#E8EAED] hover:border-[#D4CCC4]'
                       }`}
                     >
                       <input
@@ -638,9 +527,7 @@ ${items.map((item) => `• ${item.product.nameAr} × ${item.quantity} = ${(item.
                       />
                       <span className="text-3xl">{method.icon}</span>
                       <div>
-                        <p className="font-bold text-[#2C2420]">
-                          {method.title}
-                        </p>
+                        <p className="font-bold text-[#2C2420]">{method.title}</p>
                         <p className="text-sm text-[#9B8F85]">{method.desc}</p>
                       </div>
                     </label>
@@ -653,7 +540,7 @@ ${items.map((item) => `• ${item.product.nameAr} × ${item.quantity} = ${(item.
             <div className="flex gap-4">
               {step > 1 && (
                 <Button
-                  onClick={() => setStep((prev) => (prev - 1) as 1 | 2)}
+                  onClick={() => setStep(prev => (prev - 1) as 1 | 2)}
                   variant="outline"
                   className="flex-1 py-6 rounded-full text-lg font-bold border-2 border-[#2C2420] text-[#2C2420] hover:bg-[#2C2420] hover:text-white"
                 >
@@ -676,25 +563,13 @@ ${items.map((item) => `• ${item.product.nameAr} × ${item.quantity} = ${(item.
                   {isSubmitting ? (
                     <span className="flex items-center gap-2">
                       <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
-                        <circle
-                          className="opacity-25"
-                          cx="12"
-                          cy="12"
-                          r="10"
-                          stroke="currentColor"
-                          strokeWidth="4"
-                          fill="none"
-                        />
-                        <path
-                          className="opacity-75"
-                          fill="currentColor"
-                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                        />
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                       </svg>
                       جاري إرسال الطلب...
                     </span>
                   ) : (
-                    "تأكيد الطلب ✓"
+                    'تأكيد الطلب ✓'
                   )}
                 </Button>
               )}
@@ -711,7 +586,7 @@ ${items.map((item) => `• ${item.product.nameAr} × ${item.quantity} = ${(item.
 
               {/* Items */}
               <div className="space-y-4 max-h-64 overflow-y-auto">
-                {items.map((item) => (
+                {items.map(item => (
                   <div key={item.product.id} className="flex gap-3">
                     <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
                       <Image
@@ -725,16 +600,11 @@ ${items.map((item) => `• ${item.product.nameAr} × ${item.quantity} = ${(item.
                       </span>
                     </div>
                     <div className="flex-1">
-                      <p className="font-medium text-[#2C2420] text-sm line-clamp-1">
-                        {item.product.nameAr}
-                      </p>
-                      <p className="text-sm text-[#9B8F85]">
-                        {item.product.price} × {item.quantity}
-                      </p>
+                      <p className="font-medium text-[#2C2420] text-sm line-clamp-1">{item.product.nameAr}</p>
+                      <p className="text-sm text-[#9B8F85]">{item.product.price} × {item.quantity}</p>
                     </div>
                     <p className="font-bold text-[#2C2420]">
-                      {(item.product.price * item.quantity).toFixed(3)}{" "}
-                      {CURRENCY.symbol}
+                      {(item.product.price * item.quantity).toFixed(3)} {CURRENCY.symbol}
                     </p>
                   </div>
                 ))}
@@ -746,9 +616,7 @@ ${items.map((item) => `• ${item.product.nameAr} × ${item.quantity} = ${(item.
               <div className="space-y-3">
                 <div className="flex justify-between text-[#4A5568]">
                   <span>المجموع الفرعي:</span>
-                  <span>
-                    {totalPrice.toFixed(3)} {CURRENCY.symbol}
-                  </span>
+                  <span>{totalPrice.toFixed(3)} {CURRENCY.symbol}</span>
                 </div>
                 <div className="flex justify-between text-emerald-600">
                   <span>الشحن:</span>
@@ -757,9 +625,7 @@ ${items.map((item) => `• ${item.product.nameAr} × ${item.quantity} = ${(item.
                 <hr className="border-[#E8EAED]" />
                 <div className="flex justify-between text-xl font-bold text-[#2C2420]">
                   <span>الإجمالي:</span>
-                  <span>
-                    {finalTotal.toFixed(3)} {CURRENCY.symbol}
-                  </span>
+                  <span>{finalTotal.toFixed(3)} {CURRENCY.symbol}</span>
                 </div>
               </div>
 
@@ -771,9 +637,7 @@ ${items.map((item) => `• ${item.product.nameAr} × ${item.quantity} = ${(item.
                 </div>
                 <div className="flex items-center gap-3 text-sm">
                   <Truck className="w-5 h-5 text-emerald-500" />
-                  <span className="text-[#4A5568]">
-                    شحن مجاني لجميع دول الخليج
-                  </span>
+                  <span className="text-[#4A5568]">شحن مجاني لجميع دول الخليج</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm">
                   <Phone className="w-5 h-5 text-emerald-500" />

@@ -4,7 +4,12 @@ import { Facebook, Instagram, Twitter, Mail, Phone, MapPin, Clock } from 'lucide
 import { NAVIGATION_LINKS, GCC_COUNTRIES, SOCIAL_LINKS, COMPANY_INFO } from '@/lib/constants';
 
 const Footer = memo(function Footer() {
-
+  const categories = [
+    { name: 'عطور نسائية', href: '#' },
+    { name: 'عطور رجالية', href: '#' },
+    { name: 'عطور شرقية', href: '#' },
+    { name: 'عطور فاخرة', href: '#' },
+  ];
 
   // Map icon names to components
   const iconMap = {

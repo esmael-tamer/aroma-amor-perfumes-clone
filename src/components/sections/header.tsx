@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
-import { ShoppingCart, Menu, X, Search, Phone, MapPin, Settings } from 'lucide-react';
+import { ShoppingCart, Menu, X, Search, User, Phone, MapPin, Settings } from 'lucide-react';
 import { NAVIGATION_LINKS, COMPANY_INFO } from '@/lib/constants';
 import { useCart } from '@/context/CartContext';
 
