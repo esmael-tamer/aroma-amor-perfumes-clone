@@ -34,7 +34,7 @@ const CheckoutPage = memo(function CheckoutPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [orderComplete, setOrderComplete] = useState(false);
   const [orderNumber, setOrderNumber] = useState('');
-  
+
   const [formData, setFormData] = useState<FormData>({
     fullName: '',
     phone: '',
@@ -97,10 +97,10 @@ const CheckoutPage = memo(function CheckoutPage() {
 
   const handleSubmitOrder = async () => {
     setIsSubmitting(true);
-    
+
     // محاكاة إرسال الطلب
     await new Promise(resolve => setTimeout(resolve, 2000));
-    
+
     // حفظ الطلب في النظام
     const orderNum = addOrder({
       customer: {
@@ -129,9 +129,9 @@ const CheckoutPage = memo(function CheckoutPage() {
       paymentMethod: formData.paymentMethod,
       notes: formData.notes || undefined,
     });
-    
+
     setOrderNumber(orderNum);
-    
+
     // إرسال الطلب إلى واتساب
     const whatsappMessage = `
 🛒 *طلب جديد - ${orderNum}*
@@ -155,11 +155,11 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
 💳 طريقة الدفع: ${formData.paymentMethod === 'cod' ? 'الدفع عند الاستلام' : formData.paymentMethod === 'knet' ? 'كي نت' : 'بطاقة ائتمان'}
 🚚 الشحن: مجاني
     `.trim();
-    
+
     // فتح واتساب في تبويب جديد
     const whatsappUrl = `https://wa.me/96500000000?text=${encodeURIComponent(whatsappMessage)}`;
     window.open(whatsappUrl, '_blank');
-    
+
     setIsSubmitting(false);
     setOrderComplete(true);
     clearCart();
@@ -173,20 +173,20 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
           <div className="w-24 h-24 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-xl">
             <Check className="w-12 h-12 text-white" />
           </div>
-          
+
           <h1 className="text-3xl font-bold text-[#2C2420]">تم استلام طلبك بنجاح! 🎉</h1>
-          
+
           <div className="bg-[#F8F9FA] rounded-2xl p-6 space-y-3">
             <p className="text-[#4A5568]">رقم الطلب:</p>
             <p className="text-2xl font-bold text-[#2C2420]">{orderNumber}</p>
           </div>
-          
+
           <p className="text-[#4A5568] leading-relaxed">
             سيتم التواصل معك قريباً لتأكيد الطلب وترتيب التوصيل.
             <br />
             شكراً لتسوقك معنا! 💜
           </p>
-          
+
           <Link href="/">
             <Button className="bg-gradient-to-r from-[#2C2420] to-[#4A5568] text-white px-12 py-6 rounded-full text-lg font-bold hover:shadow-xl transition-all">
               العودة للرئيسية
@@ -249,8 +249,8 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
           ].map((s, i) => (
             <div key={s.num} className="flex items-center">
               <div className={`flex items-center gap-3 px-6 py-3 rounded-full transition-all ${
-                step >= s.num 
-                  ? 'bg-gradient-to-r from-[#2C2420] to-[#4A5568] text-white shadow-lg' 
+                step >= s.num
+                  ? 'bg-gradient-to-r from-[#2C2420] to-[#4A5568] text-white shadow-lg'
                   : 'bg-white text-[#9B8F85] border-2 border-[#E8EAED]'
               }`}>
                 <s.icon className="w-5 h-5" />
@@ -281,12 +281,13 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
 
                 <div className="grid gap-6">
                   <div>
-                    <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                    <label htmlFor="fullName" className="block text-sm font-bold text-[#2C2420] mb-2">
                       الاسم الكامل <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
                       name="fullName"
+                      id="fullName"
                       value={formData.fullName}
                       onChange={handleInputChange}
                       className={`w-full px-4 py-4 rounded-xl border-2 ${errors.fullName ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
@@ -296,12 +297,13 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                    <label htmlFor="phone" className="block text-sm font-bold text-[#2C2420] mb-2">
                       رقم الهاتف <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="tel"
                       name="phone"
+                      id="phone"
                       value={formData.phone}
                       onChange={handleInputChange}
                       className={`w-full px-4 py-4 rounded-xl border-2 ${errors.phone ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
@@ -312,12 +314,13 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                    <label htmlFor="email" className="block text-sm font-bold text-[#2C2420] mb-2">
                       البريد الإلكتروني (اختياري)
                     </label>
                     <input
                       type="email"
                       name="email"
+                      id="email"
                       value={formData.email}
                       onChange={handleInputChange}
                       className={`w-full px-4 py-4 rounded-xl border-2 ${errors.email ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
@@ -361,12 +364,13 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                      <label htmlFor="city" className="block text-sm font-bold text-[#2C2420] mb-2">
                         المدينة <span className="text-red-500">*</span>
                       </label>
                       <input
                         type="text"
                         name="city"
+                      id="city"
                         value={formData.city}
                         onChange={handleInputChange}
                         className={`w-full px-4 py-4 rounded-xl border-2 ${errors.city ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
@@ -377,12 +381,13 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                    <label htmlFor="area" className="block text-sm font-bold text-[#2C2420] mb-2">
                       المنطقة <span className="text-red-500">*</span>
                     </label>
                     <input
                       type="text"
                       name="area"
+                      id="area"
                       value={formData.area}
                       onChange={handleInputChange}
                       className={`w-full px-4 py-4 rounded-xl border-2 ${errors.area ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
@@ -393,12 +398,13 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
 
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                      <label htmlFor="block" className="block text-sm font-bold text-[#2C2420] mb-2">
                         القطعة <span className="text-red-500">*</span>
                       </label>
                       <input
                         type="text"
                         name="block"
+                      id="block"
                         value={formData.block}
                         onChange={handleInputChange}
                         className={`w-full px-4 py-4 rounded-xl border-2 ${errors.block ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
@@ -407,12 +413,13 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                       {errors.block && <p className="text-red-500 text-sm mt-1">{errors.block}</p>}
                     </div>
                     <div>
-                      <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                      <label htmlFor="street" className="block text-sm font-bold text-[#2C2420] mb-2">
                         الشارع <span className="text-red-500">*</span>
                       </label>
                       <input
                         type="text"
                         name="street"
+                      id="street"
                         value={formData.street}
                         onChange={handleInputChange}
                         className={`w-full px-4 py-4 rounded-xl border-2 ${errors.street ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
@@ -424,12 +431,13 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
 
                   <div className="grid sm:grid-cols-3 gap-4">
                     <div>
-                      <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                      <label htmlFor="building" className="block text-sm font-bold text-[#2C2420] mb-2">
                         المبنى <span className="text-red-500">*</span>
                       </label>
                       <input
                         type="text"
                         name="building"
+                      id="building"
                         value={formData.building}
                         onChange={handleInputChange}
                         className={`w-full px-4 py-4 rounded-xl border-2 ${errors.building ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
@@ -438,12 +446,13 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                       {errors.building && <p className="text-red-500 text-sm mt-1">{errors.building}</p>}
                     </div>
                     <div>
-                      <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                      <label htmlFor="floor" className="block text-sm font-bold text-[#2C2420] mb-2">
                         الطابق
                       </label>
                       <input
                         type="text"
                         name="floor"
+                      id="floor"
                         value={formData.floor}
                         onChange={handleInputChange}
                         className="w-full px-4 py-4 rounded-xl border-2 border-[#E8EAED] focus:border-[#2C2420] focus:outline-none transition-colors"
@@ -451,12 +460,13 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                      <label htmlFor="apartment" className="block text-sm font-bold text-[#2C2420] mb-2">
                         الشقة
                       </label>
                       <input
                         type="text"
                         name="apartment"
+                      id="apartment"
                         value={formData.apartment}
                         onChange={handleInputChange}
                         className="w-full px-4 py-4 rounded-xl border-2 border-[#E8EAED] focus:border-[#2C2420] focus:outline-none transition-colors"
@@ -466,11 +476,12 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                    <label htmlFor="notes" className="block text-sm font-bold text-[#2C2420] mb-2">
                       ملاحظات إضافية
                     </label>
                     <textarea
                       name="notes"
+                      id="notes"
                       value={formData.notes}
                       onChange={handleInputChange}
                       rows={3}
