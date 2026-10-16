@@ -27,6 +27,14 @@ const Header = memo(function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-xl shadow-lg border-b-2 border-[#D4CCC4]/30">
+      {/* Skip to Main Content Link */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:p-4 focus:bg-white focus:text-[#2C2420] focus:font-bold focus:shadow-xl focus:border-b-2 focus:border-r-2 focus:border-[#D4CCC4]/30 focus:rounded-br-xl focus:outline-none focus:ring-2 focus:ring-[#2C2420] transition-all right-0 top-0"
+      >
+        تخطي إلى المحتوى الرئيسي
+      </a>
+
       {/* Top Bar - Kuwait Location & Free Shipping */}
       <div className="bg-gradient-to-r from-[#2C2420] via-[#4A5568] to-[#2C2420] text-white py-2.5">
         <div className="container mx-auto px-4">
