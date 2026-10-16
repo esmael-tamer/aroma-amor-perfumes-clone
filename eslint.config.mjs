@@ -1,34 +1,31 @@
-import nextPlugin from "@next/eslint-plugin-next";
-import tsParser from "@typescript-eslint/parser";
-import tsPlugin from "@typescript-eslint/eslint-plugin";
+import eslint from '@eslint/js';
+import tseslint from 'typescript-eslint';
+import nextPlugin from '@next/eslint-plugin-next';
 
-export default [
+export default tseslint.config(
+  eslint.configs.recommended,
+  ...tseslint.configs.recommended,
   {
-    ignores: ["**/.next/**", "**/node_modules/**"]
+    ignores: [
+      ".next/**",
+      "node_modules/**",
+      "test-results/**",
+      "public/**",
+      "src/visual-edits/component-tagger-loader.js"
+    ],
   },
   {
-    files: ["**/*.ts", "**/*.tsx"],
-    languageOptions: {
-      parser: tsParser,
-      parserOptions: {
-        ecmaVersion: "latest",
-        sourceType: "module",
-        ecmaFeatures: {
-          jsx: true
-        }
-      }
-    },
     plugins: {
-      "@next/next": nextPlugin,
-      "@typescript-eslint": tsPlugin
+      '@next/next': nextPlugin,
     },
     rules: {
       ...nextPlugin.configs.recommended.rules,
-      ...nextPlugin.configs["core-web-vitals"].rules,
+      ...nextPlugin.configs['core-web-vitals'].rules,
       "react/no-unescaped-entities": "off",
       "@next/next/no-img-element": "off",
       "@typescript-eslint/no-unused-vars": "off",
-      "@typescript-eslint/no-explicit-any": "off"
-    }
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-unused-expressions": "off"
+    },
   }
-];
+);
