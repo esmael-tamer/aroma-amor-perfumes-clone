@@ -4,10 +4,10 @@ import AdminLayout from '@/components/admin/AdminLayout';
 import { useSiteSettings } from '@/context/SiteSettingsContext';
 import { useOrders } from '@/context/OrdersContext';
 import Link from 'next/link';
-import { 
-  Package, 
-  ShoppingCart, 
-  DollarSign, 
+import {
+  Package,
+  ShoppingCart,
+  DollarSign,
   TrendingUp,
   FolderTree,
   Tag,
@@ -20,31 +20,31 @@ export default function AdminPage() {
   const { orders, stats } = useOrders();
 
   const quickStats = [
-    { 
-      label: 'إجمالي المنتجات', 
-      value: products.length, 
-      icon: Package, 
+    {
+      label: 'إجمالي المنتجات',
+      value: products.length,
+      icon: Package,
       color: 'bg-blue-500',
       href: '/admin/products'
     },
-    { 
-      label: 'الطلبات', 
-      value: orders.length, 
-      icon: ShoppingCart, 
+    {
+      label: 'الطلبات',
+      value: orders.length,
+      icon: ShoppingCart,
       color: 'bg-emerald-500',
       href: '/admin/orders'
     },
-    { 
-      label: 'الإيرادات', 
-      value: `${stats.totalRevenue.toFixed(0)} د.ك`, 
-      icon: DollarSign, 
+    {
+      label: 'الإيرادات',
+      value: `${stats.totalRevenue.toFixed(0)} د.ك`,
+      icon: DollarSign,
       color: 'bg-amber-500',
       href: '/admin/orders'
     },
-    { 
-      label: 'طلبات قيد الانتظار', 
-      value: stats.pending, 
-      icon: TrendingUp, 
+    {
+      label: 'طلبات قيد الانتظار',
+      value: stats.pendingOrders,
+      icon: TrendingUp,
       color: 'bg-purple-500',
       href: '/admin/orders'
     },
@@ -74,8 +74,8 @@ export default function AdminPage() {
           {quickStats.map((stat, index) => {
             const Icon = stat.icon;
             return (
-              <Link 
-                key={index} 
+              <Link
+                key={index}
                 href={stat.href}
                 className="bg-white rounded-2xl p-5 shadow-sm hover:shadow-lg transition-all group"
               >
@@ -102,7 +102,7 @@ export default function AdminPage() {
               {quickLinks.map((link, index) => {
                 const Icon = link.icon;
                 return (
-                  <Link 
+                  <Link
                     key={index}
                     href={link.href}
                     className="flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 transition-colors group"
@@ -129,7 +129,7 @@ export default function AdminPage() {
                 عرض الكل
               </Link>
             </div>
-            
+
             {recentOrders.length > 0 ? (
               <div className="space-y-3">
                 {recentOrders.map(order => (
@@ -178,8 +178,8 @@ export default function AdminPage() {
           </div>
           <div className="bg-white rounded-2xl p-6 shadow-sm">
             <h3 className="font-bold text-gray-800 mb-2">الطلبات المكتملة</h3>
-            <p className="text-3xl font-bold text-emerald-600">{stats.delivered}</p>
-            <p className="text-sm text-gray-500 mt-1">نسبة الإكمال: {orders.length > 0 ? Math.round((stats.delivered / orders.length) * 100) : 0}%</p>
+            <p className="text-3xl font-bold text-emerald-600">{stats.completedOrders}</p>
+            <p className="text-sm text-gray-500 mt-1">نسبة الإكمال: {orders.length > 0 ? Math.round((stats.completedOrders / orders.length) * 100) : 0}%</p>
           </div>
         </div>
       </div>
