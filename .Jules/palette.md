@@ -5,3 +5,6 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+## 2024-05-27 - Form Label Association
+**Learning:** Custom form inputs without proper id and htmlFor bindings break screen reader accessibility.
+**Action:** Always verify that <label> tags have htmlFor attributes perfectly matching their target <input> id attributes.
