@@ -43,7 +43,7 @@ export default function AdminPage() {
     },
     { 
       label: 'طلبات قيد الانتظار', 
-      value: stats.pendingOrders,
+      value: stats.pending,
       icon: TrendingUp, 
       color: 'bg-purple-500',
       href: '/admin/orders'
@@ -178,8 +178,8 @@ export default function AdminPage() {
           </div>
           <div className="bg-white rounded-2xl p-6 shadow-sm">
             <h3 className="font-bold text-gray-800 mb-2">الطلبات المكتملة</h3>
-            <p className="text-3xl font-bold text-emerald-600">{stats.completedOrders}</p>
-            <p className="text-sm text-gray-500 mt-1">نسبة الإكمال: {orders.length > 0 ? Math.round((stats.completedOrders / orders.length) * 100) : 0}%</p>
+            <p className="text-3xl font-bold text-emerald-600">{stats.delivered}</p>
+            <p className="text-sm text-gray-500 mt-1">نسبة الإكمال: {orders.length > 0 ? Math.round((stats.delivered / orders.length) * 100) : 0}%</p>
           </div>
         </div>
       </div>
