@@ -51,6 +51,7 @@ const ProductsSection = memo(function ProductsSection() {
         >
           {PRODUCT_CATEGORIES.map((category) => (
             <button
+              type="button"
               key={category.id}
               onClick={() => handleCategoryChange(category.id)}
               className={`px-8 py-4 rounded-full font-bold transition-all duration-300 shadow-md hover:shadow-xl ${
