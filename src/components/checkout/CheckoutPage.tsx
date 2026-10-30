@@ -385,7 +385,7 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                       المنطقة <span className="text-red-500">*</span>
                     </label>
                     <input
-                        id="area"
+                      id="area"
                       type="text"
                       name="area"
                       value={formData.area}
