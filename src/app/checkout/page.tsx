@@ -7,5 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function Checkout() {
-  return <CheckoutPage />;
+  return <div id="main-content" tabIndex={-1} className="outline-none"><CheckoutPage /></div>;
 }
