@@ -5,3 +5,7 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+
+## 2024-11-03 - Missing Focus Rings on Custom Buttons
+**Learning:** Custom interactive elements (like quantity adjusters) built with native `<button>` tags often lack visible focus states, breaking keyboard navigation.
+**Action:** Always add `focus-visible:outline-none focus-visible:ring-2` to custom `<button>` elements to ensure keyboard accessibility.
