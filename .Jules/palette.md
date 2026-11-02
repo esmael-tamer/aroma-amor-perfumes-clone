@@ -9,7 +9,3 @@
 ## 2024-11-03 - Missing Focus Rings on Custom Buttons
 **Learning:** Custom interactive elements (like quantity adjusters) built with native `<button>` tags often lack visible focus states, breaking keyboard navigation.
 **Action:** Always add `focus-visible:outline-none focus-visible:ring-2` to custom `<button>` elements to ensure keyboard accessibility.
-
-## 2024-11-03 - Strict Types CI Failure
-**Learning:** CI pipelines may fail due to strict TypeScript type checking (`tsc --noEmit`), even if standard `pnpm build` passes locally with Next.js type checking skipped.
-**Action:** Always run `npx tsc --noEmit` locally to identify strict type errors before submission, particularly focusing on React component prop typings and inferred `useRef` initializers.
