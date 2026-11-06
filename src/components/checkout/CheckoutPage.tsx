@@ -281,7 +281,7 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
 
                 <div className="grid gap-6">
                   <div>
-                    <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                    <label htmlFor="fullName" className="block text-sm font-bold text-[#2C2420] mb-2">
                       الاسم الكامل <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -291,12 +291,12 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                       onChange={handleInputChange}
                       className={`w-full px-4 py-4 rounded-xl border-2 ${errors.fullName ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
                       placeholder="أدخل اسمك الكامل"
-                    />
+                     id="fullName" />
                     {errors.fullName && <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>}
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                    <label htmlFor="phone" className="block text-sm font-bold text-[#2C2420] mb-2">
                       رقم الهاتف <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -307,12 +307,12 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                       className={`w-full px-4 py-4 rounded-xl border-2 ${errors.phone ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
                       placeholder="+965 XXXX XXXX"
                       dir="ltr"
-                    />
+                     id="phone" />
                     {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                    <label htmlFor="email" className="block text-sm font-bold text-[#2C2420] mb-2">
                       البريد الإلكتروني (اختياري)
                     </label>
                     <input
@@ -323,7 +323,7 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                       className={`w-full px-4 py-4 rounded-xl border-2 ${errors.email ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
                       placeholder="example@email.com"
                       dir="ltr"
-                    />
+                     id="email" />
                     {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
                   </div>
                 </div>
@@ -361,23 +361,23 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                      <label htmlFor="city" className="block text-sm font-bold text-[#2C2420] mb-2">
                         المدينة <span className="text-red-500">*</span>
                       </label>
-                      <input
+                    <input
                         type="text"
                         name="city"
                         value={formData.city}
                         onChange={handleInputChange}
                         className={`w-full px-4 py-4 rounded-xl border-2 ${errors.city ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
                         placeholder="مثال: مدينة الكويت"
-                      />
+                       id="city" />
                       {errors.city && <p className="text-red-500 text-sm mt-1">{errors.city}</p>}
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                    <label htmlFor="area" className="block text-sm font-bold text-[#2C2420] mb-2">
                       المنطقة <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -387,86 +387,86 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                       onChange={handleInputChange}
                       className={`w-full px-4 py-4 rounded-xl border-2 ${errors.area ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
                       placeholder="مثال: السالمية"
-                    />
+                     id="area" />
                     {errors.area && <p className="text-red-500 text-sm mt-1">{errors.area}</p>}
                   </div>
 
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                      <label htmlFor="block" className="block text-sm font-bold text-[#2C2420] mb-2">
                         القطعة <span className="text-red-500">*</span>
                       </label>
-                      <input
+                    <input
                         type="text"
                         name="block"
                         value={formData.block}
                         onChange={handleInputChange}
                         className={`w-full px-4 py-4 rounded-xl border-2 ${errors.block ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
                         placeholder="رقم القطعة"
-                      />
+                       id="block" />
                       {errors.block && <p className="text-red-500 text-sm mt-1">{errors.block}</p>}
                     </div>
                     <div>
-                      <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                      <label htmlFor="street" className="block text-sm font-bold text-[#2C2420] mb-2">
                         الشارع <span className="text-red-500">*</span>
                       </label>
-                      <input
+                    <input
                         type="text"
                         name="street"
                         value={formData.street}
                         onChange={handleInputChange}
                         className={`w-full px-4 py-4 rounded-xl border-2 ${errors.street ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
                         placeholder="اسم أو رقم الشارع"
-                      />
+                       id="street" />
                       {errors.street && <p className="text-red-500 text-sm mt-1">{errors.street}</p>}
                     </div>
                   </div>
 
                   <div className="grid sm:grid-cols-3 gap-4">
                     <div>
-                      <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                      <label htmlFor="building" className="block text-sm font-bold text-[#2C2420] mb-2">
                         المبنى <span className="text-red-500">*</span>
                       </label>
-                      <input
+                    <input
                         type="text"
                         name="building"
                         value={formData.building}
                         onChange={handleInputChange}
                         className={`w-full px-4 py-4 rounded-xl border-2 ${errors.building ? 'border-red-500' : 'border-[#E8EAED]'} focus:border-[#2C2420] focus:outline-none transition-colors`}
                         placeholder="رقم المبنى"
-                      />
+                       id="building" />
                       {errors.building && <p className="text-red-500 text-sm mt-1">{errors.building}</p>}
                     </div>
                     <div>
-                      <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                      <label htmlFor="floor" className="block text-sm font-bold text-[#2C2420] mb-2">
                         الطابق
                       </label>
-                      <input
+                    <input
                         type="text"
                         name="floor"
                         value={formData.floor}
                         onChange={handleInputChange}
                         className="w-full px-4 py-4 rounded-xl border-2 border-[#E8EAED] focus:border-[#2C2420] focus:outline-none transition-colors"
                         placeholder="اختياري"
-                      />
+                       id="floor" />
                     </div>
                     <div>
-                      <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                      <label htmlFor="apartment" className="block text-sm font-bold text-[#2C2420] mb-2">
                         الشقة
                       </label>
-                      <input
+                    <input
                         type="text"
                         name="apartment"
                         value={formData.apartment}
                         onChange={handleInputChange}
                         className="w-full px-4 py-4 rounded-xl border-2 border-[#E8EAED] focus:border-[#2C2420] focus:outline-none transition-colors"
                         placeholder="اختياري"
-                      />
+                       id="apartment" />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-bold text-[#2C2420] mb-2">
+                    <label htmlFor="notes" className="block text-sm font-bold text-[#2C2420] mb-2">
                       ملاحظات إضافية
                     </label>
                     <textarea
@@ -476,7 +476,7 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                       rows={3}
                       className="w-full px-4 py-4 rounded-xl border-2 border-[#E8EAED] focus:border-[#2C2420] focus:outline-none transition-colors resize-none"
                       placeholder="أي ملاحظات خاصة بالتوصيل..."
-                    />
+                     id="notes" />
                   </div>
                 </div>
               </div>
