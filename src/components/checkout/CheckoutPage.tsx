@@ -346,11 +346,11 @@ ${items.map(item => `• ${item.product.nameAr} × ${item.quantity} = ${(item.pr
                 <div className="grid gap-6">
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="country-select" className="block text-sm font-bold text-[#2C2420] mb-2">
+                      <label htmlFor="country" className="block text-sm font-bold text-[#2C2420] mb-2">
                         الدولة <span className="text-red-500">*</span>
                       </label>
                       <select
-                        id="country-select"
+                        id="country"
                         name="country"
                         value={formData.country}
                         onChange={handleInputChange}
