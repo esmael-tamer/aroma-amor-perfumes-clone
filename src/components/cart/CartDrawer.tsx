@@ -49,7 +49,7 @@ const CartDrawer = memo(function CartDrawer() {
       />
       
       {/* Drawer */}
-      <div className="fixed top-0 left-0 h-full w-full max-w-md bg-white z-50 shadow-2xl flex flex-col animate-in slide-in-from-left duration-300">
+      <div role="dialog" aria-modal="true" aria-labelledby="cart-drawer-title" className="fixed top-0 left-0 h-full w-full max-w-md bg-white z-50 shadow-2xl flex flex-col animate-in slide-in-from-left duration-300">
         {/* Header */}
         <div className="flex items-center justify-between p-5 border-b-2 border-[#E8EAED] bg-gradient-to-r from-[#2C2420] via-[#3d3530] to-[#2C2420]">
           <div className="flex items-center gap-3 text-white">
@@ -58,13 +58,13 @@ const CartDrawer = memo(function CartDrawer() {
               <Sparkles className="w-4 h-4 absolute -top-1 -right-1 text-amber-400 animate-pulse" />
             </div>
             <div>
-              <h2 className="text-xl font-bold">سلة التسوق</h2>
+              <h2 id="cart-drawer-title" className="text-xl font-bold">سلة التسوق</h2>
               <p className="text-xs text-white/70">{totalItems} منتج</p>
             </div>
           </div>
-          <button
+          <button type="button"
             onClick={() => setIsCartOpen(false)}
-            className="text-white hover:bg-white/20 p-2.5 rounded-xl transition-all hover:rotate-90 duration-300"
+            className="text-white hover:bg-white/20 p-2.5 rounded-xl transition-all hover:rotate-90 duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
             aria-label="إغلاق السلة"
           >
             <X className="w-6 h-6" />
@@ -142,9 +142,9 @@ const CartDrawer = memo(function CartDrawer() {
 
                   {/* Quantity Controls */}
                   <div className="flex flex-col items-end justify-between">
-                    <button
+                    <button type="button"
                       onClick={() => removeFromCart(item.product.id)}
-                      className="text-red-400 hover:text-red-600 hover:bg-red-50 p-1.5 rounded-lg transition-all hover:scale-110"
+                      className="text-red-400 hover:text-red-600 hover:bg-red-50 p-1.5 rounded-lg transition-all hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500"
                       aria-label={`حذف ${item.product.nameAr} من السلة`}
                       title="حذف من السلة"
                     >
@@ -152,18 +152,18 @@ const CartDrawer = memo(function CartDrawer() {
                     </button>
 
                     <div className="flex items-center gap-1 bg-white rounded-full border-2 border-[#E8EAED] p-0.5 shadow-sm">
-                      <button
+                      <button type="button"
                         onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
-                        className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-red-50 hover:text-red-500 transition-colors"
+                        className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-red-50 hover:text-red-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500"
                         aria-label={`تقليل كمية ${item.product.nameAr}`}
                       >
                         <Minus className="w-3 h-3" />
                       </button>
                       <span className="w-6 text-center font-bold text-sm">{item.quantity}</span>
-                      <button
+                      <button type="button"
                         onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
                         disabled={item.quantity >= item.product.stock}
-                        className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-emerald-50 hover:text-emerald-500 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                        className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-emerald-50 hover:text-emerald-500 transition-colors disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500"
                         aria-label={`زيادة كمية ${item.product.nameAr}`}
                       >
                         <Plus className="w-3 h-3" />
@@ -217,13 +217,13 @@ const CartDrawer = memo(function CartDrawer() {
 
             {/* Actions Row */}
             <div className="flex gap-2">
-              <button
+              <button type="button"
                 onClick={() => setIsCartOpen(false)}
                 className="flex-1 text-[#2C2420] hover:bg-[#E8EAED] py-2.5 rounded-xl transition-colors font-medium text-sm border-2 border-[#E8EAED]"
               >
                 متابعة التسوق
               </button>
-              <button
+              <button type="button"
                 onClick={clearCart}
                 className="text-red-500 hover:bg-red-50 px-4 py-2.5 rounded-xl transition-colors text-sm font-medium border-2 border-red-100"
               >
