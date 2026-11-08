@@ -5,3 +5,7 @@
 ## 2024-05-25 - Self-Contained Tooltips
 **Learning:** The `Tooltip` component (`@/components/ui/tooltip`) includes its own `TooltipProvider`.
 **Action:** Do not wrap the app in a global `TooltipProvider`; simply use `<Tooltip>` locally.
+
+## 2024-06-15 - Cart Drawer Accessibility Improvements
+**Learning:** Native interactive buttons in overlays (like a cart drawer) often omit the `type="button"` attribute, and dialog overlays lack proper ARIA semantics.
+**Action:** Always add `type="button"` to native interactive buttons to prevent accidental form submissions and ensure screen readers announce them properly. Add `role="dialog"`, `aria-modal="true"`, and `aria-labelledby` to custom drawer implementations.
