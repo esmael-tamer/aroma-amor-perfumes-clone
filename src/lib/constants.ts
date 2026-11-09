@@ -113,4 +113,4 @@ export const SEO_CONFIG = {
     locale: 'ar_KW',
     type: 'website',
   },
-} as const;
+};
