@@ -1,6 +1,7 @@
 import nextPlugin from '@next/eslint-plugin-next';
 import tsParser from '@typescript-eslint/parser';
 import tsPlugin from '@typescript-eslint/eslint-plugin';
+import importPlugin from 'eslint-plugin-import';
 
 export default [
   {
@@ -21,6 +22,7 @@ export default [
     plugins: {
       '@next/next': nextPlugin,
       '@typescript-eslint': tsPlugin,
+      'import': importPlugin,
     },
     rules: {
       ...nextPlugin.configs.recommended.rules,
@@ -29,6 +31,7 @@ export default [
       '@next/next/no-img-element': 'off',
       'react-hooks/exhaustive-deps': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-unused-vars': 'off',
     },
   },
 ];
